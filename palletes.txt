@@ -1,0 +1,10 @@
+#DA6556 - rgb(218, 101, 86) - red 
+#9BA2A8 - rgb(155, 162, 168) - grey
+#6C645A -  rgb(108, 100, 90) - dark grey
+#A6987D -  rgb(166, 152, 125) - brown
+#A88ABE - rgb(168, 138, 190) - purple
+#455376 - rgb(69, 83, 118) - dark blue
+#8FD4D9 - rgb(143, 212, 217) - light blue
+#F2EC85 - rgb(242, 236, 133) - yellow
+#F89947 -  rgb(248, 153, 71) - orange
+#F3D9B6 - rgb(243, 217, 182) - skin tone pink

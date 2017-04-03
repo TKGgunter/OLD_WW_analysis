@@ -1,0 +1,18 @@
+title;y_label;binning;range;feature
+???;Entries;50;(0,250);default
+pt(GeV);Entries/5GeV;50;(0,250);default_pt
+$M_{ll}$(GeV);Entries/8GeV;50;(10,410);mll
+Lead lep pt(GeV);Entries/5GeV;50;(0,250);lep1_pt
+Sub lep pt(GeV);Entries/5GeV;50;(0,250);lep2_pt
+Lead jet pt(GeV);Entries/5GeV;50;(0,250);jet1_pt
+Sub jet pt(GeV);Entries/5GeV;50;(0,250);jet2_pt
+NPV;Entries;51;(-0.5, 50.5);tot_npv
+MET over Sum ET;Entries/5GeV;50;(0,10);met_over_sET
+$M_{ll MET}$(GeV);Entries/5GeV;50;(0,250);mllMET
+MET(GeV);Entries/5GeV;50;(0,250);metMod
+???(GeV);Entries/5GeV;50;(0,250);default_met
+???;Entries;50;(-5,5);default_eta
+???;Entries;50;(-4,4);default_phi
+???;Entries;50;(0,4);default_dphi
+???;Entries;10;(-0.5,9.5);default_numb
+
