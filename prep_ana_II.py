@@ -4,6 +4,8 @@ import matplotlib
 import matplotlib.pyplot as plt
 import pandas as pd
 import copy, string 
+
+from physics_selections import *
 from matplotlib import gridspec
 from matplotlib.ticker import AutoMinorLocator
 from ast import literal_eval as make_tuple
@@ -11,39 +13,54 @@ plt.rc('text', usetex=True)
 
 
 
+
+
+#Set analysis home directory
 home_dir = "/Users/thothgunter/Documents/WW Prob/Analysis"
 
 
-print("Loading plotting specs...")
+print("Loading binninb options...")
 binning_options = pd.read_csv( home_dir+"/binning_options.txt", index_col=None, sep=";" )
 
+
+#Set energy and lumi defaults
 page = "8TeV"
 lumi_amount="19.7"
+
 page_temp = raw_input("8 or 13 TeV:")
 if page_temp != "8TeV" and page_temp != "13TeV":
   print("Loading 8TeV")
 else:
   page = page_temp
   lumi_amount="36.4"
+
+print("Loading plotting options")
 plotting_options = pd.read_csv(home_dir+"/plotting_options_"+page+".csv", index_col=None, sep=";")
 
-print("unc_mc_process and scales as dictionaries")
+data_path = home_dir + "/data_" + page 
+if data_path == "/data_13TeV": 
+  data_path += "/" + raw_input("in or out")
 
-data_path = home_dir + "/data_" + page #+ "_old"
 if input("Load MC and Data?"):
-  columns = None
-  #if page == "13TeV" :
   columns = [ 'process', 'process_decay',
       'weight', 'lep1_Charge', 'lep2_Charge', 'lep_Type', 'numbExtraLep',
       'tot_npv', 'mll', 'numb_jets', 'metMod', 'numb_BJet',
       'lep1_pt', 'lep2_pt', 'lep3_pt', 'dPhiLL',
       'jet1_pt', 'jet2_pt', 'HT', 'jet1_csv',
       'METProj_sin', 'met_over_sET','METProj_trk_sin', 'METProj',
-      'dPhiLLMET',  'mllMET', 'qT', 'recoil', 'dPhiLLJet', 'dPhiMETJet'] #'met_phi'
+      'dPhiLLMET',  'mllMET', 'qT', 'recoil', 'dPhiLLJet', 'dPhiMETJet'] 
 
+  df_list = []
+
+  #for i in data directory:
+  #Drell Yand and WW
   df_dy0 = rp.read_root(data_path+"/dyjetstoll_m-50_complete.root", columns=columns)
   df_dy_m_10 = rp.read_root(data_path+"/dyjetstoll_m-10to50_complete.root", columns=columns)
   df_ww = rp.read_root(data_path+"/ww_complete.root", columns=columns)
+
+  df_list += [df_dy0, df_dy_m_10, df_ww]
+
+  #TTbar and single Top
   df_tt_l = rp.read_root(data_path+"/ttbar_leptonic_complete.root", columns=columns)
   df_tt_sl = rp.read_root(data_path+"/ttbar_semileptonic_complete.root", columns=columns)
   df_tbar_tw = rp.read_root(data_path+"/tbar_tw-_complete.root", columns=columns)
@@ -52,40 +69,47 @@ if input("Load MC and Data?"):
   df_t_tw = rp.read_root(data_path+"/t_tw-_complete.root", columns=columns)
   df_t_s = rp.read_root(data_path+"/t_s-_complete.root", columns=columns)
   df_t_t = rp.read_root(data_path+"/t_t-_complete.root", columns=columns)
+
+  df_list += [df_tt_l, df_tt_sl, df_tbar_tw, df_tbar_s, df_tbar_t, df_t_tw, df_t_s, df_t_t]
+
+  #ZZ and WZ
   df_zz_lq = rp.read_root(data_path+"/zzjetsto2l2q_complete.root", columns=columns)
   df_zz_ln = rp.read_root(data_path+"/zzjetsto2l2nu_complete.root", columns=columns)
   df_wz_lq = rp.read_root(data_path+"/wzjetsto2l2q_complete.root", columns=columns)
   df_wz_ln = rp.read_root(data_path+"/wzjetsto3lnu_complete.root", columns=columns)
 
-  #May want to turn this off
+  df_list += [df_zz_lq, df_zz_ln, df_wz_lq, df_wz_ln]
+
+  #WJets
   df_wj1 = rp.read_root(data_path+"/w1jetstolnu_complete.root", columns=columns)
   df_wj2 = rp.read_root(data_path+"/w2jetstolnu_complete.root", columns=columns)
   df_wj3 = rp.read_root(data_path+"/w3jetstolnu_complete.root", columns=columns)
   df_wj4 = rp.read_root(data_path+"/w4jetstolnu_complete.root", columns=columns)
 
-  #Other stuff that I might want to turn off
+  df_list += [df_wj1, df_wj2, df_wj3, df_wj4]
+
+  #Other stuff 
   df_wg = rp.read_root(data_path+"/wg_complete.root", columns=columns)
-  #df_wg = rp.read_root(data_path+"/WGToLNuG_mumu_complete.root", columns=columns)
-  #df_hg = rp.read_root(data_path+"/GluGluToHToWWTo2LAndTau2Nu_complete.root", columns=columns)
 
-  #df_wgs = rp.read_root(data_path+"/WGstarToLNu2E_complete.root", columns=columns)
-  #df_ggWW = rp.read_root(data_path+"/GluGluToWWTo4L_complete.root", columns=columns)
+  df_list += [df_wg]
 
-  df = pd.concat([df_dy0, df_dy_m_10, df_ww, df_tt_l, df_tt_sl, df_tbar_s, df_tbar_t, df_tbar_tw, df_t_s, df_t_t, df_t_tw, df_zz_lq, df_zz_ln, df_wz_ln, df_wz_lq,
-                  df_wj1, df_wj2, df_wj3, df_wj4, df_wg])#, df_hg, df_wgs, df_ggWW ])
-
+  #Finishing up
+  df = pd.concat(df_list)
   df = df.reset_index()
 
+
+  #Monte Carlo corrections
   if input("Correct MET?"):
     def apply_met_correction( array_values, array_labels):
-      a = array_values
+      #a = array_values #why abstract this?
       if page == "8TeV":
-        a[ array_labels == "DY"] = array_values[ array_labels == "DY"] * 1.059
-      else:
-        a[ array_labels == "DY"] = array_values[ array_labels == "DY"] * 1.059
-      return a 
-    #a = 1. * df.metMod.values
-    #a[df.process.values == "DY"] = df.metMod.values[df.process.values == "DY"] * 1.059
+        array_values[ array_labels == "DY"] = array_values[ array_labels == "DY"] * 1.059
+      
+      return array_values
+     #   a[ array_labels == "DY"] = array_values[ array_labels == "DY"] * 1.059
+     # else:
+     #   a[ array_labels == "DY"] = array_values[ array_labels == "DY"] * 1.059
+     # return a 
     df["metMod"] = apply_met_correction(df.metMod.values, df.process.values)
     df["met_over_sET"] = apply_met_correction(df.met_over_sET.values, df.process.values)
     df["METProj"] = apply_met_correction(df.METProj.values, df.process.values)
@@ -93,7 +117,9 @@ if input("Load MC and Data?"):
 
 
 
-print( "df = pd.concat([df_dy0, df_dy1, df_dy2, df_dy3, df_dy4, df_dy_m_10, df_ww, df_tt_l, df_tt_sl, df_zz_ln, df_wz_ln, df_wz_lq ])")
+print( "Corrections complete." )
+
+
 ##################
 # Process Scalings
 scales = {}
@@ -105,6 +131,7 @@ unc_mc_process = {}#{ "WW": .05, "DY": .03, "TT": 0.05, "ZZ": 0.1, "WZ":.1 }
 for key in plotting_options.process_decay.unique():
   unc_mc_process[key] = plotting_options[plotting_options.process_decay == key]["unc"].values[0]
 
+print("unc_mc_process and scales are parameter dictionaries")
 
 
 ##################
@@ -122,21 +149,15 @@ for key in plotting_options.keys():
       
     
 
-##################
-#:def rm_duplicates_df(df_mu, df_el):
-#    df_el_mu = pd.concat([df_mu[["runNum", "eventNumb", "lep1_pt", "process_decay"]], df_el[["runNum", "eventNumb", "lep1_pt", "process_decay"]]])    
-#
-#    df_el_mu = df_el_mu[ df_el_mu[["runNum", "eventNumb", "lep1_pt",]].duplicated() ]
-#    
-#    tot_run_event = df_el_mu.runNum.values * 10**12 + df_el_mu.eventNumb.values
-#    el_run_event = df_el.runNum.values * 10**12 + df_el.eventNumb.values
-#    
-#    mask_index = np.where( np.in1d(el_run_event, tot_run_event) )
-#
-#    return df_el.drop(mask_index)
 
 
-##################
+
+
+
+#########End Of What I Want to Include in This File##########
+
+
+################## Extra rando shit
 # set-up tables and 
 
 def create_table( data, round_digit ):
@@ -153,134 +174,6 @@ def combine_unc( data ):
             comb_unc[process] += pow( data[flavor][process], 2 )
     print { process : round( pow( comb_unc[process], .5) , 2) for process in comb_unc.keys()}
 
-def deltaPhi( dPhi ):
-  """
-  """
-  if dPhi == None:
-    dPhi = 0
-  while dPhi >= np.pi: dPhi -= 2.*np.pi
-  while dPhi < -np.pi: dPhi += 2.*np.pi
-  return dPhi
-
-def proj_calc( met, met_phi, phi_l1, phi_2):
-  """
-  """
-  met_proj = 0
-  dPhi = abs( deltaPhi( phi_l1 - met_phi) )
-  if dPhi > abs( deltaPhi( phi_l2 - met_phi) ):
-    dPhi = abs( deltaPhi( phi_l2 - met_phi) )
-  
-
-  if dPhi < np.pi / 2.:
-    met_proj = abs( sin(dPhi) * met )
-  else:
-    met_proj = met
-
-  return met_proj
-
-def met_over_sum_et_calc( met, obj1, obj2):
-  """
-  """
-  electron_mass = 0.511 * 10**-3
-  muon_mass = 105. * 10**-3
-
-  def set_mass( obj ):
-    if obj["flavor"] == 13:
-      obj["mass"] = muon_mass
-  set_mass( obj1 )
-  set_mass( obj2 )
-  sum_et = ( obj1["pt"]**2 + obj1["mass"]**2 + obj1["pt"]**2 + obj1["mass"]**2 )**.5
-
-  return met / sum_et
-
-def pre_cuts( df, diff_charge= True):
-  dif_lep = df.lep_Type > 0
-  sam_lep = df.lep_Type < 0
-  z_mass = (df.mll < 76) | (df.mll > 106 )
-  nBjet = df.numb_BJet == 0
-  extra_lep = df.numbExtraLep == 0
-  quality_cuts = df.mll > 30 
-  charge = df.lep1_Charge != df.lep2_Charge
-
-  if diff_charge == False:
-    s_df = df[ sam_lep & z_mass & nBjet & extra_lep & quality_cuts ]
-    d_df = df[ dif_lep & nBjet & extra_lep & quality_cuts ]
-  
-  if diff_charge == True:
-    s_df = df[ sam_lep & z_mass & nBjet & extra_lep & quality_cuts & charge ]
-    d_df = df[ dif_lep & nBjet & extra_lep & quality_cuts & charge ]  
-  
-  return pd.concat([ s_df, d_df])
-
-
-def cuts_ana( df, flavor="both" ):
-  """
-    Basic WW cuts analysis !!!CLEAN THIS SHIT UP!!!
-    cuts_ana( df ) 
-    df: data frame
-  """
-  initial_cuts = (df.mll > 30 ) & (df.METProj > 50) & (df.numbExtraLep == 0) & (df.HT < 50.) & (df.numb_jets < 2)
-  same_flavor_cut = (df.lep_Type < 0)
-  dif_flavor_cut = (df.lep_Type > 0)
-  z_peak_cut = (df.mll > 106) | (df.mll < 76)
-  met_proj_cut = (df.METProj > 50)
-  met_diff_flavor = (df.metMod > 50) & (df.metMod < 120)
-  mllmet = df.mllMET > 100
-
-  basic_sf_cuts = initial_cuts & same_flavor_cut & met_proj_cut & z_peak_cut & (df.qT > 35)
-  basic_df_cuts = initial_cuts & dif_flavor_cut & met_proj_cut & met_diff_flavor & mllmet 
-  if flavor=="both": return pd.concat( [df[basic_sf_cuts], df[basic_df_cuts]] )
-  elif flavor=="same": return df[basic_sf_cuts]
-  elif flavor=="diff": return df[basic_df_cuts]
-  else: 
-    print "Broke"
-    return -999
-
-def WW_ana( df , diff_charge= True): 
-  initial_cuts = (df.mll > 50 )  & (df.numbExtraLep == 0) & (df.numb_jets ==  0) & ( df.metMod > 50 )
-  dif_flavor_cut = (df.lep_Type > 0)
-
-  if diff_charge == True:
-    initial_cuts = initial_cuts & (df.lep1_Charge != df.lep2_Charge)
-
-  basic_df_0j_cuts = initial_cuts & dif_flavor_cut 
-  return df[basic_df_0j_cuts]
-
-
-def TT_ana( df, diff_charge= True ): 
-  initial_cuts = (df.mll > 50 ) & (df.qT > 30) & (df.metMod > 60) & (df.numbExtraLep == 0) & (df.numb_jets > 0)
-  dif_flavor_cut = (df.lep_Type > 0)
-  
-  basic_df_0j_cuts = initial_cuts & dif_flavor_cut 
-  return df[basic_df_0j_cuts] 
-
-def DY_ana( df, diff_charge = True ): 
-  initial_cuts = (df.mll > 50 )  & (df.numbExtraLep == 0) & (df.numb_jets == 0) & (df.metMod < 80)
-
-  return df[ initial_cuts ]
-
-def Z_tt_ana( df, diff_charge = True ): 
-    initial_cuts = (df.mll > 50 )  & (df.numbExtraLep == 0) & (df.numb_jets ==  0) & ( df.qT < 10 ) & (df.lep1_pt > 30) & (df.lep2_pt > 20)
-    
-    dif_flavor_cut = (df.lep_Type > 0)
-    
-    m_1 = (df.mll < 120) & (df.mll > 60)
-    met_1 = (df.metMod > 30) & (df.metMod < 50)
-
-    return df[ initial_cuts & met_1 & m_1 & dif_flavor_cut ] 
-
-def wjets_selection(df_mc, df_data, feature):
-    bins_mc_ = bin_df( df_mc[df_mc.lep1_Charge == df_mc.lep2_Charge], feature, )#weights=False) 
-    bins_data_ = bin_df( df_data[df_data.lep1_Charge == df_data.lep2_Charge], feature, )
-
-    sum_mc = np.zeros(bins_mc_[bins_mc_.keys()[0]][0].shape[0])
-    for k in bins_mc_.keys():
-        if k in ['ttbar_semileptonic', 'ttbar_leptonic', 'DYJetsToLL_M-50', 'WZJetsTo3LNu', 'WW',
-     'Tbar_tW-channel','T_t-channel','ZZJetsTo2L2Nu', 'WGToLNuG']:
-            sum_mc += bins_mc_[k][0]
-
-    sum_mc = bins_data_["Da"][0] - sum_mc
-    return sum_mc
 
 ###############################################
 #### Create kinematic histograms
@@ -458,7 +351,6 @@ def bin_df( df, binned_feature, binning_options=binning_options, plotting_option
   for default in defaults:
     if default in binned_feature.lower():
       count_defaults += 1
-      #print default, binning_options[ binning_options.feature == "default_"+default ].range
       range_default = make_tuple(binning_options[ binning_options.feature == "default_"+default ].range.values[0])
       bins_default = binning_options[ binning_options.feature == "default_"+default ].binning.values[0]
       y_label_default = binning_options[ binning_options.feature == "default_"+default ].y_label.values[0]
@@ -495,9 +387,11 @@ def bin_df( df, binned_feature, binning_options=binning_options, plotting_option
   binned_results["plotting"] = {"y_label": y_label, "title": title}
 
 
+  unique_df_processes = df.process_decay.unique()
+
   for process in plotting_options.process_decay.unique():
     #print process
-    if process in df.process_decay.unique():
+    if process in unique_df_processes:
       df_process = df[df.process_decay == process]
       #print process, scales[process], range, bins
       if weights == True:

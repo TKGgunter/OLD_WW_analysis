@@ -495,9 +495,10 @@ def bin_df( df, binned_feature, binning_options=binning_options, plotting_option
   binned_results["plotting"] = {"y_label": y_label, "title": title}
 
 
+  unique_df_processes = df.process_decay.unique()
   for process in plotting_options.process_decay.unique():
     #print process
-    if process in df.process_decay.unique():
+    if process in unique_df_processes:
       df_process = df[df.process_decay == process]
       #print process, scales[process], range, bins
       if weights == True:
