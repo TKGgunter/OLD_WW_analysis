@@ -337,8 +337,9 @@ def create_kinematic_hist(df_mc, df_data, prefix=""):
       if k in ['ttbar_semileptonic', 'ttbar_leptonic', 'DYJetsToLL_M-50', 'WZJetsTo3LNu', 'WW',
    'Tbar_tW-channel','T_t-channel','ZZJetsTo2L2Nu', 'WGToLNuG']:
         sum_mc += bins_mc_[k][0]
-          
-    sum_mc = bins_data_["Da"][0] - sum_mc
+    
+    if "Da" in bins_data_.keys():
+      sum_mc = bins_data_["Da"][0] - sum_mc
 
     process_temp = None
     for process in ['W1JetsToLNu', 'W2JetsToLNu', 'W3JetsToLNu', 'W4JetsToLNu']:
