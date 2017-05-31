@@ -11,7 +11,7 @@ plt.rc('text', usetex=True)
 
 
 
-home_dir = "/Users/thothgunter/Documents/WW Prob/Analysis"
+home_dir = "/home/tgunter/WW_analysis"
 
 
 print("Loading plotting specs...")
@@ -303,7 +303,7 @@ def make_control_plots( df_mc, df_data, date_tag, selection_tag, energy_dir= "8T
     print key
     create_kinematic_hist( control_regions[key](df_mc, diff_charge= False), control_regions[key](df_data, diff_charge= False), prefix= energy_dir + "/" + selection_tag + "/" + key + "/" + date_tag )
 
-def create_kinematic_hist(df_mc, df_data, prefix=""):
+def create_kinematic_hist(df_mc, df_data, prefix="", scales=scales):
   """
   Creates all the basic histograms you'll ever need:
   create_kinematic_hist(df)
@@ -324,12 +324,12 @@ def create_kinematic_hist(df_mc, df_data, prefix=""):
   for feature in features:
     if feature not in df_mc.keys(): continue
     print feature
-    bins_mc = bin_df( df_mc[df_mc.lep1_Charge != df_mc.lep2_Charge], feature, ) 
+    bins_mc = bin_df( df_mc[df_mc.lep1_Charge != df_mc.lep2_Charge], feature, scales=scales) 
     bins_data = bin_df( df_data[df_data.lep1_Charge != df_data.lep2_Charge], feature, ) 
 
     #########################
     #WJets stuff
-    bins_mc_ = bin_df( df_mc[df_mc.lep1_Charge == df_mc.lep2_Charge], feature, ) 
+    bins_mc_ = bin_df( df_mc[df_mc.lep1_Charge == df_mc.lep2_Charge], feature, scales=scales) 
     bins_data_ = bin_df( df_data[df_data.lep1_Charge == df_data.lep2_Charge], feature, ) 
 
     sum_mc = np.zeros(bins_mc["WW"][0].shape[0])
