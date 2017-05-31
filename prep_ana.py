@@ -65,11 +65,6 @@ if input("Load MC and Data?"):
 
   #Other stuff that I might want to turn off
   df_wg = rp.read_root(data_path+"/wg_complete.root", columns=columns)
-  #df_wg = rp.read_root(data_path+"/WGToLNuG_mumu_complete.root", columns=columns)
-  #df_hg = rp.read_root(data_path+"/GluGluToHToWWTo2LAndTau2Nu_complete.root", columns=columns)
-
-  #df_wgs = rp.read_root(data_path+"/WGstarToLNu2E_complete.root", columns=columns)
-  #df_ggWW = rp.read_root(data_path+"/GluGluToWWTo4L_complete.root", columns=columns)
 
   df = pd.concat([df_dy0, df_dy_m_10, df_ww, df_tt_l, df_tt_sl, df_tbar_s, df_tbar_t, df_tbar_tw, df_t_s, df_t_t, df_t_tw, df_zz_lq, df_zz_ln, df_wz_ln, df_wz_lq,
                   df_wj1, df_wj2, df_wj3, df_wj4, df_wg])#, df_hg, df_wgs, df_ggWW ])
