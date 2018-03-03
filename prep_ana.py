@@ -11,7 +11,7 @@ plt.rc('text', usetex=True)
 
 
 
-home_dir = "/home/tgunter/WW_analysis"
+home_dir = "/home/gunter/WW_analysis"
 
 
 print("Loading plotting specs...")

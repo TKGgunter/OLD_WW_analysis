@@ -3,6 +3,9 @@
 /plots/
 /pdf/
 /data/
+*/data/
+**/data/
+production/**/data
 data_13TeV/
 data_8TeV/
 data_*
