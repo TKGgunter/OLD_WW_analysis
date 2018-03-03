@@ -1,0 +1,241 @@
+
+Bad key "patch.force_edgecolor" on line 33 in
+/home/gunter/anaconda2/lib/python2.7/site-packages/matplotlib/mpl-data/stylelib/_classic_test.mplstyle.
+You probably need to get an updated matplotlibrc file from
+http://github.com/matplotlib/matplotlib/blob/master/matplotlibrc.template
+or from the matplotlib source distribution
+
+Bad key "lines.dashed_pattern" on line 18 in
+/home/gunter/anaconda2/lib/python2.7/site-packages/matplotlib/mpl-data/stylelib/_classic_test.mplstyle.
+You probably need to get an updated matplotlibrc file from
+http://github.com/matplotlib/matplotlib/blob/master/matplotlibrc.template
+or from the matplotlib source distribution
+
+Bad key "boxplot.meanprops.markeredgecolor" on line 369 in
+/home/gunter/anaconda2/lib/python2.7/site-packages/matplotlib/mpl-data/stylelib/_classic_test.mplstyle.
+You probably need to get an updated matplotlibrc file from
+http://github.com/matplotlib/matplotlib/blob/master/matplotlibrc.template
+or from the matplotlib source distribution
+
+Bad key "date.autoformatter.second" on line 235 in
+/home/gunter/anaconda2/lib/python2.7/site-packages/matplotlib/mpl-data/stylelib/_classic_test.mplstyle.
+You probably need to get an updated matplotlibrc file from
+http://github.com/matplotlib/matplotlib/blob/master/matplotlibrc.template
+or from the matplotlib source distribution
+
+Bad key "ytick.major.right" on line 271 in
+/home/gunter/anaconda2/lib/python2.7/site-packages/matplotlib/mpl-data/stylelib/_classic_test.mplstyle.
+You probably need to get an updated matplotlibrc file from
+http://github.com/matplotlib/matplotlib/blob/master/matplotlibrc.template
+or from the matplotlib source distribution
+
+Bad key "date.autoformatter.month" on line 231 in
+/home/gunter/anaconda2/lib/python2.7/site-packages/matplotlib/mpl-data/stylelib/_classic_test.mplstyle.
+You probably need to get an updated matplotlibrc file from
+http://github.com/matplotlib/matplotlib/blob/master/matplotlibrc.template
+or from the matplotlib source distribution
+
+Bad key "scatter.marker" on line 345 in
+/home/gunter/anaconda2/lib/python2.7/site-packages/matplotlib/mpl-data/stylelib/_classic_test.mplstyle.
+You probably need to get an updated matplotlibrc file from
+http://github.com/matplotlib/matplotlib/blob/master/matplotlibrc.template
+or from the matplotlib source distribution
+
+Bad key "ytick.minor.right" on line 273 in
+/home/gunter/anaconda2/lib/python2.7/site-packages/matplotlib/mpl-data/stylelib/_classic_test.mplstyle.
+You probably need to get an updated matplotlibrc file from
+http://github.com/matplotlib/matplotlib/blob/master/matplotlibrc.template
+or from the matplotlib source distribution
+
+Bad key "ytick.major.left" on line 270 in
+/home/gunter/anaconda2/lib/python2.7/site-packages/matplotlib/mpl-data/stylelib/_classic_test.mplstyle.
+You probably need to get an updated matplotlibrc file from
+http://github.com/matplotlib/matplotlib/blob/master/matplotlibrc.template
+or from the matplotlib source distribution
+
+Bad key "ytick.left" on line 258 in
+/home/gunter/anaconda2/lib/python2.7/site-packages/matplotlib/mpl-data/stylelib/_classic_test.mplstyle.
+You probably need to get an updated matplotlibrc file from
+http://github.com/matplotlib/matplotlib/blob/master/matplotlibrc.template
+or from the matplotlib source distribution
+
+Bad key "xtick.minor.bottom" on line 256 in
+/home/gunter/anaconda2/lib/python2.7/site-packages/matplotlib/mpl-data/stylelib/_classic_test.mplstyle.
+You probably need to get an updated matplotlibrc file from
+http://github.com/matplotlib/matplotlib/blob/master/matplotlibrc.template
+or from the matplotlib source distribution
+
+Bad key "axes.autolimit_mode" on line 220 in
+/home/gunter/anaconda2/lib/python2.7/site-packages/matplotlib/mpl-data/stylelib/_classic_test.mplstyle.
+You probably need to get an updated matplotlibrc file from
+http://github.com/matplotlib/matplotlib/blob/master/matplotlibrc.template
+or from the matplotlib source distribution
+
+Bad key "hatch.color" on line 37 in
+/home/gunter/anaconda2/lib/python2.7/site-packages/matplotlib/mpl-data/stylelib/_classic_test.mplstyle.
+You probably need to get an updated matplotlibrc file from
+http://github.com/matplotlib/matplotlib/blob/master/matplotlibrc.template
+or from the matplotlib source distribution
+
+Bad key "boxplot.meanprops.marker" on line 367 in
+/home/gunter/anaconda2/lib/python2.7/site-packages/matplotlib/mpl-data/stylelib/_classic_test.mplstyle.
+You probably need to get an updated matplotlibrc file from
+http://github.com/matplotlib/matplotlib/blob/master/matplotlibrc.template
+or from the matplotlib source distribution
+
+Bad key "date.autoformatter.minute" on line 234 in
+/home/gunter/anaconda2/lib/python2.7/site-packages/matplotlib/mpl-data/stylelib/_classic_test.mplstyle.
+You probably need to get an updated matplotlibrc file from
+http://github.com/matplotlib/matplotlib/blob/master/matplotlibrc.template
+or from the matplotlib source distribution
+
+Bad key "xtick.major.top" on line 253 in
+/home/gunter/anaconda2/lib/python2.7/site-packages/matplotlib/mpl-data/stylelib/_classic_test.mplstyle.
+You probably need to get an updated matplotlibrc file from
+http://github.com/matplotlib/matplotlib/blob/master/matplotlibrc.template
+or from the matplotlib source distribution
+
+Bad key "date.autoformatter.day" on line 232 in
+/home/gunter/anaconda2/lib/python2.7/site-packages/matplotlib/mpl-data/stylelib/_classic_test.mplstyle.
+You probably need to get an updated matplotlibrc file from
+http://github.com/matplotlib/matplotlib/blob/master/matplotlibrc.template
+or from the matplotlib source distribution
+
+Bad key "ytick.right" on line 259 in
+/home/gunter/anaconda2/lib/python2.7/site-packages/matplotlib/mpl-data/stylelib/_classic_test.mplstyle.
+You probably need to get an updated matplotlibrc file from
+http://github.com/matplotlib/matplotlib/blob/master/matplotlibrc.template
+or from the matplotlib source distribution
+
+Bad key "xtick.bottom" on line 242 in
+/home/gunter/anaconda2/lib/python2.7/site-packages/matplotlib/mpl-data/stylelib/_classic_test.mplstyle.
+You probably need to get an updated matplotlibrc file from
+http://github.com/matplotlib/matplotlib/blob/master/matplotlibrc.template
+or from the matplotlib source distribution
+
+Bad key "date.autoformatter.microsecond" on line 236 in
+/home/gunter/anaconda2/lib/python2.7/site-packages/matplotlib/mpl-data/stylelib/_classic_test.mplstyle.
+You probably need to get an updated matplotlibrc file from
+http://github.com/matplotlib/matplotlib/blob/master/matplotlibrc.template
+or from the matplotlib source distribution
+
+Bad key "hist.bins" on line 40 in
+/home/gunter/anaconda2/lib/python2.7/site-packages/matplotlib/mpl-data/stylelib/_classic_test.mplstyle.
+You probably need to get an updated matplotlibrc file from
+http://github.com/matplotlib/matplotlib/blob/master/matplotlibrc.template
+or from the matplotlib source distribution
+
+Bad key "lines.scale_dashes" on line 21 in
+/home/gunter/anaconda2/lib/python2.7/site-packages/matplotlib/mpl-data/stylelib/_classic_test.mplstyle.
+You probably need to get an updated matplotlibrc file from
+http://github.com/matplotlib/matplotlib/blob/master/matplotlibrc.template
+or from the matplotlib source distribution
+
+Bad key "axes.titlepad" on line 184 in
+/home/gunter/anaconda2/lib/python2.7/site-packages/matplotlib/mpl-data/stylelib/_classic_test.mplstyle.
+You probably need to get an updated matplotlibrc file from
+http://github.com/matplotlib/matplotlib/blob/master/matplotlibrc.template
+or from the matplotlib source distribution
+
+Bad key "_internal.classic_mode" on line 526 in
+/home/gunter/anaconda2/lib/python2.7/site-packages/matplotlib/mpl-data/stylelib/_classic_test.mplstyle.
+You probably need to get an updated matplotlibrc file from
+http://github.com/matplotlib/matplotlib/blob/master/matplotlibrc.template
+or from the matplotlib source distribution
+
+Bad key "date.autoformatter.hour" on line 233 in
+/home/gunter/anaconda2/lib/python2.7/site-packages/matplotlib/mpl-data/stylelib/_classic_test.mplstyle.
+You probably need to get an updated matplotlibrc file from
+http://github.com/matplotlib/matplotlib/blob/master/matplotlibrc.template
+or from the matplotlib source distribution
+
+Bad key "boxplot.meanprops.markerfacecolor" on line 368 in
+/home/gunter/anaconda2/lib/python2.7/site-packages/matplotlib/mpl-data/stylelib/_classic_test.mplstyle.
+You probably need to get an updated matplotlibrc file from
+http://github.com/matplotlib/matplotlib/blob/master/matplotlibrc.template
+or from the matplotlib source distribution
+
+Bad key "date.autoformatter.year" on line 230 in
+/home/gunter/anaconda2/lib/python2.7/site-packages/matplotlib/mpl-data/stylelib/_classic_test.mplstyle.
+You probably need to get an updated matplotlibrc file from
+http://github.com/matplotlib/matplotlib/blob/master/matplotlibrc.template
+or from the matplotlib source distribution
+/home/gunter/anaconda2/lib/python2.7/site-packages/matplotlib/__init__.py:1069: UserWarning: Bad val "auto" on line #360
+	"boxplot.flierprops.markerfacecolor: auto
+"
+	in file "/home/gunter/anaconda2/lib/python2.7/site-packages/matplotlib/mpl-data/stylelib/_classic_test.mplstyle"
+	Key boxplot.flierprops.markerfacecolor: auto does not look like a color arg
+  (val, error_details, msg))
+
+Bad key "lines.dotted_pattern" on line 20 in
+/home/gunter/anaconda2/lib/python2.7/site-packages/matplotlib/mpl-data/stylelib/_classic_test.mplstyle.
+You probably need to get an updated matplotlibrc file from
+http://github.com/matplotlib/matplotlib/blob/master/matplotlibrc.template
+or from the matplotlib source distribution
+
+Bad key "axes.formatter.offset_threshold" on line 207 in
+/home/gunter/anaconda2/lib/python2.7/site-packages/matplotlib/mpl-data/stylelib/_classic_test.mplstyle.
+You probably need to get an updated matplotlibrc file from
+http://github.com/matplotlib/matplotlib/blob/master/matplotlibrc.template
+or from the matplotlib source distribution
+
+Bad key "xtick.minor.top" on line 255 in
+/home/gunter/anaconda2/lib/python2.7/site-packages/matplotlib/mpl-data/stylelib/_classic_test.mplstyle.
+You probably need to get an updated matplotlibrc file from
+http://github.com/matplotlib/matplotlib/blob/master/matplotlibrc.template
+or from the matplotlib source distribution
+
+Bad key "ytick.minor.left" on line 272 in
+/home/gunter/anaconda2/lib/python2.7/site-packages/matplotlib/mpl-data/stylelib/_classic_test.mplstyle.
+You probably need to get an updated matplotlibrc file from
+http://github.com/matplotlib/matplotlib/blob/master/matplotlibrc.template
+or from the matplotlib source distribution
+
+Bad key "lines.dashdot_pattern" on line 19 in
+/home/gunter/anaconda2/lib/python2.7/site-packages/matplotlib/mpl-data/stylelib/_classic_test.mplstyle.
+You probably need to get an updated matplotlibrc file from
+http://github.com/matplotlib/matplotlib/blob/master/matplotlibrc.template
+or from the matplotlib source distribution
+
+Bad key "xtick.major.bottom" on line 254 in
+/home/gunter/anaconda2/lib/python2.7/site-packages/matplotlib/mpl-data/stylelib/_classic_test.mplstyle.
+You probably need to get an updated matplotlibrc file from
+http://github.com/matplotlib/matplotlib/blob/master/matplotlibrc.template
+or from the matplotlib source distribution
+
+Bad key "boxplot.meanprops.markersize" on line 370 in
+/home/gunter/anaconda2/lib/python2.7/site-packages/matplotlib/mpl-data/stylelib/_classic_test.mplstyle.
+You probably need to get an updated matplotlibrc file from
+http://github.com/matplotlib/matplotlib/blob/master/matplotlibrc.template
+or from the matplotlib source distribution
+
+Bad key "hatch.linewidth" on line 38 in
+/home/gunter/anaconda2/lib/python2.7/site-packages/matplotlib/mpl-data/stylelib/_classic_test.mplstyle.
+You probably need to get an updated matplotlibrc file from
+http://github.com/matplotlib/matplotlib/blob/master/matplotlibrc.template
+or from the matplotlib source distribution
+
+Bad key "xtick.top" on line 241 in
+/home/gunter/anaconda2/lib/python2.7/site-packages/matplotlib/mpl-data/stylelib/_classic_test.mplstyle.
+You probably need to get an updated matplotlibrc file from
+http://github.com/matplotlib/matplotlib/blob/master/matplotlibrc.template
+or from the matplotlib source distribution
+TStreamerInfo::BuildCheck:0: RuntimeWarning: 
+   The StreamerInfo of class string read from file /home/gunter/WW_analysis/data_alpha/ttbar_leptonic_complete.root
+   has the same version (=2) as the active class but a different checksum.
+   You should update the version to ClassDef(string,3).
+   Do not try to write objects with the current class definition,
+   the files will not be readable.
+
+TStreamerInfo::CompareContent:0: RuntimeWarning: The following data member of
+the in-memory layout version 2 of class 'string' is missing from 
+the on-file layout version 2:
+   string::_Alloc_hider _M_dataplus; //
+TStreamerInfo::CompareContent:0: RuntimeWarning: The following data member of
+the in-memory layout version 2 of class 'string' is missing from 
+the on-file layout version 2:
+   unsigned long _M_string_length; //
+TStreamerInfo::CompareContent:0: RuntimeWarning: The following data member of
+the in-memory layout version 2 of class 'string' is missing from 
+the on-file layout version 2:
+   string::(anonymous) ; //
