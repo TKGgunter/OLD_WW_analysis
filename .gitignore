@@ -6,6 +6,7 @@
 */data/
 **/data/
 production/**/data
+production/**/plots
 data_13TeV/
 data_8TeV/
 data_*
@@ -14,5 +15,4 @@ data_13TeV_old/
 data_8TeV_old/
 package_wjets/
 mumu_140_160.csv
-production/
 *.zip
