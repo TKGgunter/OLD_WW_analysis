@@ -5,8 +5,6 @@
 /data/
 */data/
 **/data/
-production/**/data
-production/**/plots
 data_13TeV/
 data_8TeV/
 data_*
