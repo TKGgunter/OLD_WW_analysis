@@ -8,6 +8,8 @@
 data_13TeV/
 data_8TeV/
 data_*
+production/**/data
+production/**/plots
 /RF/
 data_13TeV_old/
 data_8TeV_old/
