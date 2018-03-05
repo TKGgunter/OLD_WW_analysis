@@ -426,7 +426,7 @@ def plot_hist( bins, plotting_options=plotting_options, processes=None, x_range=
   """
   if ax == None: fig, ax = plt.subplots(figsize=(11, 9))
   if colors == None:
-    colors = palettes["default"]
+    colors = palettes["color_1"]
   elif type(colors) == str:
     colors = palettes[colors]
 
@@ -445,10 +445,10 @@ def plot_hist( bins, plotting_options=plotting_options, processes=None, x_range=
 
   tot_bins = {}
   sum_yerr = np.zeros( len( bins[ bins.keys()[0] ][3] ) )
-  for process in processes:#plotting_options.process.unique():
+  for process in processes:
     for process_decay in plotting_options[ plotting_options.process == process ].process_decay.unique():
       if process_decay in bins.keys():
-        sum_yerr += bins[process_decay][3] #+ float(lumi_amount)**2 * scales[process_decay]**2 * unc_mc_process[process_decay]**2
+        sum_yerr += bins[process_decay][3]
         if process not in tot_bins.keys():
           tot_bins[process] = copy.deepcopy(bins[process_decay])
         else: 
@@ -464,8 +464,9 @@ def plot_hist( bins, plotting_options=plotting_options, processes=None, x_range=
     if process in tot_bins.keys() and process in colors.keys():
 ########
       bottom = sum_bins
-      rect.append(ax.bar( tot_bins[process][1][:-1], tot_bins[process][0],
-                    tot_bins[process][1][1] - tot_bins[process][1][0] , color = colors[process],
+      print process, tot_bins[process][2], tot_bins[process][0]
+      rect.append(ax.bar( x= tot_bins[process][2], height= tot_bins[process][0],
+                    width= tot_bins[process][1][1] - tot_bins[process][1][0] , color = colors[process],
                     edgecolor = colors[process], bottom=bottom ))
       sum_bins +=tot_bins[process][0]
       last_color = colors[process]
@@ -477,7 +478,6 @@ def plot_hist( bins, plotting_options=plotting_options, processes=None, x_range=
   for i, yerr in enumerate(sum_yerr): 
     ax.fill( [tot_bins[process_][1][i], tot_bins[process_][1][i+1], tot_bins[process_][1][i+1], tot_bins[process_][1][i] ],\
               [sum_bins[i] - yerr, sum_bins[i] - yerr, sum_bins[i] + yerr, sum_bins[i] + yerr], fill=False, hatch='//', edgecolor='0.45' )
-  #ax.bar( tot_bins[process_][1][:-1], 2*sum_yerr, tot_bins[process_][1][1] - tot_bins[process_][1][0], bottom= sum_bins - sum_yerr , alpha= .05, color="none", edgecolor='black', hatch='//')
 
 
   #Configurables
@@ -564,7 +564,7 @@ def plot_ratio( bins_1, bins_2, y_label=None, x_label=None, ax=None):
   else: 
     plotline, caplines, barlinecols =  ax.errorbar( bins_2[key][2], tot_1_OVER_tot_2, yerr= yerr, ecolor='black',color="black",fmt="o" )
     ax.set_ylim( bottom=0.25,  top= 1.75)
-    ax.set_ylabel('MC/DATA', fontname='Bitstream Vera Sans', fontsize=20)
+    ax.set_ylabel('DATA/MC', fontname='Bitstream Vera Sans', fontsize=20)
     ax.locator_params(axis='y', nbins=4)
     #plt.tight_layout()
 
@@ -593,7 +593,7 @@ def full_plot(bins_mc, bins_data,  processes=[ "WW","Higgs", "WG", "WJ", "Top", 
         hist_stuff[2][[i for i, ele in enumerate(hist_stuff[2]) if ele == "WG"][0]] = "WG(*)"
   ax[0].legend(hist_stuff[1] + [err_stuff], hist_stuff[2] + ['Da'], frameon=False, fontsize="x-large", numpoints=1)
 
-  plot_ratio( bins_mc, bins_data, ax=ax[1])
+  plot_ratio( bins_data, bins_mc, ax=ax[1])
 
   fig.subplots_adjust(hspace=0.1)
 
