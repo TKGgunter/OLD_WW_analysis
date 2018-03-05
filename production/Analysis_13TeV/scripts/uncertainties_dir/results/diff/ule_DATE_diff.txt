@@ -1,0 +1,3 @@
+Orig Xs 1.01717677653	Xs: {'down': 1.0098424701163786, 'up': 1.0134454172055796}
+Uncertainty on cross section 0.54394014869 %
+Effect on yields: WW 2.21735636761 %

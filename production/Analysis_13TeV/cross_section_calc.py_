@@ -1,0 +1,84 @@
+#Thoth Gunter
+import numpy as np
+from physics_selections import rf_ana
+#make a class that does all the cross-section stuff
+def calc_cross_stuff(df_mc, df_data, df_ww, scales, flavor="both", weights='weight', rf_ana=rf_ana):
+    lumi = 19.7e3
+    eff  = .155985
+    Br   = (3*.108)**2. 
+    
+    df_mc_c = df_mc[df_mc.lep1_Charge != df_mc.lep2_Charge]
+    df_data_c = df_data[df_data.lep1_Charge != df_data.lep2_Charge]
+    
+    df_mc_c_s = df_mc[df_mc.lep1_Charge == df_mc.lep2_Charge]
+    df_data_c_s = df_data[df_data.lep1_Charge == df_data.lep2_Charge]
+    
+    N_mc = sum([ rf_ana(df_mc_c, flavor=flavor, process_decay=process,)[weights].sum()*scales[process] for process in scales.keys() if process not in ['WW', 'W1JetsToLNu','W2JetsToLNu','W3JetsToLNu','W3JetsToLNu', 'GluGluToWWTo4L'] ])
+    N_Wjets = rf_ana(df_data_c_s, flavor=flavor).shape[0] - np.array([rf_ana(df_mc_c_s,  flavor=flavor, process_decay=process,)[weights].sum()*scales[process] for process in scales.keys() if process not in [ 'W1JetsToLNu','W2JetsToLNu','W3JetsToLNu','W3JetsToLNu'] ]).sum()
+    N_mc += N_Wjets
+    
+    N_data = rf_ana(df_data_c,  flavor=flavor,).shape[0]
+    
+    N_ww_select = rf_ana(df_mc_c,  flavor=flavor, process_decay='WW',)[weights].sum()*scales["WW"] +\
+                rf_ana(df_mc_c, flavor=flavor, process_decay="GluGluToWWTo4L",)[weights].sum()*scales["GluGluToWWTo4L"]
+    N_ww_tot = df_ww[df_ww.process_decay == "WW"][weights].sum()*scales["WW"] +\
+                df_ww[df_ww.process_decay == "GluGluToWWTo4L"][weights].sum()*scales["GluGluToWWTo4L"]
+
+    ratio_s_t = N_ww_select / N_ww_tot
+
+    return {"lumi": lumi, "eff": eff, "Br": Br, "N_mc": N_mc, "N_data": N_data, "ratio_s_t": ratio_s_t, "N_ww_select":N_ww_select, "N_Wjets": N_Wjets}
+
+
+
+def cross_calc(df_mc, df_data, df_ww, scales, flavor="both", fiducial=False, **kwargs):
+    if kwargs:
+        var = kwargs
+    else:
+        var = calc_cross_stuff(df_mc, df_data, df_ww, scales=scales, flavor=flavor)
+
+    #print var.keys()
+    lumi = var["lumi"]
+    eff = var["eff"]
+    Br = var["Br"]
+    N_mc = var["N_mc"]
+    N_data = var["N_data"]
+    ratio_s_t = var["ratio_s_t"]
+    N_ww_select = var["N_ww_select"]
+    N_Wjets = var["N_Wjets"]
+    
+    if fiducial == False:
+        return  (N_data - N_mc) / (lumi * eff * Br *ratio_s_t)
+    else:
+        return (N_data - N_mc) / (lumi * eff ) 
+
+
+
+def sys_unc_calc(df_mc, df_data, df_ww, scales, unc_mc_process, flavor="both", fiducial=False, rf_ana=rf_ana, **kwargs):
+    if kwargs:
+        var = kwargs
+    else:
+        var = calc_cross_stuff(df_mc, df_data, df_ww, scales=scales, flavor=flavor)
+    lumi = var["lumi"]
+    Br = var["Br"]
+    eff = var["eff"]
+    N_mc = var["N_mc"]
+    N_data = var["N_data"]
+    ratio_s_t = var["ratio_s_t"]
+    N_ww_select = var["N_ww_select"]
+    N_Wjets = var["N_Wjets"]
+    
+    cuts_mc = {process: rf_ana(df_mc[(df_mc.process_decay == process) & (df_mc.lep1_Charge != df_mc.lep2_Charge)], flavor=flavor) for process in scales.keys()} 
+    process_sys_unc = [ scales[process]**2. * unc_mc_process[process]**2 * cuts_mc[process].shape[0]**2. for process in cuts_mc.keys() if process not in ['WW', 'W1JetsToLNu','W2JetsToLNu','W3JetsToLNu','W3JetsToLNu']] 
+
+    #print process_sys_unc
+    print "UNDER CONSTRUCTION"
+    WW_sys_unc = (N_data - N_mc) * unc_mc_process["WW"]**2 * ratio_s_t**2. * df_ww.shape[0] * scales["WW"] / N_ww_select**2. #UNDER CONSTRUCTION
+    Wjets_sys_unc = N_Wjets**2. 
+    
+    if fiducial == False:
+        return 1. / (lumi * eff * Br * ratio_s_t)  * ( sum(process_sys_unc) +  WW_sys_unc + Wjets_sys_unc)**.5
+    else:
+        return 1. / (lumi * eff )  * ( sum(process_sys_unc) + Wjets_sys_unc)**.5
+
+
+
