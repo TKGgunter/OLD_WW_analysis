@@ -1,4 +1,4 @@
-Orig Xs 1.78205982404	Xs: {'down': 1.781964764058444, 'up': 1.7912037932326375}
-Uncertainty on cross section 0.259223317016 %
-Uncertainty on cross section 2 0.258566844134 %
-Effect on WW eff:  0.319712031017 %
+Orig Xs 2.12417871526	Xs: {'down': 2.1452926695211061, 'up': 2.0940367862967544}
+Uncertainty on cross section 1.20648707324 %
+Uncertainty on cross section 2 1.20905637928 %
+Effect on WW eff:  3.23871027576 %

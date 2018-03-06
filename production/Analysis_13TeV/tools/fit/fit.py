@@ -2,7 +2,7 @@
 import numpy as np
 import os, sys
 sys.path.append(os.getcwd() + "/../../")
-from prep_ana_II import bin_df, full_bin_plot
+from prep_ana_II import bin_df, full_bin_plot, scales
 from scipy.optimize import curve_fit, minimize
 import matplotlib.pyplot as plt 
  
@@ -111,20 +111,20 @@ def func_c_dy(mc_dic, aWW, aTT, aDY):
     mc_c_dy = mc_dic["dy"]
     
     for i in mc_c_dy:
-        if i == "WW" or i == 'ttbar_leptonic' or i == 'DYJetsToLL_M-50':
+        if i == "WW" or i == 'ttbar_leptonic' or i == 'DYJetsToLL_M-50' or i == "GluGluWWTo2L2Nu":
             continue
         every_thing_else += mc_c_dy[i]
-    return aWW * mc_c_dy["WW"] + aTT * mc_c_dy['ttbar_leptonic'] +  aDY * mc_c_dy['DYJetsToLL_M-50'] + every_thing_else 
+    return aWW * (mc_c_dy["WW"] + mc_c_dy["GluGluWWTo2L2Nu"]) + aTT * mc_c_dy['ttbar_leptonic'] +  aDY * mc_c_dy['DYJetsToLL_M-50'] + every_thing_else 
 
 def func_c_tt(mc_dic, aWW, aTT, aDY):
     every_thing_else = 0
     mc_c_tt = mc_dic["tt"]
     
     for i in mc_c_tt:
-        if i == "WW" or i == 'ttbar_leptonic' or i == 'DYJetsToLL_M-50':
+        if i == "WW" or i == 'ttbar_leptonic' or i == 'DYJetsToLL_M-50' or i == "GluGluWWTo2L2Nu":
             continue
         every_thing_else += mc_c_tt[i]
-    return aWW * mc_c_tt["WW"] + aTT * mc_c_tt['ttbar_leptonic'] +  aDY * mc_c_tt['DYJetsToLL_M-50'] + every_thing_else 
+    return aWW * (mc_c_tt["WW"] + mc_c_tt["GluGluWWTo2L2Nu"]) + aTT * mc_c_tt['ttbar_leptonic'] +  aDY * mc_c_tt['DYJetsToLL_M-50'] + every_thing_else 
 
 def func_s(mc_dic, aWW, aTT, aDY):
     every_thing_else = 0
@@ -132,10 +132,10 @@ def func_s(mc_dic, aWW, aTT, aDY):
 
     #print "MC_S", mc_s["WW"].sum()
     for i in mc_s:
-        if i == "WW" or i == 'ttbar_leptonic' or i == 'DYJetsToLL_M-50':
+        if i == "WW" or i == 'ttbar_leptonic' or i == 'DYJetsToLL_M-50' or i == "GluGluWWTo2L2Nu":
             continue
         every_thing_else += mc_s[i]
-    return aWW * mc_s["WW"] + aTT * mc_s['ttbar_leptonic'] +  aDY * mc_s['DYJetsToLL_M-50'] + every_thing_else
+    return aWW * (mc_s["WW"] + mc_s["GluGluWWTo2L2Nu"]) + aTT * mc_s['ttbar_leptonic'] +  aDY * mc_s['DYJetsToLL_M-50'] + every_thing_else
 
 
 
@@ -211,10 +211,9 @@ class MinFunction:
         return abs(self.min_func(fit_params) - self.min_func(fit_result) - 1)
       
 
-def comprehensive_fit(df, df_da, feature, scales):
+def comprehensive_fit(df, df_da, feature="numb_Bjet", scales=scales):
   data_control_dic = {}
   mc_control_dic = {}
-  feature = "numb_BJet"
   pack_data_dic(data_control_dic, df_da, feature)
   pack_mc_dic(mc_control_dic, df, df_da, scales, feature)
 

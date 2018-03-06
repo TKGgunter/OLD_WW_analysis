@@ -4,20 +4,29 @@ import matplotlib
 import matplotlib.pyplot as plt
 import pandas as pd
 import copy, string 
-import pickle, sys
+import pickle, sys, socket
 
 from physics_selections import *
 from matplotlib import gridspec
 from matplotlib.ticker import AutoMinorLocator
 from ast import literal_eval as make_tuple
-
-sys.path.append("/home/gunter/WW_analysis/production/Analysis_13TeV/scripts/uncertainties_dir")
 plt.rc('text', usetex=True)
 
+computername = socket.gethostname().lower()
+if computername == "Ifrit".lower():
+  sys.path.append("/home/gunter/WW_analysis/production/Analysis_13TeV/scripts/uncertainties_dir")
+  #Set analysis home directory
+  home_dir = "/home/gunter/WW_analysis/production/Analysis_13TeV"
+  post_data_dir = home_dir + "/data/"
 
-#Set analysis home directory
-home_dir = "/home/gunter/WW_analysis/production/Analysis_13TeV"
-post_data_dir = home_dir + "/data/"
+elif computername == "swordfish":
+  print("not implemented")
+  sys.path.append("/home/gunter/WW_analysis/production/Analysis_13TeV/scripts/uncertainties_dir")
+  #Set analysis home directory
+  home_dir = "/home/gunter/WW_analysis/production/Analysis_13TeV"
+  post_data_dir = home_dir + "/data/"
+
+
 print "home", home_dir
 
 
@@ -807,9 +816,14 @@ def plot_hist( bins, plotting_options=plotting_options, processes=None, x_range=
     if process in tot_bins.keys() and process in colors.keys():
 ########
       bottom = sum_bins
-      rect.append(ax.bar( tot_bins[process][1][:-1], tot_bins[process][0],
-                    tot_bins[process][1][1] - tot_bins[process][1][0] , color = colors[process],
-                    edgecolor = colors[process], bottom=bottom ))
+      if matplotlib.__version__.split(".")[0] == 1:  
+        rect.append(ax.bar( tot_bins[process][1][:-1], tot_bins[process][0],
+                      tot_bins[process][1][1] - tot_bins[process][1][0] , color = colors[process],
+                      edgecolor = colors[process], bottom=bottom ))
+      if matplotlib.__version__.split(".")[0] >= 2:  
+        rect.append(ax.bar( tot_bins[process][2], tot_bins[process][0],
+                      tot_bins[process][1][1] - tot_bins[process][1][0] , color = colors[process],
+                      edgecolor = colors[process], bottom=bottom ))
       sum_bins +=tot_bins[process][0]
       last_color = colors[process]
 
@@ -820,7 +834,6 @@ def plot_hist( bins, plotting_options=plotting_options, processes=None, x_range=
   for i, yerr in enumerate(sum_yerr): 
     ax.fill( [tot_bins[process_][1][i], tot_bins[process_][1][i+1], tot_bins[process_][1][i+1], tot_bins[process_][1][i] ],\
               [sum_bins[i] - yerr, sum_bins[i] - yerr, sum_bins[i] + yerr, sum_bins[i] + yerr], fill=False, hatch='//', edgecolor='0.45' )
-  #ax.bar( tot_bins[process_][1][:-1], 2*sum_yerr, tot_bins[process_][1][1] - tot_bins[process_][1][0], bottom= sum_bins - sum_yerr , alpha= .05, color="none", edgecolor='black', hatch='//')
 
 
   #Configurables
@@ -867,13 +880,6 @@ def plot_hist( bins, plotting_options=plotting_options, processes=None, x_range=
 
 
   processes_return = [ process for process in processes if process in tot_bins.keys() ]
-  #test = None
-  #for k in  tot_bins.keys():
-  #  if test == None:
-  #    test = copy.copy(tot_bins[k][0])
-  #  else :
-  #    test += tot_bins[k][0]
-  #print test
   return ax, rect, processes_return
    
 def plot_errbar( bins, process='Da',label="data",  ax=None ):
@@ -937,12 +943,17 @@ def full_plot(bins_mc, bins_data,  processes=[ "WW","Higgs", "WG", "WJ", "Top", 
     color = palettes["default"]
   if ax==None: fig, ax = plt.subplots(2, figsize=(11,8), sharex=True, gridspec_kw = {'height_ratios':[3, 1]})
 
-  hist_stuff = plot_hist( bins_mc, processes=processes, x_range=x_range, y_range=y_range, title=title, y_label=y_label, colors=color, logy=logy, x_minor_ticks=x_minor_ticks, ax=ax[0], lumi_amount=lumi_amount)
+  hist_stuff = plot_hist( bins_mc, processes=processes, x_range=x_range,\
+                          y_range=y_range, title=title, y_label=y_label,\
+                          colors=color, logy=logy, x_minor_ticks=x_minor_ticks,\
+                          ax=ax[0], lumi_amount=lumi_amount)
+
   err_stuff  = plot_errbar( bins_data, ax=ax[0])
-  #wg_loc = [for i in hist_stuff[2] if i == "WG"][0]
+
   if page == "8TeV": 
     if len( [i for i, ele in enumerate(hist_stuff[2]) if ele == "WG"]) > 0:
         hist_stuff[2][[i for i, ele in enumerate(hist_stuff[2]) if ele == "WG"][0]] = "WG(*)"
+
   ax[0].legend(hist_stuff[1] + [err_stuff], hist_stuff[2] + ['Da'], frameon=False, fontsize="x-large", numpoints=1)
 
   plot_ratio( bins_data, bins_mc, ax=ax[1])

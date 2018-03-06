@@ -130,6 +130,7 @@ def compute_ule(flavor, ana_obj, scales=scales):
   ww_orig_eff = ww_yield_orig / (df_ww[df_ww.process_decay == "WW"].weight.sum() * scales_["WW"]) 
   #print process_yields(df, df_da, scales=scales)
 
+  nominal_ww_total_yields = df_ww[df_ww.process_decay == "WW"].weight.sum() * scales_["WW"] 
   #########################
   #Fits
   nominal_fit_result = fit.comprehensive_fit(df, ana_obj.df_da, "metMod", scales)
@@ -147,10 +148,12 @@ def compute_ule(flavor, ana_obj, scales=scales):
           ww_type = "down"
           scales["WW"] = 35.9e3 * 118.7 * (3*.108)**2 / 1987956.
           cross_sections[ww_type] = cross_calc(df_, df_da, ww_variant, None, scales,  fiducial=True, pseudo=pseudo, scale_ww_tot= scales["WW"] )
+          down_ww_total_yields = ww_variant.weight.sum() * scales["WW"] 
       else:
           ww_type = "up"
           scales["WW"] = 35.9e3 * 118.7 * (3*.108)**2 / 1866452.
           cross_sections[ww_type] = cross_calc(df_, df_da, ww_variant, None, scales,  fiducial=True, pseudo=pseudo, scale_ww_tot= scales["WW"] )
+          up_ww_total_yields = ww_variant.weight.sum() * scales["WW"] 
       
       yields[ww_type] = df_[ww_var_selection & (df_.lep1_Charge != df_.lep2_Charge)].query(rf_selection_cuts).weight.sum() * scales["WW"]
       yield_eff[ww_type] = df_[ww_var_selection & (df_.lep1_Charge != df_.lep2_Charge)].query(rf_selection_cuts).weight.sum() / ww_variant.weight.sum()  
@@ -167,7 +170,6 @@ def compute_ule(flavor, ana_obj, scales=scales):
       print "Yield type", ww_type, "Post cuts:", df_[ww_var_selection].query(rf_selection_cuts).weight.sum()*scales["WW"] , "yield_eff", yield_eff[ww_type] , yields[ww_type] 
       print "Raw WW yields", ww_type, "Post cuts:", df_[ww_var_selection].query(rf_selection_cuts).weight.sum(), "Pre cuts", ww_variant.weight.sum()
 
-      #print process_yields(df_.query(rf_selection_cuts), df_da.query(rf_selection_cuts), scales=scales)
 
   print "Orig Xs", cross_orig
   print "Xs:", cross_sections
@@ -184,14 +186,19 @@ def compute_ule(flavor, ana_obj, scales=scales):
   fit_processes = ["WW", "Top", "DY"] 
   print fit_processes
   print "nominal: ", nominal_fit_result.x
-  print "up: ", fit_results[0].x
-  print "down: ", fit_results[1].x
+  print "down: ", fit_results[0].x
+  print "up: ", fit_results[1].x
   print "Diffs(%)"
   for it, ele in enumerate(nominal_fit_result.x):
-    print  fit_processes[it], (abs(ele - fit_results[0].x[it]) + abs(ele - fit_results[1].x[it]))/2. * 100
+    if fit_processes[it].lower() == "ww":
+      print  fit_processes[it], (abs(ele - fit_results[0].x[it] * nominal_ww_total_yields / down_ww_total_yields)  +\
+                                 abs(ele - fit_results[1].x[it] * nominal_ww_total_yields / up_ww_total_yields))/2. * 100
+    else:
+      print  fit_processes[it], (abs(ele - fit_results[0].x[it]) +\
+                                 abs(ele - fit_results[1].x[it]))/2. * 100
   #########################
-  
-
+  print "UP totals", nominal_ww_total_yields , up_ww_total_yields, nominal_ww_total_yields / up_ww_total_yields
+  print "Down totals", nominal_ww_total_yields , down_ww_total_yields, nominal_ww_total_yields / down_ww_total_yields
   #save to file
   if flavor != "":
     flavor = "_" + flavor
