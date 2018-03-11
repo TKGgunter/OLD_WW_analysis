@@ -1,8 +1,10 @@
 import os, sys, pickle, copy
 import datetime
 sys.path.append(os.getcwd() + "/../../")
+sys.path.append(os.getcwd() + "/../../tools/fit/")
 from prep_ana_II import *
 from cross_section_calc import calc_cross_stuff, cross_calc, stat_unc_calc, normalization_unc_calc
+import fit
 import warnings
 warnings.filterwarnings("ignore")
 

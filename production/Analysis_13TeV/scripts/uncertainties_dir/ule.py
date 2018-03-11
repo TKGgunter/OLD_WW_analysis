@@ -60,6 +60,7 @@ def yield_string(df, string):
 
 def compute_ule(flavor, ana_obj, scales=scales):
 
+  fit_feature = "numb_BJet"
   scales_ = scales
   print scales_["WW"]
   scales = ana_obj.scales
@@ -133,7 +134,7 @@ def compute_ule(flavor, ana_obj, scales=scales):
   nominal_ww_total_yields = df_ww[df_ww.process_decay == "WW"].weight.sum() * scales_["WW"] 
   #########################
   #Fits
-  nominal_fit_result = fit.comprehensive_fit(df, ana_obj.df_da, "metMod", scales)
+  nominal_fit_result = fit.comprehensive_fit(df, ana_obj.df_da, fit_feature, scales)
   #########################
   fit_results = []
 
@@ -160,7 +161,7 @@ def compute_ule(flavor, ana_obj, scales=scales):
       #########################
       #Fits
       print ww_type, "fit imminent"
-      fit_results.append(fit.comprehensive_fit(df_, df_da, "metMod", scales))
+      fit_results.append(fit.comprehensive_fit(df_, df_da, fit_feature, scales))
       #########################
       
       if it == 1:

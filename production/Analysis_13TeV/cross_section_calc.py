@@ -70,14 +70,14 @@ def calc_cross_stuff(df_mc, df_data, df_ww, df_ggww, scales, flavor="both", weig
       N_ww_select = table[table.Process == "Total: WW"]["Same Flavor"].values[0] + table[table.Process == "Total: WW"]["Diff Flavor"].values[0]
 
 
-    #print "N_ww_tot", N_ww_tot, N_ww_select, N_ww_select / N_ww_tot, scale_ww_tot
+    #print "\n\nN_ww_tot", N_ww_tot, "N_ww_select", N_ww_select, N_ww_select / N_ww_tot, scale_ww_tot, "\n"
     ratio_s_t = N_ww_select / N_ww_tot
 
     return {"lumi": lumi, "acc": acc, "Br": Br, "N_mc": N_mc, "N_data": N_data, "ratio_s_t": ratio_s_t, "N_ww_select":N_ww_select, "N_Wjets": N_Wjets}
 
 
 
-def cross_calc(df_mc, df_data, df_ww, df_ggww, scales, flavor="both", fiducial=False, pseudo=-99, scale_ww_tot=35.9e3 * 118.7 * (3*.108)**2 / 1998956, scale_ggww=35.9e3 * 0.84365 / 500000.,  query=None, **kwargs):
+def cross_calc(df_mc, df_data, df_ww, df_ggww, scales, flavor="both", fiducial=False, pseudo=-99, scale_ww_tot=35.9e3 * 118.7 * (3*.108)**2 / 1998956, scale_ggww=35.9e3 * 0.84365 / 500000.,  query=None, cross_check=False, **kwargs):
     if kwargs:
         var = kwargs
     else:
@@ -99,11 +99,15 @@ def cross_calc(df_mc, df_data, df_ww, df_ggww, scales, flavor="both", fiducial=F
 
     #print "var from function", var    
     if fiducial == False:
-        return  (N_ww_select) / (lumi * acc * Br *ratio_s_t)
-        #return  (N_data - N_mc) / (lumi * acc * Br * ratio_s_t)
+      if cross_check == True:
+        return  (N_ww_select) / (lumi * acc * Br * ratio_s_t)
+      else:
+        return  (N_data - N_mc) / (lumi * acc * Br * ratio_s_t)
     else:
+      if cross_check == True:
         return (N_ww_select) / (lumi * ratio_s_t ) 
-        #return (N_data - N_mc) / (lumi * ratio_s_t ) 
+      else:
+        return (N_data - N_mc) / (lumi * ratio_s_t ) 
 
 
 

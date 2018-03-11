@@ -75,7 +75,8 @@ def pdf_unc_calc(flavor, jer_obj):
   x_per_jet_bin(nominal_dic, df, jer_obj.df_da, jer_obj.df_ww, jer_obj.df_ggww, cross_calc, scales=scales, args={"fiducial":True, "pseudo":pseudo})
   #########################
   #Fits
-  nominal_fit_result = fit.comprehensive_fit(df, ana_obj.df_da, "metMod", scales)
+  nominal_fit_result = fit.comprehensive_fit(df, ana_obj.df_da, "numb_BJet", scales)
+  print "Nominal WW yields: ", df[df.process_decay == "WW"].weight.sum()
   #########################
   print "nominal dic", nominal_dic
   
@@ -89,9 +90,16 @@ def pdf_unc_calc(flavor, jer_obj):
     ##### 
     df.weight.values[df.process == process] = df.weight.values[df.process == process] * (1.0 + df.pdf_weight.values[df.process == process])
     if process == "WW":
-      print "WW process"
+
+      #print "WW process AVG:", (1.0 + df_ww.pdf_weight.values[df_ww.process == process]).mean(), (1.0 + df.query("pred_fDY_WW > .9 & pred_fTT_WW > .6 & process_decay == 'WW'").pdf_weight.values).mean()
+      #print "WW yields: ", df[df.process_decay == "WW"].weight.sum()
+
+      ww_tot = df_ww.weight.sum() * scales["WW"] + df_ggww.weight.values.sum() * scales["GluGluWWTo2L2Nu"] 
+
       df_ww.weight.values[df_ww.process == process] = df_ww.weight.values[df_ww.process == process] * (1.0 + df_ww.pdf_weight.values[df_ww.process == process])
       df_ggww.weight.values[df_ggww.process == process] = df_ggww.weight.values[df_ggww.process == process] * (1.0 + df_ggww.pdf_weight.values[df_ggww.process == process])
+      
+      ww_tot_alt = df_ww.weight.sum() * scales["WW"] + df_ggww.weight.values.sum() * scales["GluGluWWTo2L2Nu"] 
     
     x_per_jet_bin(post_dic, df, jer_obj.df_da, df_ww, df_ggww, cross_calc, scales=scales, args={"fiducial":True, "pseudo":pseudo})
     diffs.append((nominal_dic["tot"] - post_dic["tot"])**2.)
@@ -100,7 +108,7 @@ def pdf_unc_calc(flavor, jer_obj):
 
     #########################
     #Fits
-    fit_results[process] = fit.comprehensive_fit(df, ana_obj.df_da, "metMod", scales)
+    fit_results[process] = fit.comprehensive_fit(df, ana_obj.df_da, "numb_BJet", scales)
     #########################
 
 
@@ -114,7 +122,7 @@ def pdf_unc_calc(flavor, jer_obj):
   print "Lib dics", lib_dics, "\n"
   print "Diffs", diffs, "\n"
   print "quad_sum: ", sum(diffs)**.5, "\n"
-  print sum(diffs)**.5 / nominal_dic["tot"] * 100.
+  print "Uncertainty", sum(diffs)**.5 / nominal_dic["tot"] * 100., "%"
   #########################
   print "Fit results"
   fit_processes = ["WW", "Top", "DY"] 
@@ -122,11 +130,14 @@ def pdf_unc_calc(flavor, jer_obj):
   print "nominal: ", nominal_fit_result.x
   quad_sum = 0
   for process in fit_results:
-    if process == "WW" : continue 
+    if process == "WW" :  
+      #print "WW tot and WW alt", ww_tot, ww_tot_alt, ww_tot_alt/ww_tot, "Old", fit_results[process].x[0],
+      fit_results[process].x[0] *= ww_tot_alt/ww_tot
+      print "New", fit_results[process].x[0]
     print process, fit_results[process].x
     quad_sum += (nominal_fit_result.x[0] - fit_results[process].x[0])**2
   print "Diffs(%)"
-  print quad_sum**.5 * 100. 
+  print quad_sum**.5 / 1.12 * 100. 
   #########################
   f = open("results/jan/pdf" + flavor + ".txt", "w") 
   f.write("Nominal: "+str(nominal_dic))
@@ -268,7 +279,7 @@ def qcd_calc_print( flavor, jer_obj ):
 
   #########################
   #Fits
-  nominal_fit_result = fit.comprehensive_fit(df, ana_obj.df_da, "metMod", scales)
+  nominal_fit_result = fit.comprehensive_fit(df, ana_obj.df_da, "numb_BJet", scales)
   #########################
 
   ##
@@ -293,7 +304,7 @@ def qcd_calc_print( flavor, jer_obj ):
     df.weight.values[(df.process == process)] *= _weights
 
     if process == "WG": continue
-    if process == "WW": continue
+    #if process == "WW": continue
     if process == "WW":
       ######pp->WW->2l2n
       _weights = df_ww[df_ww.process == process].qcd_weight.values
@@ -324,7 +335,7 @@ def qcd_calc_print( flavor, jer_obj ):
 
     #########################
     #Fits
-    fit_results[process] = fit.comprehensive_fit(df, ana_obj.df_da, "metMod", scales)
+    fit_results[process] = fit.comprehensive_fit(df, ana_obj.df_da, "numb_BJet", scales)
     #########################
 
     df["weight"] = static_weights_df
@@ -346,7 +357,7 @@ def qcd_calc_print( flavor, jer_obj ):
     print process, fit_results[process].x
     quad_sum += (nominal_fit_result.x[0] - fit_results[process].x[0])**2
   print "Diffs(%)"
-  print quad_sum**.5 * 100. 
+  print quad_sum**.5 / 1.12 * 100. 
   #########################
 
   if flavor != "":
@@ -364,9 +375,9 @@ if __name__ == "__main__":
     ana_obj.apply_pre_cuts()
     ana_obj.apply_flat_jet_correction() 
     print "PDF", flavor
-    pdf_unc_calc(flavor, ana_obj)
+    #pdf_unc_calc(flavor, ana_obj)
     print "\n\n\n", "QCD"
-    #qcd_calc_print(flavor, ana_obj)
+    qcd_calc_print(flavor, ana_obj)
 
 
 

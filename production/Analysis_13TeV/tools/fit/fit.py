@@ -104,7 +104,7 @@ def pack_mc_dic(mc_dic, df, df_da, scales, binned_feature=None):
                 if "plot" in process: continue
                 mc_c[process] = mc_bins[process][0].astype(np.float64)
             mc_dic[control_region] = mc_c
-                
+    #print "WW events from that fit packer: ", mc_dic["sig"]["WW"]
     
 def func_c_dy(mc_dic, aWW, aTT, aDY):
     every_thing_else = 0
@@ -130,7 +130,6 @@ def func_s(mc_dic, aWW, aTT, aDY):
     every_thing_else = 0
     mc_s = mc_dic["sig"]
 
-    #print "MC_S", mc_s["WW"].sum()
     for i in mc_s:
         if i == "WW" or i == 'ttbar_leptonic' or i == 'DYJetsToLL_M-50' or i == "GluGluWWTo2L2Nu":
             continue
@@ -251,7 +250,6 @@ if __name__ == "__main__":
     df = df[df.metFilter_flag == 0]
     df_da = df_da[df_da.metFilter_flag == 0]
 
-    #df_da["weight"] = np.array([1.0] * df_da.shape[0]) 
     warnings.filterwarnings('ignore')
 
 
