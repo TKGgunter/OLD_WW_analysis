@@ -85,11 +85,13 @@ features = ['numb_BJet', 'HT', 'lep_Type', 'numb_jets', 'lep1_pt',
             'recoil', 'jet1_pt', 'dPhiLLMET', 'dPhiMETJet', 'mllMET']
 columns = list(set(['process', 'process_decay', 'lep1_type', 'lep2_type',
                     'gen_weight',  'lep1_Charge', 'lep2_Charge', 'lep_Type', 'numbExtraLep',
-                    'tot_npv', 'gen_pu', 'mll', 'numb_jets', 'metMod', 'numb_BJet',
+                    'tot_npv', 'gen_pu', 'pileup_weight', 'pileup_up_weight', 'pileup_down_weight',
+                    'pileup_weight_mf', 'pileup_up_weight_mf','pileup_down_weight_mf',
+                    'mll', 'numb_jets', 'metMod', 'numb_BJet',
                     'lep1_pt', 'lep2_pt', 'lep3_pt', 'dPhiLL', 'lep1_phi', 'lep2_phi',
                     'jet1_csv', 'jet1_pt', 'jet2_pt', 'HT', 'numb_BJet_gen', 'jet1_phi', 'jet2_phi', 'jet1_eta', 'jet2_eta', 
                     'METProj_sin', 'met_over_sET', 'METProj', 'met_phi', 
-                    'weight', 'pile_up_weight', 'bjet_weight', 'id_weight', 'gen_weight', 'el1_id_weight', 'el2_id_weight', 'mu_id_weight',
+                    'weight', 'bjet_weight', 'id_weight', 'gen_weight', 'el1_id_weight', 'el2_id_weight', 'mu_id_weight',
                     'dPhiLLMET',  'mllMET', 'qT', 'recoil', 'dPhiLLJet', 'dPhiMETJet', 'ww_pt', "metFilter_flag"] + features)) 
 
 columns_lep_unc   = list(set(columns +['lep1_id_error_high', 'lep2_id_error_high', 'lep1_id_error_low', 'lep2_id_error_low']))
@@ -816,11 +818,11 @@ def plot_hist( bins, plotting_options=plotting_options, processes=None, x_range=
     if process in tot_bins.keys() and process in colors.keys():
 ########
       bottom = sum_bins
-      if matplotlib.__version__.split(".")[0] == 1:  
+      if int(matplotlib.__version__.split(".")[0]) == 1:  
         rect.append(ax.bar( tot_bins[process][1][:-1], tot_bins[process][0],
-                      tot_bins[process][1][1] - tot_bins[process][1][0] , color = colors[process],
-                      edgecolor = colors[process], bottom=bottom ))
-      if matplotlib.__version__.split(".")[0] >= 2:  
+                     tot_bins[process][1][1] - tot_bins[process][1][0] , color = colors[process],
+                     edgecolor = colors[process], bottom=bottom ))
+      if int(matplotlib.__version__.split(".")[0]) >= 2:  
         rect.append(ax.bar( tot_bins[process][2], tot_bins[process][0],
                       tot_bins[process][1][1] - tot_bins[process][1][0] , color = colors[process],
                       edgecolor = colors[process], bottom=bottom ))

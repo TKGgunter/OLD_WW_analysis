@@ -1,0 +1,372 @@
+[W 13:38:29.845 NotebookApp] server_extensions is deprecated, use nbserver_extensions
+[I 13:38:29.859 NotebookApp] Writing notebook server cookie secret to /run/user/1000/jupyter/notebook_cookie_secret
+[I 13:38:35.027 NotebookApp] [jupyter_nbextensions_configurator] enabled 0.2.5
+[I 13:38:35.054 NotebookApp] Serving notebooks from local directory: /home/gunter/WW_analysis/production/Analysis_13TeV
+[I 13:38:35.055 NotebookApp] 0 active kernels 
+[I 13:38:35.055 NotebookApp] The Jupyter Notebook is running at: http://localhost:8888/?token=9962cb7ec9f9a7e3df0596109fde0b471ae64c28ad16fdb8
+[I 13:38:35.055 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 13:38:35.057 NotebookApp] 
+    
+    Copy/paste this URL into your browser when you connect for the first time,
+    to login with a token:
+        http://localhost:8888/?token=9962cb7ec9f9a7e3df0596109fde0b471ae64c28ad16fdb8
+[I 13:38:35.284 NotebookApp] Accepting one-time-token-authenticated connection from 127.0.0.1
+[W 13:38:37.688 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'datestamper/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/datestamper/main.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/datestamper/main.yaml'
+[W 13:38:37.711 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'nbTranslate/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/nbTranslate/nbTranslate.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/nbTranslate/nbTranslate.yaml'
+[W 13:38:37.721 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'python-markdown/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/python-markdown/python-markdown.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/python-markdown/python-markdown.yaml'
+[W 13:38:37.732 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'table_beautifier/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/table_beautifier/table_beautifier.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/table_beautifier/table_beautifier.yaml'
+[W 13:38:37.747 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'freeze/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/freeze/config.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/freeze/config.yaml'
+[W 13:38:37.756 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'latex_envs/latex_envs' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/latex_envs/latex_envs.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/latex_envs/latex_envs.yaml'
+[W 13:38:37.769 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'highlight_selected_word/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/highlight_selected_word/configurator.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/highlight_selected_word/configurator.yaml'
+[W 13:38:37.775 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'zenmode/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/zenmode/zenmode.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/zenmode/zenmode.yaml'
+[W 13:38:37.782 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'skip-traceback/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/skip-traceback/skip-traceback.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/skip-traceback/skip-traceback.yaml'
+[W 13:38:37.783 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'codemirror_mode_extensions/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/codemirror_mode_extensions/codemirror_mode_extensions.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/codemirror_mode_extensions/codemirror_mode_extensions.yaml'
+[W 13:38:37.797 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'splitcell/splitcell' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/splitcell/splitcell.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/splitcell/splitcell.yaml'
+[W 13:38:37.799 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'equation-numbering/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/equation-numbering/info.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/equation-numbering/info.yaml'
+[W 13:38:37.812 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'codefolding/edit' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/codefolding/codefolding_editor.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/codefolding/codefolding_editor.yaml'
+[W 13:38:37.812 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'codefolding/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/codefolding/codefolding.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/codefolding/codefolding.yaml'
+[W 13:38:37.814 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'collapsible_headings/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/collapsible_headings/collapsible_headings.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/collapsible_headings/collapsible_headings.yaml'
+[W 13:38:37.818 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'hide_header/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/hide_header/hide_header.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/hide_header/hide_header.yaml'
+[W 13:38:37.820 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'navigation-hotkeys/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/navigation-hotkeys/hotkeys.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/navigation-hotkeys/hotkeys.yaml'
+[W 13:38:37.827 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'rubberband/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/rubberband/rubberband.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/rubberband/rubberband.yaml'
+[W 13:38:37.828 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'code_font_size/code_font_size' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/code_font_size/code_font_size.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/code_font_size/code_font_size.yaml'
+[W 13:38:37.828 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'hide_input/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/hide_input/hide-input.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/hide_input/hide-input.yaml'
+[W 13:38:37.829 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'limit_output/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/limit_output/limit-output.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/limit_output/limit-output.yaml'
+[W 13:38:37.830 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'autoscroll/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/autoscroll/autoscroll.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/autoscroll/autoscroll.yaml'
+[W 13:38:37.830 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'comment-uncomment/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/comment-uncomment/comment-uncomment.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/comment-uncomment/comment-uncomment.yaml'
+[W 13:38:37.835 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'toc2/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/toc2/toc2.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/toc2/toc2.yaml'
+[W 13:38:37.843 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'search-replace/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/search-replace/search-replace.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/search-replace/search-replace.yaml'
+[W 13:38:37.858 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'hide_input_all/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/hide_input_all/hide_input_all.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/hide_input_all/hide_input_all.yaml'
+[W 13:38:37.860 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'move_selected_cells/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/move_selected_cells/move_selected_cells.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/move_selected_cells/move_selected_cells.yaml'
+[W 13:38:37.860 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'exercise/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/exercise/exercise.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/exercise/exercise.yaml'
+[W 13:38:37.861 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'hinterland/hinterland' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/hinterland/hinterland.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/hinterland/hinterland.yaml'
+[W 13:38:37.869 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'help_panel/help_panel' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/help_panel/help_panel.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/help_panel/help_panel.yaml'
+[W 13:38:37.870 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'scroll_down/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/scroll_down/config.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/scroll_down/config.yaml'
+[W 13:38:37.870 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'contrib_nbextensions_help_item/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/contrib_nbextensions_help_item/contrib_nbextensions_help_item.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/contrib_nbextensions_help_item/contrib_nbextensions_help_item.yaml'
+[W 13:38:37.872 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'exercise2/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/exercise2/exercise2.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/exercise2/exercise2.yaml'
+[W 13:38:37.876 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'code_prettify/2to3' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/code_prettify/2to3.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/code_prettify/2to3.yaml'
+[W 13:38:37.876 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'code_prettify/autopep8' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/code_prettify/autopep8.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/code_prettify/autopep8.yaml'
+[W 13:38:37.880 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'code_prettify/code_prettify' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/code_prettify/code_prettify.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/code_prettify/code_prettify.yaml'
+[W 13:38:37.880 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'autosavetime/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/autosavetime/autosavetime.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/autosavetime/autosavetime.yaml'
+[W 13:38:37.881 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'select_keymap/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/select_keymap/select_keymap.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/select_keymap/select_keymap.yaml'
+[W 13:38:37.881 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'runtools/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/runtools/runtools.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/runtools/runtools.yaml'
+[W 13:38:37.882 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'chrome-clipboard/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/chrome-clipboard/chrome-clipboard.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/chrome-clipboard/chrome-clipboard.yaml'
+[W 13:38:37.883 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'tree-filter/index' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/tree-filter/tree-filter.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/tree-filter/tree-filter.yaml'
+[W 13:38:37.884 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'ruler/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/ruler/ruler.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/ruler/ruler.yaml'
+[W 13:38:37.893 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'skill/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/skill/skill.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/skill/skill.yaml'
+[W 13:38:37.896 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'spellchecker/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/spellchecker/config.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/spellchecker/config.yaml'
+[W 13:38:37.897 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'notify/notify' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/notify/notify.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/notify/notify.yaml'
+[W 13:38:37.899 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'dragdrop/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/dragdrop/dragdrop.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/dragdrop/dragdrop.yaml'
+[W 13:38:37.913 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'execute_time/ExecuteTime' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/execute_time/ExecuteTime.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/execute_time/ExecuteTime.yaml'
+[W 13:38:37.922 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'highlighter/highlighter' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/highlighter/highlighter.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/highlighter/highlighter.yaml'
+[W 13:38:37.931 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'scratchpad/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/scratchpad/scratchpad.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/scratchpad/scratchpad.yaml'
+[W 13:38:37.943 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'qtconsole/qtconsole' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/qtconsole/qtconsole.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/qtconsole/qtconsole.yaml'
+[W 13:38:37.953 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'snippets/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/snippets/snippets.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/snippets/snippets.yaml'
+[W 13:38:37.964 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'snippets_menu/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/snippets_menu/config.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/snippets_menu/config.yaml'
+[W 13:38:37.968 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'varInspector/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/varInspector/varInspector.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/varInspector/varInspector.yaml'
+[W 13:38:37.970 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'toggle_all_line_numbers/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/toggle_all_line_numbers/main.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/toggle_all_line_numbers/main.yaml'
+[W 13:38:37.972 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'init_cell/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/init_cell/init_cell.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/init_cell/init_cell.yaml'
+[W 13:38:37.975 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'printview/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/printview/printview.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/printview/printview.yaml'
+[W 13:38:37.978 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'gist_it/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/gist_it/gist_it.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/gist_it/gist_it.yaml'
+[W 13:38:37.979 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'addbefore/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/addbefore/addbefore.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/addbefore/addbefore.yaml'
+[W 13:38:37.986 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'keyboard_shortcut_editor/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/keyboard_shortcut_editor/keyboard_shortcut_editor.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/keyboard_shortcut_editor/keyboard_shortcut_editor.yaml'
+[I 13:38:39.700 NotebookApp] Kernel started: 3d497a5b-7083-4cea-84b0-22b0edea59ec
+[W 13:38:50.170 NotebookApp] 404 GET /favicon.ico (127.0.0.1) 35.48ms referer=None
+[W 13:38:50.588 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'datestamper/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/datestamper/main.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/datestamper/main.yaml'
+[W 13:38:50.589 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'nbTranslate/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/nbTranslate/nbTranslate.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/nbTranslate/nbTranslate.yaml'
+[W 13:38:50.589 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'python-markdown/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/python-markdown/python-markdown.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/python-markdown/python-markdown.yaml'
+[W 13:38:50.589 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'table_beautifier/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/table_beautifier/table_beautifier.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/table_beautifier/table_beautifier.yaml'
+[W 13:38:50.589 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'freeze/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/freeze/config.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/freeze/config.yaml'
+[W 13:38:50.590 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'latex_envs/latex_envs' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/latex_envs/latex_envs.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/latex_envs/latex_envs.yaml'
+[W 13:38:50.591 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'highlight_selected_word/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/highlight_selected_word/configurator.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/highlight_selected_word/configurator.yaml'
+[W 13:38:50.591 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'zenmode/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/zenmode/zenmode.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/zenmode/zenmode.yaml'
+[W 13:38:50.592 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'skip-traceback/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/skip-traceback/skip-traceback.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/skip-traceback/skip-traceback.yaml'
+[W 13:38:50.592 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'codemirror_mode_extensions/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/codemirror_mode_extensions/codemirror_mode_extensions.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/codemirror_mode_extensions/codemirror_mode_extensions.yaml'
+[W 13:38:50.592 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'splitcell/splitcell' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/splitcell/splitcell.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/splitcell/splitcell.yaml'
+[W 13:38:50.592 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'equation-numbering/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/equation-numbering/info.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/equation-numbering/info.yaml'
+[W 13:38:50.593 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'codefolding/edit' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/codefolding/codefolding_editor.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/codefolding/codefolding_editor.yaml'
+[W 13:38:50.593 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'codefolding/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/codefolding/codefolding.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/codefolding/codefolding.yaml'
+[W 13:38:50.594 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'collapsible_headings/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/collapsible_headings/collapsible_headings.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/collapsible_headings/collapsible_headings.yaml'
+[W 13:38:50.594 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'hide_header/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/hide_header/hide_header.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/hide_header/hide_header.yaml'
+[W 13:38:50.594 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'navigation-hotkeys/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/navigation-hotkeys/hotkeys.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/navigation-hotkeys/hotkeys.yaml'
+[W 13:38:50.595 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'rubberband/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/rubberband/rubberband.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/rubberband/rubberband.yaml'
+[W 13:38:50.595 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'code_font_size/code_font_size' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/code_font_size/code_font_size.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/code_font_size/code_font_size.yaml'
+[W 13:38:50.595 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'hide_input/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/hide_input/hide-input.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/hide_input/hide-input.yaml'
+[W 13:38:50.596 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'limit_output/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/limit_output/limit-output.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/limit_output/limit-output.yaml'
+[W 13:38:50.596 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'autoscroll/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/autoscroll/autoscroll.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/autoscroll/autoscroll.yaml'
+[W 13:38:50.596 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'comment-uncomment/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/comment-uncomment/comment-uncomment.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/comment-uncomment/comment-uncomment.yaml'
+[W 13:38:50.597 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'toc2/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/toc2/toc2.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/toc2/toc2.yaml'
+[W 13:38:50.597 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'search-replace/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/search-replace/search-replace.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/search-replace/search-replace.yaml'
+[W 13:38:50.598 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'hide_input_all/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/hide_input_all/hide_input_all.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/hide_input_all/hide_input_all.yaml'
+[W 13:38:50.598 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'move_selected_cells/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/move_selected_cells/move_selected_cells.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/move_selected_cells/move_selected_cells.yaml'
+[W 13:38:50.598 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'exercise/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/exercise/exercise.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/exercise/exercise.yaml'
+[W 13:38:50.599 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'hinterland/hinterland' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/hinterland/hinterland.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/hinterland/hinterland.yaml'
+[W 13:38:50.599 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'help_panel/help_panel' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/help_panel/help_panel.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/help_panel/help_panel.yaml'
+[W 13:38:50.599 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'scroll_down/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/scroll_down/config.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/scroll_down/config.yaml'
+[W 13:38:50.599 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'contrib_nbextensions_help_item/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/contrib_nbextensions_help_item/contrib_nbextensions_help_item.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/contrib_nbextensions_help_item/contrib_nbextensions_help_item.yaml'
+[W 13:38:50.600 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'exercise2/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/exercise2/exercise2.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/exercise2/exercise2.yaml'
+[W 13:38:50.600 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'code_prettify/2to3' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/code_prettify/2to3.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/code_prettify/2to3.yaml'
+[W 13:38:50.601 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'code_prettify/autopep8' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/code_prettify/autopep8.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/code_prettify/autopep8.yaml'
+[W 13:38:50.601 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'code_prettify/code_prettify' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/code_prettify/code_prettify.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/code_prettify/code_prettify.yaml'
+[W 13:38:50.602 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'autosavetime/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/autosavetime/autosavetime.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/autosavetime/autosavetime.yaml'
+[W 13:38:50.602 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'select_keymap/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/select_keymap/select_keymap.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/select_keymap/select_keymap.yaml'
+[W 13:38:50.602 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'runtools/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/runtools/runtools.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/runtools/runtools.yaml'
+[W 13:38:50.602 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'chrome-clipboard/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/chrome-clipboard/chrome-clipboard.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/chrome-clipboard/chrome-clipboard.yaml'
+[W 13:38:50.603 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'tree-filter/index' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/tree-filter/tree-filter.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/tree-filter/tree-filter.yaml'
+[W 13:38:50.603 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'ruler/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/ruler/ruler.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/ruler/ruler.yaml'
+[W 13:38:50.603 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'skill/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/skill/skill.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/skill/skill.yaml'
+[W 13:38:50.604 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'spellchecker/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/spellchecker/config.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/spellchecker/config.yaml'
+[W 13:38:50.604 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'notify/notify' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/notify/notify.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/notify/notify.yaml'
+[W 13:38:50.604 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'dragdrop/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/dragdrop/dragdrop.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/dragdrop/dragdrop.yaml'
+[W 13:38:50.605 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'execute_time/ExecuteTime' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/execute_time/ExecuteTime.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/execute_time/ExecuteTime.yaml'
+[W 13:38:50.605 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'highlighter/highlighter' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/highlighter/highlighter.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/highlighter/highlighter.yaml'
+[W 13:38:50.606 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'scratchpad/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/scratchpad/scratchpad.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/scratchpad/scratchpad.yaml'
+[W 13:38:50.606 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'qtconsole/qtconsole' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/qtconsole/qtconsole.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/qtconsole/qtconsole.yaml'
+[W 13:38:50.606 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'snippets/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/snippets/snippets.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/snippets/snippets.yaml'
+[W 13:38:50.607 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'snippets_menu/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/snippets_menu/config.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/snippets_menu/config.yaml'
+[W 13:38:50.607 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'varInspector/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/varInspector/varInspector.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/varInspector/varInspector.yaml'
+[W 13:38:50.608 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'toggle_all_line_numbers/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/toggle_all_line_numbers/main.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/toggle_all_line_numbers/main.yaml'
+[W 13:38:50.608 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'init_cell/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/init_cell/init_cell.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/init_cell/init_cell.yaml'
+[W 13:38:50.608 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'printview/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/printview/printview.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/printview/printview.yaml'
+[W 13:38:50.609 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'gist_it/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/gist_it/gist_it.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/gist_it/gist_it.yaml'
+[W 13:38:50.609 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'addbefore/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/addbefore/addbefore.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/addbefore/addbefore.yaml'
+[W 13:38:50.609 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'keyboard_shortcut_editor/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/keyboard_shortcut_editor/keyboard_shortcut_editor.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/keyboard_shortcut_editor/keyboard_shortcut_editor.yaml'
+[I 13:38:52.255 NotebookApp] Kernel started: 561b9564-4cfc-4d90-9075-ac8af5012228
+[W 13:38:59.941 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'datestamper/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/datestamper/main.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/datestamper/main.yaml'
+[W 13:38:59.942 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'nbTranslate/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/nbTranslate/nbTranslate.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/nbTranslate/nbTranslate.yaml'
+[W 13:38:59.942 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'python-markdown/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/python-markdown/python-markdown.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/python-markdown/python-markdown.yaml'
+[W 13:38:59.942 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'table_beautifier/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/table_beautifier/table_beautifier.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/table_beautifier/table_beautifier.yaml'
+[W 13:38:59.943 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'freeze/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/freeze/config.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/freeze/config.yaml'
+[W 13:38:59.943 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'latex_envs/latex_envs' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/latex_envs/latex_envs.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/latex_envs/latex_envs.yaml'
+[W 13:38:59.944 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'highlight_selected_word/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/highlight_selected_word/configurator.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/highlight_selected_word/configurator.yaml'
+[W 13:38:59.945 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'zenmode/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/zenmode/zenmode.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/zenmode/zenmode.yaml'
+[W 13:38:59.945 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'skip-traceback/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/skip-traceback/skip-traceback.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/skip-traceback/skip-traceback.yaml'
+[W 13:38:59.945 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'codemirror_mode_extensions/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/codemirror_mode_extensions/codemirror_mode_extensions.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/codemirror_mode_extensions/codemirror_mode_extensions.yaml'
+[W 13:38:59.946 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'splitcell/splitcell' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/splitcell/splitcell.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/splitcell/splitcell.yaml'
+[W 13:38:59.946 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'equation-numbering/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/equation-numbering/info.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/equation-numbering/info.yaml'
+[W 13:38:59.946 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'codefolding/edit' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/codefolding/codefolding_editor.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/codefolding/codefolding_editor.yaml'
+[W 13:38:59.946 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'codefolding/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/codefolding/codefolding.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/codefolding/codefolding.yaml'
+[W 13:38:59.948 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'collapsible_headings/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/collapsible_headings/collapsible_headings.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/collapsible_headings/collapsible_headings.yaml'
+[W 13:38:59.948 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'hide_header/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/hide_header/hide_header.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/hide_header/hide_header.yaml'
+[W 13:38:59.948 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'navigation-hotkeys/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/navigation-hotkeys/hotkeys.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/navigation-hotkeys/hotkeys.yaml'
+[W 13:38:59.948 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'rubberband/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/rubberband/rubberband.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/rubberband/rubberband.yaml'
+[W 13:38:59.949 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'code_font_size/code_font_size' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/code_font_size/code_font_size.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/code_font_size/code_font_size.yaml'
+[W 13:38:59.949 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'hide_input/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/hide_input/hide-input.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/hide_input/hide-input.yaml'
+[W 13:38:59.949 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'limit_output/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/limit_output/limit-output.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/limit_output/limit-output.yaml'
+[W 13:38:59.950 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'autoscroll/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/autoscroll/autoscroll.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/autoscroll/autoscroll.yaml'
+[W 13:38:59.950 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'comment-uncomment/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/comment-uncomment/comment-uncomment.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/comment-uncomment/comment-uncomment.yaml'
+[W 13:38:59.951 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'toc2/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/toc2/toc2.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/toc2/toc2.yaml'
+[W 13:38:59.951 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'search-replace/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/search-replace/search-replace.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/search-replace/search-replace.yaml'
+[W 13:38:59.951 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'hide_input_all/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/hide_input_all/hide_input_all.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/hide_input_all/hide_input_all.yaml'
+[W 13:38:59.952 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'move_selected_cells/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/move_selected_cells/move_selected_cells.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/move_selected_cells/move_selected_cells.yaml'
+[W 13:38:59.952 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'exercise/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/exercise/exercise.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/exercise/exercise.yaml'
+[W 13:38:59.952 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'hinterland/hinterland' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/hinterland/hinterland.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/hinterland/hinterland.yaml'
+[W 13:38:59.953 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'help_panel/help_panel' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/help_panel/help_panel.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/help_panel/help_panel.yaml'
+[W 13:38:59.953 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'scroll_down/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/scroll_down/config.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/scroll_down/config.yaml'
+[W 13:38:59.953 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'contrib_nbextensions_help_item/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/contrib_nbextensions_help_item/contrib_nbextensions_help_item.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/contrib_nbextensions_help_item/contrib_nbextensions_help_item.yaml'
+[W 13:38:59.953 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'exercise2/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/exercise2/exercise2.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/exercise2/exercise2.yaml'
+[W 13:38:59.954 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'code_prettify/2to3' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/code_prettify/2to3.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/code_prettify/2to3.yaml'
+[W 13:38:59.955 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'code_prettify/autopep8' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/code_prettify/autopep8.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/code_prettify/autopep8.yaml'
+[W 13:38:59.955 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'code_prettify/code_prettify' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/code_prettify/code_prettify.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/code_prettify/code_prettify.yaml'
+[W 13:38:59.955 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'autosavetime/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/autosavetime/autosavetime.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/autosavetime/autosavetime.yaml'
+[W 13:38:59.956 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'select_keymap/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/select_keymap/select_keymap.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/select_keymap/select_keymap.yaml'
+[W 13:38:59.956 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'runtools/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/runtools/runtools.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/runtools/runtools.yaml'
+[W 13:38:59.956 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'chrome-clipboard/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/chrome-clipboard/chrome-clipboard.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/chrome-clipboard/chrome-clipboard.yaml'
+[W 13:38:59.957 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'tree-filter/index' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/tree-filter/tree-filter.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/tree-filter/tree-filter.yaml'
+[W 13:38:59.957 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'ruler/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/ruler/ruler.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/ruler/ruler.yaml'
+[W 13:38:59.957 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'skill/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/skill/skill.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/skill/skill.yaml'
+[W 13:38:59.958 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'spellchecker/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/spellchecker/config.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/spellchecker/config.yaml'
+[W 13:38:59.958 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'notify/notify' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/notify/notify.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/notify/notify.yaml'
+[W 13:38:59.958 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'dragdrop/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/dragdrop/dragdrop.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/dragdrop/dragdrop.yaml'
+[W 13:38:59.959 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'execute_time/ExecuteTime' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/execute_time/ExecuteTime.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/execute_time/ExecuteTime.yaml'
+[W 13:38:59.959 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'highlighter/highlighter' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/highlighter/highlighter.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/highlighter/highlighter.yaml'
+[W 13:38:59.959 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'scratchpad/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/scratchpad/scratchpad.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/scratchpad/scratchpad.yaml'
+[W 13:38:59.960 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'qtconsole/qtconsole' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/qtconsole/qtconsole.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/qtconsole/qtconsole.yaml'
+[W 13:38:59.960 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'snippets/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/snippets/snippets.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/snippets/snippets.yaml'
+[W 13:38:59.961 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'snippets_menu/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/snippets_menu/config.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/snippets_menu/config.yaml'
+[W 13:38:59.961 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'varInspector/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/varInspector/varInspector.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/varInspector/varInspector.yaml'
+[W 13:38:59.962 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'toggle_all_line_numbers/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/toggle_all_line_numbers/main.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/toggle_all_line_numbers/main.yaml'
+[W 13:38:59.962 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'init_cell/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/init_cell/init_cell.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/init_cell/init_cell.yaml'
+[W 13:38:59.962 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'printview/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/printview/printview.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/printview/printview.yaml'
+[W 13:38:59.963 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'gist_it/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/gist_it/gist_it.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/gist_it/gist_it.yaml'
+[W 13:38:59.963 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'addbefore/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/addbefore/addbefore.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/addbefore/addbefore.yaml'
+[W 13:38:59.963 NotebookApp] [jupyter_nbextensions_configurator] nbextension 'keyboard_shortcut_editor/main' has duplicate listings in both '/home/gunter/anaconda2/share/jupyter/nbextensions/keyboard_shortcut_editor/keyboard_shortcut_editor.yaml' and '/home/gunter/.local/share/jupyter/nbextensions/keyboard_shortcut_editor/keyboard_shortcut_editor.yaml'
+[I 13:39:11.544 NotebookApp] Kernel shutdown: 561b9564-4cfc-4d90-9075-ac8af5012228
+[I 13:39:11.852 NotebookApp] Kernel shutdown: 3d497a5b-7083-4cea-84b0-22b0edea59ec
+[W 13:39:19.213 NotebookApp] Notebook notebooks/pileup.ipynb is not trusted
+[I 13:39:19.682 NotebookApp] Kernel started: 6dd60457-b696-4926-94ad-433d7d89c2c6
+[I 13:41:19.697 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 13:41:19.697 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 13:41:43.402 NotebookApp] Kernel restarted: 6dd60457-b696-4926-94ad-433d7d89c2c6
+[I 13:43:19.692 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 13:43:19.692 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 13:45:19.693 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 13:45:19.694 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 13:47:19.722 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 13:47:19.724 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+
+tab completion not implemented for this context
+
+tab completion not implemented for this context
+[I 13:49:19.723 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 13:49:19.725 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 13:51:19.694 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 13:51:19.694 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+
+variable "df" not defined.
+
+variable "df.me" not defined.
+
+variable "df" not defined.
+
+variable "df.met" not defined.
+
+variable "df" not defined.
+
+variable "df.metF" not defined.
+[I 13:53:19.698 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 13:53:19.699 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 13:55:19.695 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 13:55:19.695 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 13:57:55.930 NotebookApp] Kernel restarted: 6dd60457-b696-4926-94ad-433d7d89c2c6
+[I 13:59:19.692 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 13:59:19.692 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 14:01:19.695 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 14:01:19.695 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 14:01:51.903 NotebookApp] Kernel restarted: 6dd60457-b696-4926-94ad-433d7d89c2c6
+[I 14:02:03.803 NotebookApp] Kernel restarted: 6dd60457-b696-4926-94ad-433d7d89c2c6
+[I 14:03:19.693 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 14:03:19.694 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 14:05:19.693 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 14:05:19.693 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 14:07:01.677 NotebookApp] Kernel restarted: 6dd60457-b696-4926-94ad-433d7d89c2c6
+[I 14:07:19.694 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 14:07:19.694 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 14:11:09.218 NotebookApp] Kernel restarted: 6dd60457-b696-4926-94ad-433d7d89c2c6
+[I 14:11:19.695 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 14:11:19.695 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 14:13:19.695 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 14:13:19.695 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 14:15:19.725 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 14:15:19.728 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 14:17:36.108 NotebookApp] Kernel restarted: 6dd60457-b696-4926-94ad-433d7d89c2c6
+[I 14:19:19.696 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 14:19:19.697 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 14:21:19.726 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 14:21:19.728 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 14:29:19.732 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 14:29:19.732 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 09:03:19.939 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 09:03:19.939 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 09:07:19.940 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 09:07:19.955 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 09:08:10.453 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 09:08:10.454 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[W 09:08:27.112 NotebookApp] Notebook notebooks/pileup.ipynb is not trusted
+[W 09:10:06.546 NotebookApp] WebSocket ping timeout after 119999 ms.
+[I 09:10:27.630 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 09:10:27.630 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 09:29:27.399 NotebookApp] Kernel restarted: 6dd60457-b696-4926-94ad-433d7d89c2c6
+[I 09:30:27.626 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 09:30:27.627 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 09:32:27.628 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 09:32:27.629 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 09:34:27.662 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 09:34:27.663 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 09:36:27.639 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 09:36:27.640 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 09:38:27.628 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 09:38:27.628 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 09:40:27.639 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 09:40:27.639 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+
+variable "df" not defined.
+
+variable "df.pi" not defined.
+
+variable "df" not defined.
+
+variable "df.pileup_weight" not defined.
+
+variable "df.pileup_weight.val" not defined.
+
+variable "df" not defined.
+
+variable "df.wei" not defined.
+
+variable "df" not defined.
+
+variable "df.weight" not defined.
+
+variable "df.weight.va" not defined.
+[I 09:48:27.643 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 09:48:27.644 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+
+variable "df" not defined.
+
+variable "df.pi" not defined.
+
+variable "df" not defined.
+
+variable "df.pileup_weight_mf" not defined.
+
+variable "df.pileup_weight_mf.val" not defined.
+[I 09:50:27.645 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 09:50:27.645 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 09:52:27.644 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 09:52:27.644 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+
+variable "df" not defined.
+
+variable "df.wei" not defined.
+
+variable "df" not defined.
+
+variable "df.weight" not defined.
+
+variable "df.weight.max" not defined.
+
+variable "df" not defined.
+
+variable "df.we" not defined.
+
+variable "df" not defined.
+
+variable "df.weight_" not defined.
+
+variable "df" not defined.
+
+variable "df.weight_" not defined.
+
+variable "df" not defined.
+
+variable "df.weight_" not defined.
+
+variable "df" not defined.
+
+variable "df.weight_" not defined.
+
+variable "df" not defined.
+
+variable "df.weight_" not defined.
+
+variable "df" not defined.
+
+variable "df.weight_" not defined.
+
+variable "df" not defined.
+
+variable "df.weight_" not defined.
+[I 09:54:27.637 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 09:54:27.637 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 09:57:45.166 NotebookApp] Kernel restarted: 6dd60457-b696-4926-94ad-433d7d89c2c6
+[I 09:58:17.257 NotebookApp] Kernel restarted: 6dd60457-b696-4926-94ad-433d7d89c2c6
+[I 09:58:18.333 NotebookApp] Kernel shutdown: 6dd60457-b696-4926-94ad-433d7d89c2c6
+[I 09:58:18.441 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 09:58:18.443 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[W 09:58:18.880 NotebookApp] Kernel does not exist: 6dd60457-b696-4926-94ad-433d7d89c2c6
+[W 09:58:18.880 NotebookApp] 404 POST /api/kernels/6dd60457-b696-4926-94ad-433d7d89c2c6/restart (127.0.0.1) 6661.12ms referer=http://localhost:8888/notebooks/notebooks/pileup.ipynb
+[W 09:58:19.519 NotebookApp] Notebook notebooks/pileup.ipynb is not trusted
+[I 09:58:19.983 NotebookApp] Kernel started: 22aeb015-c3f3-4646-a8ab-6e47b764070d
+[I 10:00:19.999 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 10:00:20.000 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb

@@ -36,8 +36,10 @@ def compute_resumm_alt(flavor):
   features_fTT = random_forests["features_fTT"]
   clf_fTT = random_forests["clf_fTT"]
 
+  print "Number of WW events with a ww pt < 0", df[(df.process_decay == "WW")].shape, df[(df.process_decay == "WW") & (df.ww_pt < 0)].shape
   temp_df = df[(df.process_decay == "WW") & (df.ww_pt > -1)]
   temp_df["ww_weights"] = [1.] * temp_df.shape[0]
+  static_weight = df.weight.copy() 
 
 
   import ROOT
@@ -47,6 +49,13 @@ def compute_resumm_alt(flavor):
   wwpt_dic = {}
   for name in name_list:
     wwpt_dic[name] = f.Get(name)
+
+
+  #########################
+  #Fits
+  nominal_fit_result = fit.comprehensive_fit(df, ana_obj.df_da, "metMod", scales)
+  fit_results = {}
+  #########################
   
   orig = 0
   orig0 = 0
@@ -68,6 +77,18 @@ def compute_resumm_alt(flavor):
         temp_df.ww_weights.values[ (temp_df.ww_pt >= i*0.5 ).values & (temp_df.ww_pt < i*0.5 + 0.5).values]  = weight
         y_arr.append(temp_df[ (temp_df.ww_pt >= i*0.5) & (temp_df.ww_pt < i*0.5 + 0.5) ].ww_weights.sum())
 
+        nom_wwpt_weight = wwpt_dic["wwpt"].GetBinContent(i)
+        if nom_wwpt_weight == 0:
+          nom_wwpt_weight = 1
+        df.weight.values[(df.process_decay == "WW") & (df.ww_pt >= i*0.5) & (df.ww_pt < i*0.5 + 0.5) ] *= weight / nom_wwpt_weight
+
+
+
+    #########################
+    #Fits
+    fit_results[name] = fit.comprehensive_fit(df, ana_obj.df_da, "metMod", scales)
+    df["weight"] = static_weight
+    #########################
     tot_temp_value  = temp_df.ww_weights.sum() * scales["WW"]
     tot_temp_value0 = temp_df.query("numb_jets == 0").ww_weights.sum() * scales["WW"]
     tot_temp_value1 = temp_df.query("numb_jets == 1").ww_weights.sum() * scales["WW"]
@@ -139,6 +160,19 @@ def compute_resumm_alt(flavor):
   print "Res tot unc", tot_res_unc
   print "Res 0j  unc", j0_res_unc
   print "Res 1j  unc", j1_res_unc
+
+  #########################
+  print "\n\nFit results"
+  fit_processes = ["WW", "Top", "DY"] 
+  print fit_processes
+  print "nominal: ", nominal_fit_result.x
+  for name in fit_results:
+    print name, fit_results[name].x
+  print "Diffs(%)"
+  for it, ele in enumerate(nominal_fit_result.x):
+    print  "scale", fit_processes[it], (abs(ele - fit_results["wwpt_scaledown"].x[it]) + abs(ele - fit_results["wwpt_scaleup"].x[it]))/(2. * ele) * 100
+    print  "Resum", fit_processes[it], (abs(ele - fit_results["wwpt_resumdown"].x[it]) + abs(ele - fit_results["wwpt_resumup"].x[it]))/(2. * ele) * 100
+  #########################
 
   plt.show()
 

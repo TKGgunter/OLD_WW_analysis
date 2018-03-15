@@ -193,10 +193,13 @@ def compute_ule(flavor, ana_obj, scales=scales):
   for it, ele in enumerate(nominal_fit_result.x):
     if fit_processes[it].lower() == "ww":
       print  fit_processes[it], (abs(ele - fit_results[0].x[it] * nominal_ww_total_yields / down_ww_total_yields)  +\
-                                 abs(ele - fit_results[1].x[it] * nominal_ww_total_yields / up_ww_total_yields))/2. * 100
+                                 abs(ele - fit_results[1].x[it] * nominal_ww_total_yields / up_ww_total_yields))/(2.*ele) * 100
     else:
       print  fit_processes[it], (abs(ele - fit_results[0].x[it]) +\
-                                 abs(ele - fit_results[1].x[it]))/2. * 100
+                                 abs(ele - fit_results[1].x[it]))/(2.*ele) * 100
+
+  print  "alt unc", abs( fit_results[0].x[0] * nominal_ww_total_yields / up_ww_total_yields -\
+                         fit_results[1].x[0] * nominal_ww_total_yields / down_ww_total_yields) / (2.0 * nominal_fit_result.x[0]) * 100
   #########################
   print "UP totals", nominal_ww_total_yields , up_ww_total_yields, nominal_ww_total_yields / up_ww_total_yields
   print "Down totals", nominal_ww_total_yields , down_ww_total_yields, nominal_ww_total_yields / down_ww_total_yields

@@ -375,7 +375,7 @@ if __name__ == "__main__":
     ana_obj.apply_pre_cuts()
     ana_obj.apply_flat_jet_correction() 
     print "PDF", flavor
-    #pdf_unc_calc(flavor, ana_obj)
+    pdf_unc_calc(flavor, ana_obj)
     print "\n\n\n", "QCD"
     qcd_calc_print(flavor, ana_obj)
 
