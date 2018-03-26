@@ -370,3 +370,192 @@ variable "df.weight_" not defined.
 [I 09:58:19.983 NotebookApp] Kernel started: 22aeb015-c3f3-4646-a8ab-6e47b764070d
 [I 10:00:19.999 NotebookApp] Saving file at /notebooks/pileup.ipynb
 [W 10:00:20.000 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 10:02:19.999 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 10:02:20.000 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+
+variable "df" not defined.
+
+variable "df.weigh" not defined.
+
+variable "df" not defined.
+
+variable "df.weight" not defined.
+
+variable "df.weight.val" not defined.
+
+variable "df" not defined.
+
+variable "df.weight" not defined.
+
+variable "df.weight.vals" not defined.
+
+variable "df" not defined.
+
+variable "df.weight" not defined.
+
+variable "df.weight.valu" not defined.
+
+variable "df" not defined.
+
+variable "df.weight" not defined.
+
+variable "df.weight.value" not defined.
+
+variable "df" not defined.
+
+variable "df.weight" not defined.
+
+variable "df.weight.values" not defined.
+
+variable "df" not defined.
+
+variable "df.pil" not defined.
+
+variable "df" not defined.
+
+variable "df.pil" not defined.
+[I 10:04:20.008 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 10:04:20.008 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+
+variable "df" not defined.
+
+variable "df.pileup_weight" not defined.
+
+variable "df.pileup_weight.values" not defined.
+[I 10:06:20.019 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 10:06:20.019 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 10:08:20.010 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 10:08:20.011 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 10:08:31.520 NotebookApp] Kernel restarted: 22aeb015-c3f3-4646-a8ab-6e47b764070d
+[I 10:10:19.994 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 10:10:19.994 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 15:40:20.066 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 15:40:20.067 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 15:42:20.066 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 15:42:20.067 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+
+tab completion not implemented for this context
+
+tab completion not implemented for this context
+[I 15:44:20.071 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 15:44:20.072 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 15:46:20.065 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 15:46:20.066 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 15:48:20.074 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 15:48:20.075 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 15:50:20.104 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 15:50:20.106 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 16:40:20.117 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 16:40:20.117 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 16:42:20.084 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 16:42:20.084 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 17:08:20.101 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 17:08:20.102 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 17:20:58.965 NotebookApp] Kernel restarted: 22aeb015-c3f3-4646-a8ab-6e47b764070d
+[I 17:22:20.093 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 17:22:20.094 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 09:58:20.313 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 09:58:20.313 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 10:00:20.314 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 10:00:20.315 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 10:02:20.329 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 10:02:20.329 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+
+variable "df" not defined.
+
+variable "df.lep1_" not defined.
+[I 10:04:20.349 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 10:04:20.352 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 10:06:20.346 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 10:06:20.348 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 10:08:20.317 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 10:08:20.318 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 10:10:20.314 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 10:10:20.314 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 10:12:20.346 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 10:12:20.349 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+
+tab completion not implemented for this context
+[I 10:14:20.315 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 10:14:20.316 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 10:16:20.341 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 10:16:20.342 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 10:18:20.326 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 10:18:20.327 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 10:22:20.321 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 10:22:20.321 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 10:26:20.341 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 10:26:20.343 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 10:28:20.354 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 10:28:20.356 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 10:30:20.325 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 10:30:20.325 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 10:32:20.326 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 10:32:20.326 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 10:32:48.015 NotebookApp] Kernel restarted: 22aeb015-c3f3-4646-a8ab-6e47b764070d
+[I 10:34:20.322 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 10:34:20.323 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 10:36:20.330 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 10:36:20.331 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+
+tab completion not implemented for this context
+[I 10:42:20.326 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 10:42:20.326 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 10:44:20.351 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 10:44:20.352 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 10:46:20.325 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 10:46:20.325 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 10:48:20.354 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 10:48:20.357 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 10:50:20.354 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 10:50:20.357 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 10:58:20.348 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 10:58:20.349 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 11:00:20.374 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 11:00:20.376 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 11:02:20.352 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 11:02:20.352 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+
+tab completion not implemented for this context
+[I 11:16:20.354 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 11:16:20.354 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 11:24:20.353 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 11:24:20.354 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 11:26:20.355 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 11:26:20.355 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 11:28:20.351 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 11:28:20.352 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 11:30:20.355 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 11:30:20.355 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 12:34:19.843 NotebookApp] Kernel restarted: 22aeb015-c3f3-4646-a8ab-6e47b764070d
+[I 12:34:20.649 NotebookApp] Kernel restarted: 22aeb015-c3f3-4646-a8ab-6e47b764070d
+[W 12:34:21.139 NotebookApp] Replacing stale connection: 22aeb015-c3f3-4646-a8ab-6e47b764070d:482ABF2898BE4AF6A351AD2F5B398E43
+[I 12:36:20.373 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 12:36:20.373 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 12:38:20.367 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 12:38:20.367 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 12:40:20.370 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 12:40:20.371 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+
+tab completion not implemented for this context
+[I 12:42:20.371 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 12:42:20.371 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 12:44:20.382 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 12:44:20.383 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 12:46:20.384 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 12:46:20.385 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 12:48:20.368 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 12:48:20.368 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 12:50:20.394 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 12:50:20.395 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 12:52:20.367 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 12:52:20.368 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 12:54:20.367 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 12:54:20.368 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[I 12:56:11.125 NotebookApp] Kernel restarted: 22aeb015-c3f3-4646-a8ab-6e47b764070d
+[I 12:56:20.375 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 12:56:20.376 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[W 10:46:33.421 NotebookApp] Notebook notebooks/pileup.ipynb is not trusted
+[W 10:48:11.613 NotebookApp] WebSocket ping timeout after 119999 ms.
+[I 10:48:33.977 NotebookApp] Saving file at /notebooks/pileup.ipynb
+[W 10:48:33.977 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb

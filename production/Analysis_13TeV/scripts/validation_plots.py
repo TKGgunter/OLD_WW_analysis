@@ -27,8 +27,9 @@ def main(scales=scales):
   if cut_level == "full":
     df    = load_origMC()
     df_da = load_origDATA()
-    df    = df[   (df.lep2_pt > 25)    & (df.mll > 30)]
-    df_da = df_da[(df_da.lep2_pt > 25) & (df_da.mll > 30)]
+    q     = "lep2_pt > 25 & mll > 30 & metFilter_flag == 0" 
+    df    = df.query(q)
+    df_da = df_da.query(q)
 
   elif cut_level == "pre":
     df = pre_cuts(load_preselMC(), False)
@@ -41,10 +42,8 @@ def main(scales=scales):
     scales = ana_obj.scales
     ana_obj.apply_pre_cuts()
 
-    df = ana_obj.df #load_testset()
-    df_da = ana_obj.df_da #pre_cuts(load_presel_w_fDY_fTT_DATA(), False) 
-    #df = df[df.lep2_pt > 25]
-    #df_da = df_da[df_da.lep2_pt > 25]
+    df = ana_obj.df 
+    df_da = ana_obj.df_da 
 
   else:
     print("Please: full or pre or rf")
@@ -63,7 +62,7 @@ def main(scales=scales):
   def rfWW_ana( df, diff_charge=True ):
     return df[(df.pred_fDY_WW > .9) & (df.pred_fTT_WW > .6) ] 
 
-  def tot_func(df, diff_charge=True):
+  def tot_ana(df, diff_charge=True):
     return df
 
 #
@@ -79,7 +78,7 @@ def main(scales=scales):
 
     if cut_level == "rf":
 
-      control_regions = {"rfDY": rfDY_ana, "rfTT": rfTT_ana, "rfWW": rfWW_ana, "tot": tot_func, }
+      control_regions = {"rfDY": rfDY_ana, "rfTT": rfTT_ana, "rfWW": rfWW_ana, "tot": tot_ana, }
     make_control_plots(df[df.mll > 30], df_da[df_da.mll > 30], month+"_"+day, cut_level, energy_dir= "13TeV", control_regions= control_regions, scales=scales) 
 
 
@@ -88,11 +87,11 @@ def main(scales=scales):
     if control_regions == None:
       control_regions = {"WW": WW_ana, "TT": TT_ana, "DY": DY_ana, "Z_tt": Z_tt_ana, "same": same_ana, "diff": diff_ana, "full": full_ana}
     if cut_level == "rf":
-      control_regions = {"rfDY": rfDY_ana, "rfTT": rfTT_ana, "rfWW": rfWW_ana}
+      control_regions = {"rfDY": rfDY_ana, "rfTT": rfTT_ana, "rfWW": rfWW_ana, "tot": tot_ana}
  
 
     for region in control_regions: 
-      latex_string = process_yields(control_regions[region](df), control_regions[region](df_da)).to_latex(columns=["Process", "Diff Flavor", "Same Flavor"], index=False)
+      latex_string = process_yields(control_regions[region](df), control_regions[region](df_da), scales=scales).to_latex(columns=["Process", "Diff Flavor", "Same Flavor"], index=False)
       latex_string = latex_string.split("\n")
       latex_string.insert(0, "\\begin{table}[ht]\n\t\centering\n\t\\topcaption{"+region+" control region for 13\TeV.}" )
 

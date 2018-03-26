@@ -191,7 +191,7 @@ def compute_resolution( ana_obj, flavor ):
   if flavor != "":
     flavor = "_"+flavor
 
-  f = open("results/jan/jet_resolution" + flavor + ".txt", "w")
+  f = open("results/mar/jet_resolution" + flavor + ".txt", "w")
   f.write(nominal_string)
   f.write(jer_string)
   f.write("\n\nUncertianty(%): " + str([ (k, abs(post[k] - orig[k])/orig[k] * 100) for k in orig ]))

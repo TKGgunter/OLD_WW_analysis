@@ -166,7 +166,7 @@ def compute_electron(ana_obj, flavor):
 
   date = datetime.date.today() 
   print date.year, date.month
-  f = open("results/jan/electron_isoid" + str(date.year) + "_" + str(date.month) + "_" + str(date.day) + flavor + ".txt", "w")
+  f = open("results/mar/electron_isoid" + str(date.year) + "_" + str(date.month) + "_" + str(date.day) + flavor + ".txt", "w")
   f.write("Yields\n")
   f.write(nominal_string)
   f.write(up_string)
@@ -195,7 +195,7 @@ def compute_electron(ana_obj, flavor):
 
 
 if __name__ == "__main__":
-  for flavor in ["",]:# "diff", "same"]:
+  for flavor in ["", "diff", "same"]:
     if flavor == "":
       print "total"
       ana_obj = analysis_setup("lep")

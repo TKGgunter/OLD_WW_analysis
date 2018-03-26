@@ -31,6 +31,26 @@ def stat_uncertainty( flavor = ''):
     df_da   = df_da[df_da.lep1_type     == df_da.lep2_type]
     df_ww   = df_ww[df_ww.lep1_type     == df_ww.lep2_type]
     df_ggww = df_ggww[df_ggww.lep1_type == df_ggww.lep2_type]
+  if flavor == "j0":
+    query = "numb_jets == 0"
+    df      = df.query(query)   
+    df_da   = df_da.query(query)
+    df_ww   = df_ww.query(query)
+    df_ggww = df_ggww.query(query)
+  if flavor == "j1":
+    query = "numb_jets == 1"
+    df      = df.query(query)   
+    df_da   = df_da.query(query)
+    df_ww   = df_ww.query(query)
+    df_ggww = df_ggww.query(query)
+  if flavor == "j2":
+    query = "numb_jets == 2"
+    df      = df.query(query)   
+    df_da   = df_da.query(query)
+    df_ww   = df_ww.query(query)
+    df_ggww = df_ggww.query(query)
+
+
 
 
   pseudo = {}
@@ -47,9 +67,9 @@ def stat_uncertainty( flavor = ''):
 
 
 if __name__ == "__main__":
-  for flavor in ["", "diff", "same"]:
+  for flavor in ["", "diff", "same", "j0", "j1", "j2"]:
     unc = stat_uncertainty(flavor)
-    f = open("results/stat_" + flavor + ".txt", "w")
+    f = open("results/mar/stat_" + flavor + ".txt", "w")
     f.write("Xs " + str(unc[0]) )
     f.write("Unc " + str(unc[2]) )
     f.write("Unc(%) " + str(unc[1]) )

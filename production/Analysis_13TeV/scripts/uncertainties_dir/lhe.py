@@ -42,10 +42,17 @@ def calc_rmsd(some_dic, nominal, jet_bin = 'tot'):
 
 
 
-def pdf_unc_calc(flavor, jer_obj):
-  df = jer_obj.df
-  df_ww = jer_obj.df_ww
-  df_ggww = jer_obj.df_ggww
+def pdf_unc_calc(flavor, jer_obj, query=None):
+  df = jer_obj.df.copy()
+  df_ww = jer_obj.df_ww.copy()
+  df_ggww = jer_obj.df_ggww.copy()
+  df_da = jer_obj.df_da.copy()
+
+  if type(query) == type(""):
+    df = df.query(query)
+    df_ww = df_ww.query(query)
+    df_ggww = df_ggww.query(query)
+    df_da = df_da.query(query)
 
   scales = jer_obj.scales
 
@@ -59,20 +66,20 @@ def pdf_unc_calc(flavor, jer_obj):
 
 
   if query_str != None:
-    df = df.query(query_string)
-    jer_obj.df_da = jer_obj.df_da.query(query_string)
-    df_ww = df_ww.query(query_string)
-    df_ggww = df_ggww.query(query_string)
+    df = df.query(query_str)
+    df_da = df_da.query(query_str)
+    df_ww = df_ww.query(query_str)
+    df_ggww = df_ggww.query(query_str)
 
   static_weights      = df.weight.values.copy() 
   static_weights_ww   = df_ww.weight.values.copy()
   static_weights_ggww = df_ggww.weight.values.copy() 
   pseudo = {}
-  x_per_jet_bin(pseudo, rf_ana(df), rf_ana(jer_obj.df_da), jer_obj.df_ww, jer_obj.df_ggww, pseudo_data_yield_sum, scales=scales)
+  x_per_jet_bin(pseudo, rf_ana(df), rf_ana(df_da), df_ww, df_ggww, pseudo_data_yield_sum, scales=scales)
   print pseudo
 
   nominal_dic = {}
-  x_per_jet_bin(nominal_dic, df, jer_obj.df_da, jer_obj.df_ww, jer_obj.df_ggww, cross_calc, scales=scales, args={"fiducial":True, "pseudo":pseudo})
+  x_per_jet_bin(nominal_dic, df, df_da, df_ww, df_ggww, cross_calc, scales=scales, args={"fiducial":True, "pseudo":pseudo})
   #########################
   #Fits
   nominal_fit_result = fit.comprehensive_fit(df, ana_obj.df_da, "numb_BJet", scales)
@@ -101,9 +108,12 @@ def pdf_unc_calc(flavor, jer_obj):
       
       ww_tot_alt = df_ww.weight.sum() * scales["WW"] + df_ggww.weight.values.sum() * scales["GluGluWWTo2L2Nu"] 
     
-    x_per_jet_bin(post_dic, df, jer_obj.df_da, df_ww, df_ggww, cross_calc, scales=scales, args={"fiducial":True, "pseudo":pseudo})
+    x_per_jet_bin(post_dic, df, df_da, df_ww, df_ggww, cross_calc, scales=scales, args={"fiducial":True, "pseudo":pseudo})
     diffs.append((nominal_dic["tot"] - post_dic["tot"])**2.)
-    lib_dics[process] = post_dic["tot"]
+    lib_dics[process+"_tot"] = post_dic["tot"]
+    lib_dics[process+"_j0"] = post_dic["j0"]
+    lib_dics[process+"_j1"] = post_dic["j1"]
+    lib_dics[process+"_j2"] = post_dic["j2"]
     print process, post_dic
 
     #########################
@@ -139,135 +149,54 @@ def pdf_unc_calc(flavor, jer_obj):
   print "Diffs(%)"
   print quad_sum**.5 / 1.12 * 100. 
   #########################
-  f = open("results/jan/pdf" + flavor + ".txt", "w") 
-  f.write("Nominal: "+str(nominal_dic))
-  f.write("Process effects:\n"+str(lib_dics))
+  f = open("results/mar/pdf_" + flavor + ".txt", "w") 
+  f.write("Nominal: "+str(nominal_dic)+"\n")
+  f.write("Process effects:\n")
+  for process in df.process.unique():
+    f.write(process+":\t")
+    keys_ = lib_dics.keys()
+    keys_.sort()
+    for key in keys_:
+      if process in key:
+        f.write(str(lib_dics[key]) + "\t")
+    f.write("\n")
   f.write("UNC: "+str(sum(diffs)**.5) + "\tUNC(%): " + str(sum(diffs)**.5/nominal_dic["tot"] * 100.))
 
-def pdf_try2(flavor, jer_obj):
-  df = jer_obj.df
-  df_ww = jer_obj.df_ww
-  df_ggww = jer_obj.df_ggww
-
-  if flavor == "diff":
-    query_str = "lep1_type != lep2_type"
-
-  if flavor == "same":
-    query_str = "lep1_type == lep2_type"
-
-
-  if query_str != None:
-    df = df.query(query_string)
-    jer_obj.df_da = jer_obj.df_da.query(query_string)
-    df_ww = df_ww.query(query_string)
-    df_ggww = df_ggww.query(query_string)
-
-  jer_obj.df = df
-  jer_obj.df_ww = df_ww
-  jer_obj.df_ggww = df_ggww
-
-
-  #Create copy of weights for future use
-  static_weights_df = copy.copy(df.weight)
-  static_weights_ww = copy.copy(jer_obj.df_ww.weight)
-  static_weights_ggww = copy.copy(jer_obj.df_ggww.weight)
-
-
-  pseudo = {}
-  x_per_jet_bin(pseudo, df, jer_obj.df_da, jer_obj.df_ww, jer_obj.df_ggww, pseudo_data_yield_sum)
-  print pseudo
-
-  nominal_dic = {}
-  x_per_jet_bin(nominal_dic, df, jer_obj.df_da, jer_obj.df_ww, jer_obj.df_ggww, cross_calc, args={"scales": scales, "fiducial":True, "pseudo":pseudo})
-
-  ##
-  impacts = []
-  diffs = []
-  for process in df.process.unique():
-    print "process", process
-    post_dic = {}
-    mean_square_diff = 0.
-
-    #Apply Weights
-    for element in range(10, 110):
-      temp_weights = np.array(get_pdf_weights(list(df[df.process == process].lhe_weight_string), element))
-      temp_weights[temp_weights > 20] = temp_weights[temp_weights < 20].mean()
-      df.weight.values[df.process == process] = df.weight.values[df.process == process] * temp_weights
-
-      if process == "WW":
-        temp_weights_ww = np.array(get_pdf_weights(list(df_ww[df_ww.process == process].lhe_weight_string), element))
-        temp_weights_ww[temp_weights_ww > 20] = temp_weights_ww[temp_weights_ww < 20].mean()
-        jer_obj.df_ww["weight"] = jer_obj.df_ww.weight * temp_weights_ww
-
-        temp_weights_ggww = np.array(get_pdf_weights(list(df_ww[df_ggww.process == process].lhe_weight_string), element))
-        temp_weights_ggww[temp_weights_ggww > 20] = temp_weights_ggww[temp_weights_ggww < 20].mean()
-        jer_obj.df_ggww["weight"] = jer_obj.df_ggww.weight * temp_weights_ggww
-
-      #Calc cross section
-      x_per_jet_bin(post_dic, df, jer_obj.df_da, jer_obj.df_ww, jer_obj.df_ggww, cross_calc, args={"scales": scales, "fiducial":True, "pseudo":pseudo})
-
-      df["weight"] = static_weights_df
-      jer_obj.df_ww["weight"] = static_weights_ww
-      jer_obj.df_ggww["weight"] = static_weights_ggww
-
-      #print process, element, post_dic["tot"], (nominal_dic["tot"] - post_dic["tot"]) 
-      diffs.append(nominal_dic["tot"] - post_dic["tot"])
-
-
-      mean_square_diff += (nominal_dic["tot"] - post_dic["tot"])**2 / 100.
-
-    print "nominal", nominal_dic["tot"], "post", post_dic["tot"], "diffs", np.array(diffs).std(),\
-          "mean sqr diff", mean_square_diff, "impact:", (mean_square_diff)**.5 / nominal_dic["tot"]
-    impacts.append((mean_square_diff)**.5 / nominal_dic["tot"])
-
-
-  sumquad_impacts = sum([impact**2 for impact in impacts])**.5
-  print "FIN", sumquad_impacts
-
-
-  if flavor != "":
-    flavor = "_" + flavor
-
-  f = open("results/pdf" + flavor + ".txt", "w") 
-  f.write(str(sumquad_impacts))
-  plt.hist(diffs, bins=50)
-  #plt.show()
 
 
 
 
-def qcd_calc_print( flavor, jer_obj ):
-  df = jer_obj.df
-  df_ww = jer_obj.df_ww
-  df_ggww = jer_obj.df_ggww
-  df_da = jer_obj.df_da
+def qcd_calc_print( flavor, jer_obj, query=None):
+  df = jer_obj.df.copy()
+  df_ww = jer_obj.df_ww.copy()
+  df_ggww = jer_obj.df_ggww.copy()
+  df_da = jer_obj.df_da.copy()
   scales = jer_obj.scales
 
+  if type(query) == type(""):
+    df = df.query(query)
+    df_ww = df_ww.query(query)
+    df_ggww = df_ggww.query(query)
+    df_da = df_da.query(query)
 
   if flavor == "diff":
     df =    df[   df.lep1_type    != df.lep2_type]
     df_ww = df_ww[df_ww.lep1_type != df_ww.lep2_type]
     df_ggww = df_ggww[df_ggww.lep1_type != df_ggww.lep2_type]
-    jer_obj.df_da = jer_obj.df_da[jer_obj.df_da.lep1_type != jer_obj.df_da.lep2_type]
+    df_da = df_da[df_da.lep1_type != df_da.lep2_type]
 
-    jer_obj.df = df
-    jer_obj.df_ww = df_ww
-    jer_obj.df_ggww = df_ggww
     
   if flavor == "same":
     df =    df[   df.lep1_type    == df.lep2_type]
     df_ww = df_ww[df_ww.lep1_type == df_ww.lep2_type]
     df_ggww = df_ggww[df_ggww.lep1_type == df_ggww.lep2_type]
-    jer_obj.df_da = jer_obj.df_da[jer_obj.df_da.lep1_type == jer_obj.df_da.lep2_type]
+    df_da = df_da[df_da.lep1_type == df_da.lep2_type]
 
-    jer_obj.df = df
-    jer_obj.df_ww = df_ww
-    jer_obj.df_ggww = df_ggww
 
   #Create copy of weights for future use
   static_weights_df = copy.copy(df.weight)
-  static_weights_ww = copy.copy(jer_obj.df_ww.weight)
-  static_weights_ggww = copy.copy(jer_obj.df_ggww.weight)
+  static_weights_ww = copy.copy(df_ww.weight)
+  static_weights_ggww = copy.copy(df_ggww.weight)
 
 
   pseudo = {}
@@ -275,7 +204,7 @@ def qcd_calc_print( flavor, jer_obj ):
   print pseudo
 
   nominal_dic = {}
-  x_per_jet_bin(nominal_dic, df, jer_obj.df_da, df_ww, df_ggww, cross_calc, scales=scales, args={"fiducial":True, "pseudo":pseudo})
+  x_per_jet_bin(nominal_dic, df, df_da, df_ww, df_ggww, cross_calc, scales=scales, args={"fiducial":True, "pseudo":pseudo})
 
   #########################
   #Fits
@@ -286,6 +215,7 @@ def qcd_calc_print( flavor, jer_obj ):
   impacts = []
   results = ""
   fit_results = {}
+  lib_dics = {}
   for process in df.process.unique():
     print "process", process
     post_dic = {}
@@ -333,6 +263,10 @@ def qcd_calc_print( flavor, jer_obj ):
     print process, "Mean weights: ", _weights.mean(), "Xs", nominal_dic["tot"], "Xs'", post_dic["tot"], "%Diff", (nominal_dic["tot"] - post_dic["tot"]) / nominal_dic["tot"] * 100
     results +=  process +  " Mean weights: " + str( _weights.mean() ) + " Xs "+ str(nominal_dic["tot"]) + " Xs " + str(post_dic["tot"]) + " %Diff " +  str( (nominal_dic["tot"] - post_dic["tot"]) / nominal_dic["tot"] * 100 ) + "\n"
 
+    lib_dics[process+"_tot"] = post_dic["tot"]
+    lib_dics[process+"_j0"] = post_dic["j0"]
+    lib_dics[process+"_j1"] = post_dic["j1"]
+    lib_dics[process+"_j2"] = post_dic["j2"]
     #########################
     #Fits
     fit_results[process] = fit.comprehensive_fit(df, ana_obj.df_da, "numb_BJet", scales)
@@ -363,20 +297,34 @@ def qcd_calc_print( flavor, jer_obj ):
   if flavor != "":
     flavor = "_" + flavor
 
-  f = open("results/jan/qcd" + flavor + ".txt", "w") 
+  f = open("results/mar/qcd_" + flavor + ".txt", "w") 
   f.write( "UNC: " + str(sumquad_impacts) + " UNC(%) " + str(sumquad_impacts * 100) + "\n")
   f.write(results)
+  f.write("Process effects:\n")
+  for process in df.process.unique():
+    f.write(process+":\t")
+    keys_ = lib_dics.keys()
+    keys_.sort()
+    for key in keys_:
+      if process in key:
+        f.write(str(lib_dics[key]) + "\t")
+    f.write("\n")
 
 
 
 if __name__ == "__main__":
-  for flavor in [""]:#, "same", "diff"]:
+  #for flavor in ["", "same", "diff"]:
+  #  ana_obj = analysis_setup("lhe")
+  #  ana_obj.apply_pre_cuts()
+  #  ana_obj.apply_flat_jet_correction() 
+  #  print "PDF", flavor
+  #  pdf_unc_calc(flavor, ana_obj)
+
+  for flavor in ["", "same", "diff"]:
     ana_obj = analysis_setup("lhe")
     ana_obj.apply_pre_cuts()
     ana_obj.apply_flat_jet_correction() 
-    print "PDF", flavor
-    pdf_unc_calc(flavor, ana_obj)
-    print "\n\n\n", "QCD"
+    print "\n\n\n", "QCD", flavor
     qcd_calc_print(flavor, ana_obj)
 
 

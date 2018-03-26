@@ -73,9 +73,15 @@ def compute_muon( ana_obj, flavor):
 
   pseudo = {}
   pseudo["tot"] = pseudo_data_yield_sum(rf_ana(ana_obj.df), rf_ana(ana_obj.df_da), scales=scales)
+  pseudo["j0"] = pseudo_data_yield_sum(rf_ana(ana_obj.df), rf_ana(ana_obj.df_da), scales=scales, query="numb_jets == 0")
+  pseudo["j1"] = pseudo_data_yield_sum(rf_ana(ana_obj.df), rf_ana(ana_obj.df_da), scales=scales, query="numb_jets == 1")
+  pseudo["j2"] = pseudo_data_yield_sum(rf_ana(ana_obj.df), rf_ana(ana_obj.df_da), scales=scales, query="numb_jets == 2")
 
   orig = {"tot":0, "j0":0, "j1":0, "j2":0}
   orig["tot"] =  cross_calc(ana_obj.df, ana_obj.df_da, ana_obj.df_ww, ana_obj.df_ggww, scales,  fiducial=True, pseudo=pseudo["tot"])  
+  orig["j0"] =  cross_calc(ana_obj.df, ana_obj.df_da, ana_obj.df_ww, ana_obj.df_ggww, scales,  fiducial=True, pseudo=pseudo["j0"], query="numb_jets == 0")  
+  orig["j1"] =  cross_calc(ana_obj.df, ana_obj.df_da, ana_obj.df_ww, ana_obj.df_ggww, scales,  fiducial=True, pseudo=pseudo["j1"], query="numb_jets == 1")  
+  orig["j2"] =  cross_calc(ana_obj.df, ana_obj.df_da, ana_obj.df_ww, ana_obj.df_ggww, scales,  fiducial=True, pseudo=pseudo["j2"], query="numb_jets == 2")  
 
   #########################
   #Fits
@@ -106,6 +112,9 @@ def compute_muon( ana_obj, flavor):
   up_string, up_raw = yield_string(df[df.lep_Type != -2], "up\n", scales, rf_ana)
   up = {"tot":0, "j0":0, "j1":0, "j2":0}
   up["tot"] =  cross_calc(df, ana_obj.df_da, ana_obj.df_ww, ana_obj.df_ggww, scales,  fiducial=True, pseudo=pseudo["tot"])  
+  up["j0"] =  cross_calc(df, ana_obj.df_da, ana_obj.df_ww, ana_obj.df_ggww, scales,  fiducial=True, pseudo=pseudo["j0"], query="numb_jets == 0")  
+  up["j1"] =  cross_calc(df, ana_obj.df_da, ana_obj.df_ww, ana_obj.df_ggww, scales,  fiducial=True, pseudo=pseudo["j1"], query="numb_jets == 1")  
+  up["j2"] =  cross_calc(df, ana_obj.df_da, ana_obj.df_ww, ana_obj.df_ggww, scales,  fiducial=True, pseudo=pseudo["j2"], query="numb_jets == 2")  
 
   #########################
   #Fits
@@ -120,6 +129,9 @@ def compute_muon( ana_obj, flavor):
   down_string, down_raw = yield_string(df[df.lep_Type != -1], "down\n", scales, rf_ana)
   down = {"tot":0, "j0":0, "j1":0, "j2":0}
   down["tot"] =  cross_calc(df, ana_obj.df_da, ana_obj.df_ww, ana_obj.df_ggww, scales,  fiducial=True, pseudo=pseudo["tot"])  
+  down["j0"] =  cross_calc(df, ana_obj.df_da, ana_obj.df_ww, ana_obj.df_ggww, scales,  fiducial=True, pseudo=pseudo["j0"], query="numb_jets == 0")  
+  down["j1"] =  cross_calc(df, ana_obj.df_da, ana_obj.df_ww, ana_obj.df_ggww, scales,  fiducial=True, pseudo=pseudo["j1"], query="numb_jets == 1")  
+  down["j2"] =  cross_calc(df, ana_obj.df_da, ana_obj.df_ww, ana_obj.df_ggww, scales,  fiducial=True, pseudo=pseudo["j2"], query="numb_jets == 2")  
   #########################
   #Fits
   down_fit_result = fit.comprehensive_fit(df, ana_obj.df_da, "metMod", scales)
@@ -149,7 +161,7 @@ def compute_muon( ana_obj, flavor):
 
   #Print results
   date = datetime.date.today() 
-  f = open("results/jan/muon_isoid" + str(date.year) + "_" + str(date.month) + "_" + str(date.day) +  flavor + ".txt", "w")
+  f = open("results/mar/muon_isoid" + str(date.year) + "_" + str(date.month) + "_" + str(date.day) +  flavor + ".txt", "w")
   f.write(nominal_string)
   f.write("\n\n\n"+up_string)
   f.write(down_string)
@@ -157,9 +169,9 @@ def compute_muon( ana_obj, flavor):
   f.write("\nUP\n" + "\n".join([ process + ": " + str(up_raw[process] / nominal_raw[process])  for process in up_raw]) + "\n")
   f.write("\nDOWN\n" + "\n".join([  process + ": " + str(down_raw[process] / nominal_raw[process])  for process in down_raw]) + "\n") 
   f.write("\nCross Sections\n")
-  f.write(str(orig) + "\n")
-  f.write(str(up) + "\n")
-  f.write(str(down) + "\n")
+  f.write("Nominal " + str(orig) + "\n")
+  f.write("Up " + str(up) + "\n")
+  f.write("Down " + str(down) + "\n")
   f.write("Cross Sections Unc (%)\n")
   f.write("Up: "    + str([jet + " " + str((orig[jet] - up[jet]) / (orig[jet]) * 100.)  for jet in ["tot"]] ) + "\n")
   f.write("Down: "  + str([jet + " " + str((orig[jet] - down[jet]) / (orig[jet]) * 100.)  for jet in ["tot"]]) + "\n")
@@ -181,7 +193,7 @@ def compute_muon( ana_obj, flavor):
 
 
 if __name__ == "__main__":
-  for flavor in ["",]:# "diff", "same"]:
+  for flavor in ["", "diff", "same"]:
     if flavor == "":
       print "total"
       ana_obj = analysis_setup("lep")

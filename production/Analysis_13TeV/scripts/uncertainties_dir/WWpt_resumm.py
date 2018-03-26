@@ -29,7 +29,6 @@ def compute_resumm_alt(flavor):
     df    = df[df.lep1_type != df.lep2_type]
     df_da = df_da[df_da.lep1_type != df_da.lep2_type]
 
-
   random_forests = ana_obj.rfs 
   features_fDY = random_forests["features_fDY"]
   clf_fDY = random_forests["clf_fDY"]
@@ -60,12 +59,15 @@ def compute_resumm_alt(flavor):
   orig = 0
   orig0 = 0
   orig1 = 0
+  orig2 = 0
   q_ =  {}
   r_ =  {}
   q_0 = {}
   r_0 = {}
   q_1 = {}
   r_1 = {}
+  q_2 = {}
+  r_2 = {}
 
 
   for name in wwpt_dic:
@@ -92,21 +94,26 @@ def compute_resumm_alt(flavor):
     tot_temp_value  = temp_df.ww_weights.sum() * scales["WW"]
     tot_temp_value0 = temp_df.query("numb_jets == 0").ww_weights.sum() * scales["WW"]
     tot_temp_value1 = temp_df.query("numb_jets == 1").ww_weights.sum() * scales["WW"]
+    tot_temp_value2 = temp_df.query("numb_jets == 2").ww_weights.sum() * scales["WW"]
     temp_value = rf_ana(temp_df).ww_weights.sum() * scales["WW"]
     temp_value0 = rf_ana(temp_df).query("numb_jets == 0").ww_weights.sum() * scales["WW"]
     temp_value1 = rf_ana(temp_df).query("numb_jets == 1").ww_weights.sum() * scales["WW"]
+    temp_value2 = rf_ana(temp_df).query("numb_jets == 2").ww_weights.sum() * scales["WW"]
     if "scale" in name:
       q_[name]  = (temp_value , tot_temp_value)
       q_0[name] = (temp_value0, tot_temp_value0)  
       q_1[name] = (temp_value1, tot_temp_value1)
+      q_2[name] = (temp_value2, tot_temp_value2)
     elif "resum" in name:
       r_[name]  = (temp_value , tot_temp_value)
       r_0[name] = (temp_value0, tot_temp_value0)  
       r_1[name] = (temp_value1, tot_temp_value1)  
+      r_2[name] = (temp_value2, tot_temp_value2)  
     else:
       orig  = (temp_value , tot_temp_value)
       orig0 = (temp_value0, tot_temp_value0)  
       orig1 = (temp_value1, tot_temp_value1)  
+      orig2 = (temp_value2, tot_temp_value2)  
       ax1.scatter([i*0.5 for i in range(1000)], y_arr, color='r')
       ax1.set_ylabel('hist of WW', color='r') 
        
@@ -114,52 +121,65 @@ def compute_resumm_alt(flavor):
   print "Orig", orig
   print "Orig0", orig0
   print "Orig1", orig1
+  print "Orig2", orig2
   print ""
   print "scale", q_
   print "scale0", q_0
   print "scale1", q_1
+  print "scale2", q_2
   print ""
   print "resum", r_
   print "resum0", r_0
   print "resum1", r_1
+  print "resum2", r_2
 
   print "Results:"
   _values  = []
   _0values = []
   _1values = []
+  _2values = []
   for name in q_:
     print name, "Tot: ", (q_[name][0]/ q_[name][1]) / (orig[0]/orig[1])
     print name, "j0: ", (q_0[name][0]/q_0[name][1]) / (orig0[0]/orig0[1])
     print name, "j1: ", (q_1[name][0]/q_1[name][1]) / (orig1[0]/orig1[1])
+    print name, "j2: ", (q_2[name][0]/q_2[name][1]) / (orig2[0]/orig2[1])
     _values.append((q_[name][0]/ q_[name][1]) / (orig[0]/orig[1]))
     _0values.append((q_0[name][0]/ q_0[name][1]) / (orig0[0]/orig0[1]))
     _1values.append((q_1[name][0]/ q_1[name][1]) / (orig1[0]/orig1[1]))
+    _2values.append((q_2[name][0]/ q_2[name][1]) / (orig2[0]/orig2[1]))
 
   tot_scale_unc = sum([abs(1 - i) for i in _values])/2. * 100.
   j0_scale_unc = sum([abs(1 - i) for i in _0values])/2. * 100.
   j1_scale_unc = sum([abs(1 - i) for i in _1values])/2. * 100.
+  j2_scale_unc = sum([abs(1 - i) for i in _2values])/2. * 100.
 
   print "Scale tot unc", tot_scale_unc
   print "Scale 0j  unc", j0_scale_unc
   print "Scale 1j  unc", j1_scale_unc
+  print "Scale 2j  unc", j2_scale_unc
 
   _values  = []
   _0values = []
   _1values = []
+  _2values = []
   for name in r_:
     print name, "Tot: ", (r_[name][0] /r_[name][1])  / (orig[0]/orig[1])
     print name, "j0:  ", (r_0[name][0]/r_0[name][1]) / (orig0[0]/orig0[1])
     print name, "j1:  ", (r_1[name][0]/r_1[name][1]) / (orig1[0]/orig1[1])
+    print name, "j2:  ", (r_2[name][0]/r_2[name][1]) / (orig2[0]/orig2[1])
     _values.append((r_[name][0]/ r_[name][1]) / (orig[0]/orig[1]))
     _0values.append((r_0[name][0]/ r_0[name][1]) / (orig0[0]/orig0[1]))
     _1values.append((r_1[name][0]/ r_1[name][1]) / (orig1[0]/orig1[1]))
+    _2values.append((r_2[name][0]/ r_2[name][1]) / (orig2[0]/orig2[1]))
   tot_res_unc = sum([abs(1 - i) for i in _values])/2. * 100.
   j0_res_unc = sum([abs(1 - i) for i in _0values])/2. * 100.
   j1_res_unc = sum([abs(1 - i) for i in _1values])/2. * 100.
+  j2_res_unc = sum([abs(1 - i) for i in _2values])/2. * 100.
 
   print "Res tot unc", tot_res_unc
   print "Res 0j  unc", j0_res_unc
   print "Res 1j  unc", j1_res_unc
+  print "Res 2j  unc", j2_res_unc
 
   #########################
   print "\n\nFit results"
@@ -174,7 +194,7 @@ def compute_resumm_alt(flavor):
     print  "Resum", fit_processes[it], (abs(ele - fit_results["wwpt_resumdown"].x[it]) + abs(ele - fit_results["wwpt_resumup"].x[it]))/(2. * ele) * 100
   #########################
 
-  plt.show()
+  #plt.show()
 
 if __name__ == "__main__":
   for flavor in ["",]:# "same", "diff"]:

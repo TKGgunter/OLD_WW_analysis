@@ -254,7 +254,7 @@ def compute_tagging_results(df, df_da, df_ww, df_ggww, flavor="", reader=reader,
 
 
   date = datetime.date.today() 
-  f = open("results/jan/btag_"+ str(date.month) + "_" + str(date.day)+ "_" + flavor + ".txt", "w")
+  f = open("results/mar/btag_"+ str(date.month) + "_" + str(date.day)+ "_" + flavor + ".txt", "w")
   f.write("\nBC unc(%): " + str(bc_cs_unc) +"\n")
   f.write("B/C Cross-Section\n")
   for i in bc_cs_result:
@@ -287,7 +287,7 @@ def compute_tagging_results(df, df_da, df_ww, df_ggww, flavor="", reader=reader,
 
 
 if __name__ == "__main__":
-  for flavor in [""]:#, "diff", "same"]:
+  for flavor in ["", "diff", "same"]:
     print "Computing", flavor
     if flavor == "":
       compute_tagging_results(df, df_da, df_ww, df_ggww, flavor=flavor)

@@ -85,6 +85,18 @@ def test_split_alt_samples():
       unc += "_"
     test.to_hdf(path + unc + "test.hdf", "table", complevel=3)
    
+def pseudo_data_samples():
+  for unc in  [""]:#, "jet", "lep", "lhe"]:
+    df = load_preselMC(unc)
+    df_da = load_preselData(unc)
+    pseudo_data = df.sample(n= df_da.shape[0], replace= True) 
+    scales_test = {}
+    for key in scales.keys():
+      if key in pseudo_data.process_decay.unique():
+        scales_test[key] = scales[key] * ( float(df_train_test[ df_train_test.process_decay == key].shape[0]) / float(pseudo_data[ pseudo_data.process_decay == key].shape[0]) ) 
+        if key == "WW": print scales[key] , scales_test[key], float(df_train_test[ df_train_test.process_decay == key].shape[0]) , float(pseudo_data[ pseudo_data.process_decay == key].shape[0]) 
+      else:
+        scales_test[key] = scales[key]
 
 if __name__ == "__main__":
 

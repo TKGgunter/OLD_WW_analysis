@@ -8,8 +8,11 @@ from prep_ana_II import *
 
 
 
-def pseudo_data_yield_sum(df_mc, df_data, flavor="both", weights="weight", scales=scales):
+def pseudo_data_yield_sum(df_mc, df_data, flavor="both", weights="weight", scales=scales, query=None):
 
+    if type(query) == type(""):
+        df_mc = df_mc.query(query)
+        df_data = df_data.query(query)
     table = process_yields(df_mc, df_data, scales=scales) 
     return table[ table.Process == "Total" ]["Same Flavor"].values[0] + table[ table.Process == "Total" ]["Diff Flavor"].values[0] 
 
@@ -17,27 +20,27 @@ def pseudo_data_yield_sum(df_mc, df_data, flavor="both", weights="weight", scale
 scale_ww_tot = scales["WW"]
 scale_ggww = scales["GluGluWWTo2L2Nu"]
 
+dic_acc = {"tot": 0.141, "j0": 0.304, "j1": 0.1443, "j2": 0.100}
 
-def calc_cross_stuff(df_mc, df_data, df_ww, df_ggww, scales, flavor="both", weights='weight', rf_ana=rf_ana, pseudo=-99, scale_ww_tot=scale_ww_tot, scale_ggww=scale_ggww ):
+def calc_cross_stuff(df_mc, df_data, df_ww, df_ggww, scales, flavor="both", weights='weight', rf_ana=rf_ana, pseudo=-99, scale_ww_tot=scale_ww_tot, scale_ggww=scale_ggww, acc=dic_acc["tot"] ):
     lumi = float(lumi_amount) * 10**3
-    acc  = 0.188
     Br   = (3*.108)**2.
     
-    df_mc = df_mc[df_mc.pred_fTT_WW > .6]
-    df_data = df_data[df_data.pred_fTT_WW > .6]
     table = process_yields(rf_ana(df_mc, flavor=flavor), rf_ana(df_data, flavor=flavor), scales=scales) 
     #print table
  
     N_mc = 0.
     N_Wjets = 0.
     for process in table.Process.unique():
-        if "Total" in process: continue
+        if "Total" in process: 
+          print "\n", process, "same", table[table.Process == process]["Same Flavor"].values[0] , "diff", table[table.Process == process]["Diff Flavor"].values[0], "\n"
+          continue
         if "DATA" in process: continue
         if process == "Total: WW": continue 
         if process == "WW": continue 
         if process == "GluGluWWTo2L2Nu": continue 
+        print process, "same", table[table.Process == process]["Same Flavor"].values[0] , "diff", table[table.Process == process]["Diff Flavor"].values[0] 
         N_mc += table[table.Process == process]["Same Flavor"].values[0] + table[table.Process == process]["Diff Flavor"].values[0] 
-        #print process, table[table.Process == process]["Same Flavor"].values[0] + table[table.Process == process]["Diff Flavor"].values[0] 
 
         if process == "WJ": N_Wjets += table[table.Process == process]["Same Flavor"].values[0] + table[table.Process == process]["Diff Flavor"].values[0] 
 
@@ -77,7 +80,8 @@ def calc_cross_stuff(df_mc, df_data, df_ww, df_ggww, scales, flavor="both", weig
 
 
 
-def cross_calc(df_mc, df_data, df_ww, df_ggww, scales, flavor="both", fiducial=False, pseudo=-99, scale_ww_tot=35.9e3 * 118.7 * (3*.108)**2 / 1998956, scale_ggww=35.9e3 * 0.84365 / 500000.,  query=None, cross_check=False, **kwargs):
+def cross_calc(df_mc, df_data, df_ww, df_ggww, scales, flavor="both", fiducial=False, pseudo=-99, scale_ww_tot=scales["WW"], scale_ggww=scales["GluGluWWTo2L2Nu"],  query=None, cross_check=False, **kwargs):
+    acc = dic_acc["tot"]
     if kwargs:
         var = kwargs
     else:
@@ -86,7 +90,16 @@ def cross_calc(df_mc, df_data, df_ww, df_ggww, scales, flavor="both", fiducial=F
           df_data = df_data.query(query)
           df_ww = df_ww.query(query)
           df_ggww = df_ggww.query(query)
-        var = calc_cross_stuff(df_mc, df_data, df_ww, df_ggww, scales=scales, flavor=flavor, pseudo=pseudo, scale_ww_tot=scale_ww_tot, scale_ggww=scale_ggww)
+
+          #if query == "numb_jets == 0":
+          #  acc = dic_acc["j0"]
+          #elif query == "numb_jets == 1":
+          #  acc = dic_acc["j1"]
+          #elif query == "numb_jets == 2":
+          #  acc = dic_acc["j2"]
+          #else:
+          #  print "Shit not tagged"
+        var = calc_cross_stuff(df_mc, df_data, df_ww, df_ggww, scales=scales, flavor=flavor, pseudo=pseudo, scale_ww_tot=scale_ww_tot, scale_ggww=scale_ggww, acc=acc)
 
     lumi = var["lumi"]
     acc = var["acc"]
@@ -96,6 +109,9 @@ def cross_calc(df_mc, df_data, df_ww, df_ggww, scales, flavor="both", fiducial=F
     ratio_s_t = var["ratio_s_t"]
     N_ww_select = var["N_ww_select"]
     N_Wjets = var["N_Wjets"]
+
+    #print var
+    #print "ratio", ratio_s_t, "N_ww_select", N_ww_select
 
     #print "var from function", var    
     if fiducial == False:
@@ -231,12 +247,26 @@ if __name__ == "__main__":
   df_ggww = ana_obj.df_ggww
 
   #print "Calc cross section stuff", calc_cross_stuff(df, df_da, df_ww, df_ggww, scales)
-  print "Total Cross section calc: Fiducial:", cross_calc(df, df_da, df_ww, df_ggww, scales, fiducial=True), "Total:", cross_calc(df, df_da, df_ww, df_ggww, scales, fiducial=False)
-  print "0j: Cross section calc: Fiducial:", cross_calc(df, df_da, df_ww, df_ggww, scales, fiducial=True, query="numb_jets == 0"), "Total:", cross_calc(df, df_da, df_ww, df_ggww, scales, fiducial=False, query="numb_jets == 0")
-  print "1j: Cross section calc: Fiducial:", cross_calc(df, df_da, df_ww, df_ggww, scales, fiducial=True, query="numb_jets == 1"), "Total:", cross_calc(df, df_da, df_ww, df_ggww, scales, fiducial=False, query="numb_jets == 1")
-  print "2j: Cross section calc: Fiducial:", cross_calc(df, df_da, df_ww, df_ggww, scales, fiducial=True, query="numb_jets == 2"), "Total:", cross_calc(df, df_da, df_ww, df_ggww, scales, fiducial=False, query="numb_jets == 2")
-  print "3j: Cross section calc: Fiducial:", cross_calc(df, df_da, df_ww, df_ggww, scales, fiducial=True, query="numb_jets == 3"), "Total:", cross_calc(df, df_da, df_ww, df_ggww, scales, fiducial=False, query="numb_jets == 3")
-  print "Stat unc", stat_unc_calc(rf_ana(df), rf_ana(df_da), df_ww, df_ggww, scales, unc_mc_process, fiducial=True)
+  #print "Total Cross section calc: Fiducial:", cross_calc(df, df_da, df_ww, df_ggww=None, scales=scales, fiducial=False, cross_check=True)
+  print "Total Cross section calc: Fiducial:", cross_calc(df, df_da, df_ww, df_ggww, scales, fiducial=False, cross_check=True), 
+  #print "Total:", cross_calc(df, df_da, df_ww, df_ggww, scales, fiducial=False)
+
+  print "0j: Cross section calc: Fiducial:", cross_calc(df, df_da, df_ww, df_ggww, scales, fiducial=False, cross_check=True, query="numb_jets == 0"), 
+  #print "Total:", cross_calc(df, df_da, df_ww, df_ggww, scales, fiducial=False, query="numb_jets == 0")
+
+  print "1j: Cross section calc: Fiducial:", cross_calc(df, df_da, df_ww, df_ggww, scales, fiducial=False, cross_check=True, query="numb_jets == 1"),
+  #print  "Total:", cross_calc(df, df_da, df_ww, df_ggww, scales, fiducial=False, query="numb_jets == 1")
+
+  print "2j: Cross section calc: Fiducial:", cross_calc(df, df_da, df_ww, df_ggww, scales, fiducial=False, cross_check=True, query="numb_jets == 2"),
+  #print "Total:", cross_calc(df, df_da, df_ww, df_ggww, scales, fiducial=False, query="numb_jets == 2")
+
+  print "3j: Cross section calc: Fiducial:", cross_calc(df, df_da, df_ww, df_ggww, scales, fiducial=False, cross_check=True, query="numb_jets == 3"),
+  #"Total:", cross_calc(df, df_da, df_ww, df_ggww, scales, fiducial=False, query="numb_jets == 3")
+
+  print "4j: Cross section calc: Fiducial:", cross_calc(df, df_da, df_ww, df_ggww, scales, fiducial=False, cross_check=True, query="numb_jets == 4"),
+  #"Total:", cross_calc(df, df_da, df_ww, df_ggww, scales, fiducial=False, query="numb_jets == 4")
+
+#  print "Stat unc", stat_unc_calc(rf_ana(df), rf_ana(df_da), df_ww, df_ggww, scales, unc_mc_process, fiducial=True)
 
 #  for p in df.process_decay.unique():
 #    print p, scales[p]**2, rf_ana(df[df.process_decay == p]).shape[0]

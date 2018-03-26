@@ -88,7 +88,7 @@ columns = list(set(['process', 'process_decay', 'lep1_type', 'lep2_type',
                     'tot_npv', 'gen_pu', 'pileup_weight', 'pileup_up_weight', 'pileup_down_weight',
                     'pileup_weight_mf', 'pileup_up_weight_mf','pileup_down_weight_mf',
                     'mll', 'numb_jets', 'metMod', 'numb_BJet',
-                    'lep1_pt', 'lep2_pt', 'lep3_pt', 'dPhiLL', 'lep1_phi', 'lep2_phi',
+                    'lep1_pt', 'lep2_pt', 'lep3_pt', 'dPhiLL', 'lep1_phi', 'lep2_phi', 'lep1_eta', 'lep2_eta',
                     'jet1_csv', 'jet1_pt', 'jet2_pt', 'HT', 'numb_BJet_gen', 'jet1_phi', 'jet2_phi', 'jet1_eta', 'jet2_eta', 
                     'METProj_sin', 'met_over_sET', 'METProj', 'met_phi', 
                     'weight', 'bjet_weight', 'id_weight', 'gen_weight', 'el1_id_weight', 'el2_id_weight', 'mu_id_weight',
@@ -100,7 +100,7 @@ columns_jets_unc  = list(set(columns +['jet1_csv', 'jet2_csv','jet3_csv', 'jet4_
                                        'jet1_pt', 'jet2_pt', 'jet3_pt', 'jet4_pt','jet5_pt', 'jet6_pt','HT', 'jet1_csv',
                                        'jet1_phi', 'jet2_phi', 'jet3_phi', 'jet4_phi', 'jet5_phi', 'jet6_phi', 'jet1_eta',
                                        'jet2_eta', 'jet3_eta', 'jet4_eta', 'jet5_eta', 'jet6_eta', 'numb_BJet_gen', 'bjet_weight', 'bjet_unc'])) 
-columns_lhe       = list(set(columns + ['lhe_weight_string', 'pdf_weight'] + ["qcd_weight"+str(i) for i in range(1, 9)] + ['qcd_weight']))
+columns_lhe       = list(set(columns + ['pdf_weight'] + ["qcd_weight"+str(i) for i in range(1, 9)] + ['qcd_weight']))
 
 def load_origMC( add_columns=None, columns=columns):
   ###################
@@ -973,10 +973,15 @@ def plot_two_rf( map_arr ):
   plt.xlabel("TT RF")
   plt.ylabel("DY RF")
 
-def process_yields( df, df_da=None, processes= ['WW', 'DY', 'Top', 'WZ', 'ZZ', 'WG', 'WJ', 'Higgs'], scales=scales ):
+def process_yields( df, df_da=None, query=None, processes= ['WW', 'DY', 'Top', 'WZ', 'ZZ', 'WG', 'WJ', 'Higgs'], scales=scales ):
   """
   returns a dataframe
   """
+
+  if type(query) == type(""):
+    df = df.query(query)
+    df_da = df_da.query(query)
+
   tot_same = 0
   tot_diff = 0
 
@@ -1081,6 +1086,9 @@ def save_df_to_html( df, file_name, columns=["Process", "Same Flavor", "Diff Fla
 
 #Ok this is a temp
 def full_bin_plot(df, df_da, binned_feature, query=None,scales=scales, logy=True, x_range=None, y_range=None):
+    """
+    Returns a, b, c, d
+    """
     df_diff    = df[df.lep1_Charge != df.lep2_Charge]
     df_da_diff = df_da[df_da.lep1_Charge != df_da.lep2_Charge]
     

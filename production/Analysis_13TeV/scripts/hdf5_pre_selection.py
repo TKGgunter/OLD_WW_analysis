@@ -7,7 +7,7 @@ from prep_ana_II import *
 
 
 if __name__ == "__main__":
-  pre_unc = ""
+  pre_unc = "all"
   if len(sys.argv) > 1:
      pre_unc = sys.argv[1]
   print pre_unc

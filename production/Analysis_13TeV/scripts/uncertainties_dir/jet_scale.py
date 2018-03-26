@@ -1,6 +1,7 @@
 #Thoth Gunter
 
 import os, sys, pickle, copy
+import datetime
 
 cdir = os.getcwd()
 cdir = "/home/gunter/WW_analysis/production/Analysis_13TeV/scripts/uncertainties_dir"
@@ -697,8 +698,8 @@ def cross_section_JES( jec_obj, file_name, verbose=False, flavor=""):
   #?true date
   if flavor != "":
     flavor = "_" + flavor
-  date = "22jan"
-  f = open( "results/jan/jes_"+date+flavor+".txt", "w")
+  date = datetime.date.today() 
+  f = open( "results/mar/jes_"+str(date.year) + "_" + str(date.month) + "_" +flavor+".txt", "w")
   f.write("Cross section JES\n")
   f.write("X-section:"+str(orig) + "\n")
   f.write("Orig: "+     str([(k, (orig[k] - orig[k]) / orig[k] * 100)     for k in orig]) + "\t Efficiency: " + str(eff_orig) +"\n")
@@ -736,7 +737,7 @@ if __name__ == "__main__":
   import warnings
   warnings.filterwarnings('ignore')
 
-  for flavor in ["",]:# "same", "diff"]:
+  for flavor in ["", "same", "diff"]:
     jec_obj = analysis_setup(unc="jet", flavor=flavor)
     jec_obj.loadJECUnc()
     jec_obj.apply_pre_cuts()
