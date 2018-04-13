@@ -17,5 +17,6 @@ data_13TeV_old/
 data_8TeV_old/
 package_wjets/
 mumu_140_160.csv
+PAPER/
 *.tar
 *.zip

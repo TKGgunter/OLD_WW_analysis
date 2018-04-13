@@ -12,7 +12,7 @@ def pre_cuts( df, diff_charge= True):
   """
   dif_lep = df.lep_Type > 0
   sam_lep = df.lep_Type < 0
-  z_mass = (df.mll < 76) | (df.mll > 106 )
+  z_mass = (df.mll < 74) | (df.mll > 106 )
   nBjet = df.numb_BJet == 0
   extra_lep = df.numbExtraLep == 0
   quality_cuts = df.mll > 30 

@@ -10,6 +10,8 @@ NPV;Entries;51;(-0.5, 50.5);tot_npv
 MET over Sum ET;Entries/5GeV;50;(0,10);met_over_sET
 $M_{ll MET}$(GeV);Entries/5GeV;50;(0,250);mllMET
 MET(GeV);Entries/5GeV;50;(0,250);metMod
+Number of Jets;Entries;10;(-0.5, 9.5);numb_jets
+Number of B-Jets;Entries;10;(-0.5, 9.5);numb_BJet
 ???(GeV);Entries/5GeV;50;(0,250);default_met
 ???;Entries;50;(-5,5);default_eta
 ???;Entries;50;(-4,4);default_phi
@@ -18,3 +20,12 @@ MET(GeV);Entries/5GeV;50;(0,250);metMod
 ???;Entries;4;(-2.5,1.5);lep_Type
 Drell Yan Random Forest score;Entries;50;(0,1.1);pred_fDY_WW
 Top Random Forest score;Entries;50;(0,1.1);pred_fTT_WW
+
+
+
+
+
+
+
+
+

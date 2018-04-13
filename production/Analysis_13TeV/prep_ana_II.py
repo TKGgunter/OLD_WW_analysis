@@ -254,6 +254,10 @@ def load_randomForest():
   return joblib.load( post_data_dir + "RF/mar_fDY_fTT.jbl")
 
 
+def create_pseudoDATA(columns=None):
+  df = load_origMC()
+  df = df.sample(frac=0.99, replace=True)
+  return df
 
 def loose_pre_cuts( df ): 
 
@@ -859,7 +863,12 @@ def plot_hist( bins, plotting_options=plotting_options, processes=None, x_range=
       plt.xlabel( title, fontname='Bitstream Vera Sans', fontsize=24)#position=(1., 0.), va='bottom', ha='right',)
 
   #plt.rc('text', usetex=True)
-  ax.set_title(r"\textbf{CMS} Preliminary \hspace{8cm} $"+ lumi_amount +" fb^{-1}$ $\sqrt{s}="+page+"$", fontname='Bitstream Vera Sans', fontsize=24)
+  page_ = [page, ""]
+  if page == "13TeV":
+    page_ = ["13", "TeV"]
+  else:
+    page_ = ["8", "TeV"]
+  ax.set_title(r"\textbf{CMS} Work in Progress \hspace{8cm} $"+ lumi_amount +" fb^{-1}$ $\sqrt{s}="+page_[0]+" \mathrm{"+page_[1]+"}$", fontname='Bitstream Vera Sans', fontsize=24)
 
   ####################################
   #Add minor tick marks to the x-axis

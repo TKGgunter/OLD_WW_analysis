@@ -559,3 +559,4 @@ tab completion not implemented for this context
 [W 10:48:11.613 NotebookApp] WebSocket ping timeout after 119999 ms.
 [I 10:48:33.977 NotebookApp] Saving file at /notebooks/pileup.ipynb
 [W 10:48:33.977 NotebookApp] Saving untrusted notebook notebooks/pileup.ipynb
+[W 15:44:29.939 NotebookApp] Notebook notebooks/pileup.ipynb is not trusted
