@@ -247,7 +247,7 @@ def kill_jets( df, pt_cut= jet_pt_cut_global ):
   #?Not quite what I should be doing..
   n_jets = np.zeros(df.shape[0]) #np.maximum(np.zeros(df.shape[0]), df.numb_jets.values - 6)
   for k in df.keys():
-    if "jet" in k and "pt" in k:
+    if "jet" in k[:3] and "pt" in k:
       cut = (df[k] > pt_cut)
       n_jets[cut.values] = n_jets[cut.values] + 1 
 
@@ -270,7 +270,7 @@ def jet_scale_shift_flat(data, jet_pt_shift=1., pt_cut=jet_pt_cut_global, rf=Non
   data.HT = data.HT * 0
   #Scale pt of each jet
   for k in data.keys():
-    if "jet" in k and "pt" in k:
+    if "jet" in k[:3] and "pt" in k:
 
       #Original vec_ht values Energy scale  
       vec_ht_values_sin_orig += data[k] * np.sin(data[k[:4] + "_phi"]) 
@@ -337,7 +337,7 @@ def jet_scale_shift_official(data, pt_cut=jet_pt_cut_global, up_down="up", rf=No
     thingoo = -1
   for k in data.keys():
     if "bjet" in k: continue
-    if "jet" in k and "unc" in k:
+    if "jet" in k[:3] and "unc" in k:
 
       #Original vec_ht values Energy scale  
       vec_ht_values_sin_orig += data[k[:4] + "_pt"] * np.sin(data[k[:4] + "_phi"]) 
@@ -347,7 +347,7 @@ def jet_scale_shift_official(data, pt_cut=jet_pt_cut_global, up_down="up", rf=No
       data[k[:-3]+"pt"] = data[k[:-3]+"pt"] * np.abs(thingoo + data[k])
   #######?Same loop maybe
   for k in data.keys():
-    if "jet" in k and "pt" in k:
+    if "jet" in k[:3] and "pt" in k:
       ht_lost_jet = data[k] >= pt_cut
       data.HT.values[ht_lost_jet] = data[ht_lost_jet].HT.values + data[ht_lost_jet][k].values
 
@@ -393,7 +393,7 @@ def apply_binned_jet_uncertainty( df, bins, pt_bins, eta_bins):
   #bins, pt_bins, eta_bins
 
   for k in df.keys():
-    if "jet" in k and "eta" in k:
+    if "jet" in k[:3] and "eta" in k:
       df[ k[:-3]+"unc"] = 0.
 
   pt_ = 30
@@ -403,7 +403,7 @@ def apply_binned_jet_uncertainty( df, bins, pt_bins, eta_bins):
     for jt, eta in enumerate(eta_bins):
       #print "eta:", eta_, eta_ + eta
       for k in df.keys():
-        if "jet" in k and "eta" in k:
+        if "jet" in k[:3] and "eta" in k:
           if pt_ == 30:
             selection = (df[k[:-3] + "pt"] >= 20.) &\
                         (df[k[:-3] +"pt"] < pt_ + pt) &\

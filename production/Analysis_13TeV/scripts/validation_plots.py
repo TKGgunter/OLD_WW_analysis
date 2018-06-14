@@ -62,6 +62,12 @@ def main(scales=scales):
   def rfWW_ana( df, diff_charge=True ):
     return df[(df.pred_fDY_WW > .9) & (df.pred_fTT_WW > .6) ] 
 
+  def rfWW_tt( df, diff_charge=True ):
+    return df[(df.pred_fTT_WW > .6) ] 
+
+  def rfWW_dy( df, diff_charge=True ):
+    return df[(df.pred_fDY_WW > .9) ] 
+
   def tot_ana(df, diff_charge=True):
     return df
 
@@ -78,7 +84,7 @@ def main(scales=scales):
 
     if cut_level == "rf":
 
-      control_regions = {"rfDY": rfDY_ana, "rfTT": rfTT_ana, "rfWW": rfWW_ana, "tot": tot_ana, }
+      control_regions = {"rfDY": rfDY_ana, "rfTT": rfTT_ana, "rfWW": rfWW_ana, "tot": tot_ana, "rfWW_tt": rfWW_tt, "rfWW_dy": rfWW_dy}
     make_control_plots(df[df.mll > 30], df_da[df_da.mll > 30], month+"_"+day, cut_level, energy_dir= "13TeV", control_regions= control_regions, scales=scales) 
 
 
@@ -87,7 +93,7 @@ def main(scales=scales):
     if control_regions == None:
       control_regions = {"WW": WW_ana, "TT": TT_ana, "DY": DY_ana, "Z_tt": Z_tt_ana, "same": same_ana, "diff": diff_ana, "full": full_ana}
     if cut_level == "rf":
-      control_regions = {"rfDY": rfDY_ana, "rfTT": rfTT_ana, "rfWW": rfWW_ana, "tot": tot_ana}
+      control_regions = {"rfDY": rfDY_ana, "rfTT": rfTT_ana, "rfWW": rfWW_ana, "tot": tot_ana, "rfWW_tt": rfWW_tt, "rfWW_dy": rfWW_dy}
  
 
     for region in control_regions: 

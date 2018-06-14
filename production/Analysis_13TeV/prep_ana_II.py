@@ -846,9 +846,19 @@ def plot_hist( bins, plotting_options=plotting_options, processes=None, x_range=
   if logy == True: 
     if sum_bins.sum() > 0: 
       ax.set_yscale("log", nonposy='clip')
-  if x_range!=None: ax.set_xlim(x_range)
+  if type(x_range)==tuple: ax.set_xlim(x_range)
   if y_range==None: 
-    if logy == True: ax.set_ylim( bottom=1,  top= sum_bins[~np.isinf(sum_bins)].max()*30.)
+    bottom = 1 
+
+    bottoms = [100, 10] 
+    for _bottom in bottoms:
+      if _bottom * 5 < sum_bins[~np.isinf(sum_bins)].min():
+        continue
+      else:
+        if bottom < _bottom:
+          bottom = _bottom
+
+    if logy == True: ax.set_ylim( bottom=bottom,  top= sum_bins[~np.isinf(sum_bins)].max()*5.)
     else: ax.set_ylim( bottom=0,  top= sum_bins.max()*2.)
   elif type(y_range)==tuple: ax.set_ylim( y_range )
 
@@ -989,7 +999,8 @@ def process_yields( df, df_da=None, query=None, processes= ['WW', 'DY', 'Top', '
 
   if type(query) == type(""):
     df = df.query(query)
-    df_da = df_da.query(query)
+    if type(df_da) == type(df):
+      df_da = df_da.query(query)
 
   tot_same = 0
   tot_diff = 0
