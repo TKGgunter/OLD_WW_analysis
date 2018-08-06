@@ -16,15 +16,17 @@ computername = socket.gethostname().lower()
 if computername == "Ifrit".lower():
   sys.path.append("/home/gunter/WW_analysis/production/Analysis_13TeV/scripts/uncertainties_dir")
   #Set analysis home directory
-  home_dir = "/home/gunter/WW_analysis/production/Analysis_13TeV"
-  post_data_dir = home_dir + "/data/"
+  home_dir = "/home/gunter/WW_analysis"
+  post_data_dir = home_dir + "/production/Analysis_13TeV/data/"
+  data_path = home_dir + "/data"#"/data_alpha" 
 
 elif computername == "swordfish":
   print("not implemented")
   sys.path.append("/home/gunter/WW_analysis/production/Analysis_13TeV/scripts/uncertainties_dir")
   #Set analysis home directory
-  home_dir = "/home/gunter/WW_analysis/production/Analysis_13TeV"
-  post_data_dir = home_dir + "/data/"
+  home_dir = "/home/gunter/WW_analysis"
+  post_data_dir = home_dir + "/production/Analysis_13TeV/data/"
+  data_path = home_dir + "/data"#"/data_alpha" 
 
 
 print "home", home_dir
@@ -44,9 +46,11 @@ print("Loading plotting options")
 plotting_options = pd.read_csv(home_dir+"/plotting_options_"+page+".csv", index_col=None, sep=";")
 
 
-#DATA path may change
-home_dir_ = "/home/gunter/WW_analysis" 
-data_path = home_dir_ + "/data_alpha"#"/data_old_alpha" 
+#NOTE: 
+#Defunct we instantiation at the top of file
+
+#home_dir_ = "/home/gunter/WW_analysis" 
+#data_path = home_dir_ + "/data_alpha"#"/data_old_alpha" 
 
 
 
@@ -78,7 +82,7 @@ for key in plotting_options.keys():
       else: palettes[key][process] = eval( plotting_options[ plotting_options.process == process ][key].values[0] )
 ####################      
 # Features
-features = ['numb_BJet', 'HT', 'lep_Type', 'numb_jets', 'lep1_pt',
+features = ['numb_BJet', 'HT', 'lep_Type', 'numb_jets', 'numb_jets_24', 'numb_gen_jets', 'numb_gen_jets_24', 'lep1_pt',
             'jet1_pt', 'lep2_pt', 'jet2_pt', 'metMod', 'dPhiLL', 
             'METProj', 'qT', 'dPhiLLJet', 'met_phi', 'lep3_pt',
             'tot_npv', 'mll', 'METProj_sin', 'met_over_sET',
@@ -159,6 +163,14 @@ def load_origMC( add_columns=None, columns=columns):
   df_ggww = rp.read_root(data_path+"/glugluww_complete.root", columns=columns)  
 
   df_list += [df_wg, df_ggh, df_ggww]
+
+  #Some smaller higgs stuff
+  df_ggh_tautau = rp.read_root(data_path+"/glugluhtotautau_complete.root", columns=columns)
+  df_hzj_ww = rp.read_root(data_path+"/hzj_htowwto2l2nu_complete.root", columns=columns)
+  df_vbfh_ww = rp.read_root(data_path+"/vbfhtowwto2l2nu_complete.root", columns=columns)
+
+  df_list += [df_ggh_tautau, df_hzj_ww, df_vbfh_ww]
+
 
   #Finishing up
   for i in df_list:
@@ -525,11 +537,13 @@ def jet_scale_shift_flat(data, jet_pt_shift=1., pt_cut=30, rf=None):
 
   if rf != None:
   #print "Recreating random forest scores."
-    pred_fTT = rf["clf_fTT"].predict_proba(np.float32(data[rf["features_fTT"]].values))
+    temp = data[rf["features_fTT"]]
+    temp = temp.replace([np.inf,-np.inf, np.nan], 0)
+    pred_fTT = rf["clf_fTT"].predict_proba(np.float32(temp.values))
     data["pred_fTT_WW"] = pred_fTT[:,0]
 
     temp = data[rf["features_fDY"]]
-    temp = temp.replace([np.inf,-np.inf], 0)
+    temp = temp.replace([np.inf,-np.inf, np.nan], 0)
     pred_fDY = rf["clf_fDY"].predict_proba(np.float32(temp.values))
     data["pred_fDY_WW"] = pred_fDY[:,0]
 
@@ -1058,10 +1072,10 @@ def process_yields( df, df_da=None, query=None, processes= ['WW', 'DY', 'Top', '
             sum_process_diff += df[(df.process_decay==decay) & (df.lep_Type > 0) & (df.lep1_Charge == df.lep2_Charge)].weight.sum() * scales[decay]
             #print decay, df[(df.process_decay==decay) & (df.lep1_Charge == df.lep2_Charge)].weight.sum() * scales[decay]
     #print df_da[(df_da.lep1_Charge == df_da.lep2_Charge) ].shape[0], sum_process_diff + sum_process_same
-    sum_process_same =  max([df_da[(df_da.lep_Type < 0) & (df_da.lep1_Charge == df_da.lep2_Charge) ].shape[0] - sum_process_same, 0])
-    sum_process_diff =  max([df_da[(df_da.lep_Type > 0) & (df_da.lep1_Charge == df_da.lep2_Charge) ].shape[0] - sum_process_diff, 0])
-    yield_dic["Same Flavor"].append( int(round(sum_process_same * ds_ov_ss)) )
-    yield_dic["Diff Flavor"].append( int(round(sum_process_diff * ds_ov_ss)) )
+    sum_process_same =  max([df_da[(df_da.lep_Type < 0) & (df_da.lep1_Charge == df_da.lep2_Charge) ].shape[0] - sum_process_same, 0]) * ds_ov_ss
+    sum_process_diff =  max([df_da[(df_da.lep_Type > 0) & (df_da.lep1_Charge == df_da.lep2_Charge) ].shape[0] - sum_process_diff, 0]) * ds_ov_ss  
+    yield_dic["Same Flavor"].append( int(round(sum_process_same)) )
+    yield_dic["Diff Flavor"].append( int(round(sum_process_diff)) )
     yield_dic["Process"].append( 'WJ' )    
 
     tot_same += sum_process_same

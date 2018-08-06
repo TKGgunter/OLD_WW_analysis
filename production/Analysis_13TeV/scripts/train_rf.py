@@ -115,7 +115,7 @@ if __name__ == "__main__":
   print pre_unc
 
   print "Train random forest"
-  rfs = train_rfs()
+  #rfs = train_rfs()
   rfs  = analysis_setup().rfs
   print "Score testset data"
   if pre_unc == "all":

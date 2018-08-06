@@ -52,6 +52,10 @@ df_ww = ana_obj.df_ww
 df_ggww = ana_obj.df_ggww
 rf = ana_obj.rfs
 
+
+#temp = df[rf["features_fTT"]]
+#temp = temp.replace([np.inf,-np.inf], 0)
+#df[rf["features_fTT"]] = temp
 print process_yields(rf_ana(df), rf_ana(df_da), scales=scales)
 """
 df = load_origMC(columns=columns_jets_unc)#?Need to think about this
@@ -133,7 +137,9 @@ def compute_tagging_results(df, df_da, df_ww, df_ggww, flavor="", reader=reader,
   x_per_jet_bin(orig, df, df_da, df_ww, df_ggww, cross_calc, scales, args={"fiducial":True, "pseudo":pseudo})
   print orig
 
-  print process_yields(rf_ana(df), rf_ana(df_da), scales=scales)
+  print "Nominal WW\n",process_yields(rf_ana(df), rf_ana(df_da), scales=scales)
+  print "Nominal DY\n",process_yields(rf_ana_DY(df), rf_ana_DY(df_da), scales=scales)
+  print "Nominal TT\n",process_yields(rf_ana_TT(df), rf_ana_TT(df_da), scales=scales)
   #########################
   #Fits
   nominal_fit_result = fit.comprehensive_fit(df, df_da, "metMod", scales)
@@ -141,7 +147,7 @@ def compute_tagging_results(df, df_da, df_ww, df_ggww, flavor="", reader=reader,
 
   ###################################################
   ##        B/C    TAGGING 
-  up =  calc_bjet_weight(df[(df.numb_BJet == 0)  ], reader, u"up", flv_interest=5)
+  up =  calc_bjet_weight(df[(df.numb_BJet == 0)], reader, u"up", flv_interest=5)
   df["weight"] = df.weight.values / nominal * up
   print "\nB/C Up weights: ", df.weight.sum()
 
@@ -150,6 +156,9 @@ def compute_tagging_results(df, df_da, df_ww, df_ggww, flavor="", reader=reader,
   #########################
   #Fits
   bc_up_fit_result = fit.comprehensive_fit(df, df_da, "metMod", scales)
+  print "Up WW\n",process_yields(rf_ana(df), rf_ana(df_da), scales=scales)
+  print "Up DY\n",process_yields(rf_ana_DY(df), rf_ana_DY(df_da), scales=scales)
+  print "Up TT\n",process_yields(rf_ana_TT(df), rf_ana_TT(df_da), scales=scales)
   #########################
 
 
@@ -162,6 +171,9 @@ def compute_tagging_results(df, df_da, df_ww, df_ggww, flavor="", reader=reader,
   #########################
   #Fits
   bc_down_fit_result = fit.comprehensive_fit(df, df_da, "metMod", scales)
+  print "Down WW\n",process_yields(rf_ana(df), rf_ana(df_da), scales=scales)
+  print "Down DY\n",process_yields(rf_ana_DY(df), rf_ana_DY(df_da), scales=scales)
+  print "Down TT\n",process_yields(rf_ana_TT(df), rf_ana_TT(df_da), scales=scales)
   #########################
 
   print orig

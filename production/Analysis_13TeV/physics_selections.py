@@ -162,6 +162,40 @@ def rf_ana(df, flavor="both"):
 
   return df[fDY & fTT & flv]
 
+def rf_ana_DY(df, flavor="both"):
+  """
+    cuts:
+  """
+  fDY = df.pred_fDY_WW < 0.65
+  fTT = df.pred_fTT_WW > -1.0
+
+  if flavor == "same":
+    flv = df.lep_Type < 0
+  elif flavor == "diff":
+    flv = df.lep_Type > 0
+  else:
+    flv = df.lep_Type > -99
+
+  return df[fDY & fTT & flv]
+
+def rf_ana_TT(df, flavor="both"):
+  """
+    cuts:
+    df.pred_fDY_WW > .9
+    df.pred_fTT_WW > .6
+  """
+  fDY = df.pred_fDY_WW > .4
+  fTT = df.pred_fTT_WW < 0.5
+
+  if flavor == "same":
+    flv = df.lep_Type < 0
+  elif flavor == "diff":
+    flv = df.lep_Type > 0
+  else:
+    flv = df.lep_Type > -99
+
+  return df[fDY & fTT & flv]
+
 
 
 
