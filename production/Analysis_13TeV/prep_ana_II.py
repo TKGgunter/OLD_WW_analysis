@@ -18,7 +18,8 @@ if computername == "Ifrit".lower():
   #Set analysis home directory
   home_dir = "/home/gunter/WW_analysis"
   post_data_dir = home_dir + "/production/Analysis_13TeV/data/"
-  data_path = home_dir + "/data"#"/data_alpha" 
+  data_path = home_dir + "/data"
+  production_path = home_dir + "/production/Analysis_13TeV/"
 
 elif computername == "swordfish":
   print("not implemented")
@@ -26,14 +27,15 @@ elif computername == "swordfish":
   #Set analysis home directory
   home_dir = "/home/gunter/WW_analysis"
   post_data_dir = home_dir + "/production/Analysis_13TeV/data/"
-  data_path = home_dir + "/data"#"/data_alpha" 
+  data_path = home_dir + "/data"
+  production_path = home_dir + "/production/Analysis_13TeV/"
 
 
 print "home", home_dir
 
 
 print("Loading binning options...")
-binning_options = pd.read_csv( home_dir+"/binning_options.txt", index_col=None, sep=";" )
+binning_options = pd.read_csv( production_path + "/binning_options.txt", index_col=None, sep=";" )
 
 
 #Set energy and lumi defaults
@@ -43,7 +45,7 @@ lumi_amount="35.9"
 page_temp = "13TeV"
 
 print("Loading plotting options")
-plotting_options = pd.read_csv(home_dir+"/plotting_options_"+page+".csv", index_col=None, sep=";")
+plotting_options = pd.read_csv(production_path + "/plotting_options_"+page+".csv", index_col=None, sep=";")
 
 
 #NOTE: 
@@ -168,8 +170,10 @@ def load_origMC( add_columns=None, columns=columns):
   df_ggh_tautau = rp.read_root(data_path+"/glugluhtotautau_complete.root", columns=columns)
   df_hzj_ww = rp.read_root(data_path+"/hzj_htowwto2l2nu_complete.root", columns=columns)
   df_vbfh_ww = rp.read_root(data_path+"/vbfhtowwto2l2nu_complete.root", columns=columns)
+  df_hwplus = rp.read_root(data_path+"/hwplusj_htoww_complete.root", columns=columns)
+  df_hwminus = rp.read_root(data_path+"/hwminusj_htoww_complete.root", columns=columns)
 
-  df_list += [df_ggh_tautau, df_hzj_ww, df_vbfh_ww]
+  df_list += [df_ggh_tautau, df_hzj_ww, df_vbfh_ww, df_hwplus, df_hwminus]
 
 
   #Finishing up
@@ -336,11 +340,13 @@ def write_preselRF(pre_unc="", data_mc=""):
   clf_fTT = random_forests["clf_fTT"]
 
   #Predict MC
-  pred_fTT = clf_fTT.predict_proba(np.float32(df[features_fTT].values))
+  temp = df[features_fTT] 
+  temp = temp.replace([np.inf, -np.inf, np.nan], 0)
+  pred_fTT = clf_fTT.predict_proba(np.float32(temp.values))
   df["pred_fTT_WW"] = pred_fTT[:,0]
 
   temp = df[features_fDY] 
-  temp = temp.replace([np.inf, -np.inf], 0)
+  temp = temp.replace([np.inf, -np.inf, np.nan], 0)
   pred_fDY = clf_fDY.predict_proba(np.float32(temp.values))
   df["pred_fDY_WW"] = pred_fDY[:,0]
 
@@ -630,8 +636,8 @@ def create_kinematic_hist(df_mc, df_data, prefix="", scales=scales):
     if feature not in df_mc.keys(): continue
     print feature, df_mc.shape
     a, b, figs, ax = full_bin_plot(df_mc, df_data, feature, scales=scales,)
-    figs.savefig(home_dir + '/plots/' + prefix + "_"+ feature + "_prod.png")
-    figs.savefig(home_dir + '/plots/' + prefix + "_"+ feature + "_prod.pdf")
+    figs.savefig(production_path + '/plots/' + prefix + "_"+ feature + "_prod.png")
+    figs.savefig(production_path + '/plots/' + prefix + "_"+ feature + "_prod.pdf")
   print "\nFeature plots done.", prefix
   return
 ##############################################
@@ -1036,7 +1042,7 @@ def process_yields( df, df_da=None, query=None, processes= ['WW', 'DY', 'Top', '
     sum_process_diff = 0
     for decay in df[df.process == process].process_decay.unique():
       if decay not in scales.keys():
-        print "Skipping", process, "process not in scale keys"
+        print "Skipping", process, "process ", decay, " decay  not in scale keys"
         continue
       if process == "WW":
         sum_process_same_ = df[(df.process_decay==decay) & (df.lep_Type < 0) & (df.lep1_Charge != df.lep2_Charge)].weight.sum() * scales[decay]
@@ -1102,7 +1108,7 @@ def save_df_to_html( df, file_name, columns=["Process", "Same Flavor", "Diff Fla
   """
   Save file to tables directory
   """
-  f = open(home_dir+"/tables/"+file_name, "w")
+  f = open(production_path+"/tables/"+file_name, "w")
   f.write(header)
   f.write('<div style="float:left; width:60%">\n')
   f.write( df.to_html(columns=columns, index=False) )

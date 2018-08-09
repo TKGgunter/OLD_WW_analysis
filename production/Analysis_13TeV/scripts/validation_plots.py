@@ -97,6 +97,7 @@ def main(scales=scales):
  
 
     for region in control_regions: 
+      print "Starting region ", region
       latex_string = process_yields(control_regions[region](df), control_regions[region](df_da), scales=scales).to_latex(columns=["Process", "Diff Flavor", "Same Flavor"], index=False)
       latex_string = latex_string.split("\n")
       latex_string.insert(0, "\\begin{table}[ht]\n\t\centering\n\t\\topcaption{"+region+" control region for 13\TeV.}" )

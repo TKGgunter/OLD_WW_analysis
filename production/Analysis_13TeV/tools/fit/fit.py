@@ -5,6 +5,10 @@ sys.path.append(os.getcwd() + "/../../")
 from prep_ana_II import bin_df, full_bin_plot, scales
 from scipy.optimize import curve_fit, minimize
 import matplotlib.pyplot as plt 
+
+#FIXME
+#Fit control region cuts are wrong
+
  
 def c_dy(df, charge_state=""):
     dy_cuts = (df.pred_fDY_WW < .6) & (df.pred_fTT_WW > .6)
@@ -42,10 +46,28 @@ def pack_data_dic(data_dic, df_da, binned_feature= None):
         data_dic["tt"] = float(c_tt(df_da, charge).shape[0])
         data_dic["sig"]= float(c_ww(df_da, charge).shape[0])
     else:
-        data_dic["dy"] = bin_df(c_dy(df_da, charge), binned_feature=binned_feature)['Da'][0].astype(np.float64)
-        data_dic["tt"] = bin_df(c_tt(df_da, charge), binned_feature=binned_feature)['Da'][0].astype(np.float64)
-        data_dic["sig"]= bin_df(c_ww(df_da, charge), binned_feature=binned_feature)['Da'][0].astype(np.float64)
-        
+        if ';' not in binned_feature:
+            data_dic["dy"] = bin_df(c_dy(df_da, charge), binned_feature=binned_feature)['Da'][0].astype(np.float64)
+            data_dic["tt"] = bin_df(c_tt(df_da, charge), binned_feature=binned_feature)['Da'][0].astype(np.float64)
+            data_dic["sig"]= bin_df(c_ww(df_da, charge), binned_feature=binned_feature)['Da'][0].astype(np.float64)
+        else:
+            split_features = binned_feature.split(';')
+            initialized = False
+            for feature in split_features:
+                if initialized == False:
+                    data_dic["dy"] = bin_df(c_dy(df_da, charge), binned_feature=feature)['Da'][0].astype(np.float64)
+                    data_dic["tt"] = bin_df(c_tt(df_da, charge), binned_feature=feature)['Da'][0].astype(np.float64)
+                    data_dic["sig"]= bin_df(c_ww(df_da, charge), binned_feature=feature)['Da'][0].astype(np.float64)
+                    initialized = True
+                else:
+                    bin_dy = bin_df(c_dy(df_da, charge), binned_feature=feature)['Da'][0].astype(np.float64)
+                    bin_tt = bin_df(c_tt(df_da, charge), binned_feature=feature)['Da'][0].astype(np.float64)
+                    bin_sig= bin_df(c_ww(df_da, charge), binned_feature=feature)['Da'][0].astype(np.float64)
+
+                    data_dic["dy"] = np.concatenate((data_dic["dy"] , bin_dy)) 
+                    data_dic["tt"] = np.concatenate((data_dic["tt"] , bin_tt))
+                    data_dic["sig"]= np.concatenate((data_dic["sig"], bin_sig))
+                    
     
 def pack_mc_dic(mc_dic, df, df_da, scales, binned_feature=None):
     ds_ov_ss = 2.04
@@ -95,16 +117,33 @@ def pack_mc_dic(mc_dic, df, df_da, scales, binned_feature=None):
         mc_dic["sig"]= mc_s 
     else:
         func_dic = {"dy": c_dy, "tt": c_tt, "sig": c_ww}
-        for control_region in func_dic:
-            mc_bins, da_bins, c, d = full_bin_plot(func_dic[control_region](df), func_dic[control_region](df_da), binned_feature, query=None,scales=scales) 
-            plt.close(c)
+        if ';' not in binned_feature:
+            for control_region in func_dic:
+                mc_bins, da_bins, c, d = full_bin_plot(func_dic[control_region](df), func_dic[control_region](df_da), binned_feature, query=None,scales=scales) 
+                plt.close(c)
 
-            mc_c = {}
-            for process in mc_bins:
-                if "plot" in process: continue
-                mc_c[process] = mc_bins[process][0].astype(np.float64)
-            mc_dic[control_region] = mc_c
-    #print "WW events from that fit packer: ", mc_dic["sig"]["WW"]
+                mc_c = {}
+                for process in mc_bins:
+                    if "plot" in process: continue
+                    mc_c[process] = mc_bins[process][0].astype(np.float64)
+                mc_dic[control_region] = mc_c
+        else:
+            #TESTME !!!!!!!!!!!!
+            split_features = binned_feature.split(';')
+            for control_region in func_dic:
+                mc_c = {}
+                for feature in split_features:
+                    mc_bins, da_bins, c, d = full_bin_plot(func_dic[control_region](df), func_dic[control_region](df_da), feature, query=None,scales=scales) 
+                    plt.close(c)
+
+                    for process in mc_bins:
+                        if "plot" in process: continue
+                        if process in mc_c.keys():
+                            mc_c[process] = np.concatenate((mc_c[process], mc_bins[process][0].astype(np.float64)))
+                        else:
+                            mc_c[process] = mc_bins[process][0].astype(np.float64)
+                mc_dic[control_region] = mc_c
+ 
     
 def func_c_dy(mc_dic, aWW, aTT, aDY):
     every_thing_else = 0
@@ -152,7 +191,6 @@ class MinFunction:
         if type(v) == type([]):
             return sum(v)
         elif type(v) == type(np.array([])):
-            #Temp solution for is element in data_c_?? is zero
             v[np.isnan(v)] = 0
             v[np.isinf(v)] = 0
             return np.sum(v)
@@ -260,7 +298,7 @@ if __name__ == "__main__":
     #Fit shit
     data_control_dic = {}
     mc_control_dic = {}
-    feature = "numb_BJet"
+    feature = "numb_BJet;numb_jets"
     pack_data_dic(data_control_dic, df_da, feature)
     pack_mc_dic(mc_control_dic, df, df_da, scales, feature)
 

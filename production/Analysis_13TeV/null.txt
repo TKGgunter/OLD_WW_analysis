@@ -334,3 +334,30 @@ tab completion not implemented for this context
 [I 13:41:35.486 NotebookApp] Kernel started: c502fe31-7393-45d5-ac33-9fa86e574a6a
 [I 13:43:05.402 NotebookApp] Saving file at /notebooks/JetMulti.ipynb
 [I 13:43:10.090 NotebookApp] Kernel shutdown: c502fe31-7393-45d5-ac33-9fa86e574a6a
+[I 10:34:31.020 NotebookApp] Kernel restarted: a75594d1-3849-456c-aeda-57f1ac5e5771
+[I 10:35:42.204 NotebookApp] Saving file at /notebooks/Odds_and_Ends.ipynb
+[W 10:35:42.205 NotebookApp] Saving untrusted notebook notebooks/Odds_and_Ends.ipynb
+[I 10:39:42.206 NotebookApp] Saving file at /notebooks/Odds_and_Ends.ipynb
+[W 10:39:42.208 NotebookApp] Saving untrusted notebook notebooks/Odds_and_Ends.ipynb
+[I 10:41:42.239 NotebookApp] Saving file at /notebooks/Odds_and_Ends.ipynb
+[W 10:41:42.240 NotebookApp] Saving untrusted notebook notebooks/Odds_and_Ends.ipynb
+[I 10:43:42.207 NotebookApp] Saving file at /notebooks/Odds_and_Ends.ipynb
+[W 10:43:42.208 NotebookApp] Saving untrusted notebook notebooks/Odds_and_Ends.ipynb
+[I 10:47:42.208 NotebookApp] Saving file at /notebooks/Odds_and_Ends.ipynb
+[W 10:47:42.208 NotebookApp] Saving untrusted notebook notebooks/Odds_and_Ends.ipynb
+[I 10:53:42.210 NotebookApp] Saving file at /notebooks/Odds_and_Ends.ipynb
+[W 10:53:42.210 NotebookApp] Saving untrusted notebook notebooks/Odds_and_Ends.ipynb
+[I 10:59:06.837 NotebookApp] Kernel restarted: a75594d1-3849-456c-aeda-57f1ac5e5771
+[I 10:59:42.214 NotebookApp] Saving file at /notebooks/Odds_and_Ends.ipynb
+[W 10:59:42.215 NotebookApp] Saving untrusted notebook notebooks/Odds_and_Ends.ipynb
+[I 13:13:42.237 NotebookApp] Saving file at /notebooks/Odds_and_Ends.ipynb
+[W 13:13:42.238 NotebookApp] Saving untrusted notebook notebooks/Odds_and_Ends.ipynb
+[I 13:14:48.521 NotebookApp] Kernel interrupted: a75594d1-3849-456c-aeda-57f1ac5e5771
+[I 13:14:52.680 NotebookApp] Kernel interrupted: a75594d1-3849-456c-aeda-57f1ac5e5771
+[I 13:15:42.220 NotebookApp] Saving file at /notebooks/Odds_and_Ends.ipynb
+[W 13:15:42.221 NotebookApp] Saving untrusted notebook notebooks/Odds_and_Ends.ipynb
+[I 13:19:42.256 NotebookApp] Saving file at /notebooks/Odds_and_Ends.ipynb
+[W 13:19:42.258 NotebookApp] Saving untrusted notebook notebooks/Odds_and_Ends.ipynb
+[I 13:24:36.264 NotebookApp] Kernel restarted: a75594d1-3849-456c-aeda-57f1ac5e5771
+[I 13:25:42.222 NotebookApp] Saving file at /notebooks/Odds_and_Ends.ipynb
+[W 13:25:42.222 NotebookApp] Saving untrusted notebook notebooks/Odds_and_Ends.ipynb
