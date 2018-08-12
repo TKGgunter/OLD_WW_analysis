@@ -53,9 +53,6 @@ df_ggww = ana_obj.df_ggww
 rf = ana_obj.rfs
 
 
-#temp = df[rf["features_fTT"]]
-#temp = temp.replace([np.inf,-np.inf], 0)
-#df[rf["features_fTT"]] = temp
 print process_yields(rf_ana(df), rf_ana(df_da), scales=scales)
 """
 df = load_origMC(columns=columns_jets_unc)#?Need to think about this

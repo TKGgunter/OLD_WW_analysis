@@ -27,6 +27,13 @@ def plots(df):
   return None
 
 
+
+#
+#compute_unc(ana_obj, nominal_up_down)
+
+
+
+
 def electron_idiso_unc(df, up_down="up"):#?should default to both...but both is complicated
   """
   electron_scale should scale the weights of samples with atleast one electron by the uncertainty on that electrons scale factor

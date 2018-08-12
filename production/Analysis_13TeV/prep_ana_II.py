@@ -1028,6 +1028,7 @@ def process_yields( df, df_da=None, query=None, processes= ['WW', 'DY', 'Top', '
   ds_ov_ss = 2.05
   
   yield_dic = {}
+  yield_dic["Both Flavor"] = []
   yield_dic["Diff Flavor"] = []
   yield_dic["Same Flavor"] = []
   yield_dic["Process"] = []
@@ -1049,6 +1050,7 @@ def process_yields( df, df_da=None, query=None, processes= ['WW', 'DY', 'Top', '
         sum_process_diff_ = df[(df.process_decay==decay) & (df.lep_Type > 0) & (df.lep1_Charge != df.lep2_Charge)].weight.sum() * scales[decay]
         yield_dic["Same Flavor"].append( int(round(sum_process_same_)) )
         yield_dic["Diff Flavor"].append( int(round(sum_process_diff_)) )
+        yield_dic["Both Flavor"].append( int(round(sum_process_diff_ + sum_process_same_)) )
         yield_dic["Process"].append( decay )
 
       sum_process_same += df[(df.process_decay==decay) & (df.lep_Type < 0) & (df.lep1_Charge != df.lep2_Charge)].weight.sum() * scales[decay]
@@ -1056,6 +1058,7 @@ def process_yields( df, df_da=None, query=None, processes= ['WW', 'DY', 'Top', '
 
     yield_dic["Same Flavor"].append( int(round(sum_process_same)) )
     yield_dic["Diff Flavor"].append( int(round(sum_process_diff)) )
+    yield_dic["Both Flavor"].append( int(round(sum_process_diff + sum_process_same)) )
     if process == "WG":
       yield_dic["Process"].append( process + "(*)" )
     elif process == "WW":
@@ -1082,6 +1085,7 @@ def process_yields( df, df_da=None, query=None, processes= ['WW', 'DY', 'Top', '
     sum_process_diff =  max([df_da[(df_da.lep_Type > 0) & (df_da.lep1_Charge == df_da.lep2_Charge) ].shape[0] - sum_process_diff, 0]) * ds_ov_ss  
     yield_dic["Same Flavor"].append( int(round(sum_process_same)) )
     yield_dic["Diff Flavor"].append( int(round(sum_process_diff)) )
+    yield_dic["Both Flavor"].append( int(round(sum_process_diff + sum_process_same)) )
     yield_dic["Process"].append( 'WJ' )    
 
     tot_same += sum_process_same
@@ -1090,6 +1094,7 @@ def process_yields( df, df_da=None, query=None, processes= ['WW', 'DY', 'Top', '
 
   yield_dic["Same Flavor"].append( int(round(tot_same)) )
   yield_dic["Diff Flavor"].append( int(round(tot_diff)) )
+  yield_dic["Both Flavor"].append( int(round(tot_diff + tot_same)) )
   yield_dic["Process"].append( "Total" )
 
 
@@ -1098,6 +1103,7 @@ def process_yields( df, df_da=None, query=None, processes= ['WW', 'DY', 'Top', '
     data_diff = df_da[(df_da.lep_Type > 0) & (df_da.lep1_Charge != df_da.lep2_Charge)].shape[0]
     yield_dic["Same Flavor"].append( int(round(data_same)) )
     yield_dic["Diff Flavor"].append( int(round(data_diff)) )
+    yield_dic["Both Flavor"].append( int(round(data_diff + data_same)) )
     yield_dic["Process"].append( "DATA" )
 
   yield_df = pd.DataFrame( yield_dic )

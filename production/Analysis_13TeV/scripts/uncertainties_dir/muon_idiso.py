@@ -18,18 +18,21 @@ warnings.filterwarnings("ignore")
 
 
 
-"""
-ToDo:
-+?Review whatacturally gets done
-+?Add comments to guide user
-+?figure out what is the issue, if there is one
-"""
 
 def plots(df):
   """
   Maybe soon
   """
   return None
+
+
+
+def muon_computeFW_unc(ana_obj, nominal_up_down, debug=False):
+    ana_obj.df.weight = muon_idiso_unc(ana_obj.df, up_down=nominal_up_down)
+     
+
+    
+
 
 
 def muon_idiso_unc(df, up_down="up"):
@@ -46,11 +49,14 @@ def muon_idiso_unc(df, up_down="up"):
     pm = 1
     error_string1 = "lep1_id_error_high"
     error_string2 = "lep2_id_error_high"
-  else:
+  elif up_down == "down":
     pm = -1
     error_string1 = "lep1_id_error_low"
     error_string2 = "lep2_id_error_low"
 
+  else:
+    return weights 
+    
   
   lep1_cuts = cut_lep_type & (df.lep1_type == 13)
   lep2_cuts = cut_lep_type & (df.lep2_type == 13)
@@ -71,6 +77,8 @@ def compute_muon( ana_obj, flavor):
   scales = ana_obj.scales
   df = pre_cuts(ana_obj.df, diff_charge= False)
 
+
+
   pseudo = {}
   pseudo["tot"] = pseudo_data_yield_sum(rf_ana(ana_obj.df), rf_ana(ana_obj.df_da), scales=scales)
   pseudo["j0"] = pseudo_data_yield_sum(rf_ana(ana_obj.df), rf_ana(ana_obj.df_da), scales=scales, query="numb_jets == 0")
@@ -86,22 +94,23 @@ def compute_muon( ana_obj, flavor):
   #########################
   #Fits
   nominal_fit_result = fit.comprehensive_fit(df, ana_obj.df_da, "metMod", scales)
+  print "Nominal\n", process_yields(rf_ana(df), rf_ana(ana_obj.df_da), scales=scales)
   #########################
 
 
-  print "orig", df.weight[df.lep_Type == -1].mean(), df[df.lep_Type == -1].weight.max(), df[df.lep_Type == -1].weight.min(),  df[df.lep_Type == -1].weight.std(), "why are these weights so small...Was expecting 90s avg"
+  #print "orig", df.weight[df.lep_Type == -1].mean(), df[df.lep_Type == -1].weight.max(), df[df.lep_Type == -1].weight.min(),  df[df.lep_Type == -1].weight.std(), "why are these weights so small...Was expecting 90s avg"
   idiso_unc_weights = muon_idiso_unc(df)
 
-  print "up shift", np.mean(idiso_unc_weights[df.lep_Type == -1]), np.std(idiso_unc_weights)  
-  print "up errors", df.lep1_id_error_high.mean(), df.lep2_id_error_high.std()
+  #print "up shift", np.mean(idiso_unc_weights[df.lep_Type == -1]), np.std(idiso_unc_weights)  
+  #print "up errors", df.lep1_id_error_high.mean(), df.lep2_id_error_high.std()
   up_weights = idiso_unc_weights 
 
 
 
 
   idiso_unc_weights = muon_idiso_unc(df, up_down="down")
-  print "\ndown shift", np.mean(idiso_unc_weights[df.lep_Type == -1]), np.std(idiso_unc_weights)  
-  print "down errors", df.lep1_id_error_low.mean(), df.lep2_id_error_low.std()
+  #print "\ndown shift", np.mean(idiso_unc_weights[df.lep_Type == -1]), np.std(idiso_unc_weights)  
+  #print "down errors", df.lep1_id_error_low.mean(), df.lep2_id_error_low.std()
   down_weights = idiso_unc_weights 
 
 
@@ -119,6 +128,7 @@ def compute_muon( ana_obj, flavor):
   #########################
   #Fits
   up_fit_result = fit.comprehensive_fit(df, ana_obj.df_da, "metMod", scales)
+  print "Up\n", process_yields(rf_ana(df), rf_ana(ana_obj.df_da), scales=scales)
   #########################
 
 
@@ -135,11 +145,12 @@ def compute_muon( ana_obj, flavor):
   #########################
   #Fits
   down_fit_result = fit.comprehensive_fit(df, ana_obj.df_da, "metMod", scales)
+  print "Down\n", process_yields(rf_ana(df), rf_ana(ana_obj.df_da), scales=scales)
   #########################
 
-  print "Nominal", orig
-  print "Up", up
-  print "Down", down
+  #print "Nominal", orig
+  #print "Up", up
+  #print "Down", down
   
 
   
@@ -193,7 +204,7 @@ def compute_muon( ana_obj, flavor):
 
 
 if __name__ == "__main__":
-  for flavor in ["", "diff", "same"]:
+  for flavor in [""]:#, "diff", "same"]:
     if flavor == "":
       print "total"
       ana_obj = analysis_setup("lep")

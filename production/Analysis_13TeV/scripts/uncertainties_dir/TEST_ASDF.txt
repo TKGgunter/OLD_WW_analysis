@@ -1,0 +1,43 @@
+
+nominal
+    Both Flavor  Diff Flavor          Process  Same Flavor
+0          6259         5367               WW          893
+1           403          317  GluGluWWTo2L2Nu           86
+2          6662         5683        Total: WW          979
+3          1460         1174               DY          286
+4          3081         2521              Top          561
+5           320          262               WZ           58
+6            36            2               ZZ           34
+7           382          362            WG(*)           20
+8           177          152            Higgs           24
+9          1821         1693               WJ          128
+10        13939        11849            Total         2090
+11        20564        17503             DATA         3061
+up
+    Both Flavor  Diff Flavor          Process  Same Flavor
+0          6273         5377               WW          895
+1           404          317  GluGluWWTo2L2Nu           86
+2          6676         5695        Total: WW          982
+3          1463         1176               DY          287
+4          3090         2527              Top          563
+5           321          262               WZ           59
+6            36            2               ZZ           34
+7           383          363            WG(*)           20
+8           177          153            Higgs           24
+9          1817         1689               WJ          128
+10        13963        11867            Total         2097
+11        20564        17503             DATA         3061
+down
+    Both Flavor  Diff Flavor          Process  Same Flavor
+0          6246         5356               WW          890
+1           402          316  GluGluWWTo2L2Nu           86
+2          6648         5673        Total: WW          976
+3          1457         1172               DY          284
+4          3073         2514              Top          558
+5           319          261               WZ           58
+6            36            2               ZZ           34
+7           381          361            WG(*)           20
+8           176          152            Higgs           24
+9          1825         1696               WJ          128
+10        13916        11833            Total         2083
+11        20564        17503             DATA         3061
